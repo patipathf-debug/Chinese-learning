@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="แบบทดสอบประมวลความรู้ HSK 4 SuperChinese รวมบทเรียน Day 1 - Day 5 (40 ข้อ + 3 เรื่องอ่านแบบ HSK 4 + AI ตรวจเขียน)">
+    <title>HSK 4 SuperChinese · Comprehensive Exam (Day 1 - Day 5)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Sarabun:wght@300;400;500;600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #fcf9f2;
+            --paper-dark: #f0e6d2;
+            --card: #ffffff;
+            --ink: #2b1f1d;
+            --plum: #4a1d2f;
+            --plum-light: #7a3c56;
+            --gold: #d4af37;
+            --gold-dark: #9a7605;
+            --rose: #a66a7b;
+            --muted: #74645f;
+            --line: #e3d5b9;
+            --correct: #2e6f40;
+            --correct-bg: #eaf5ec;
+            --wrong: #b83227;
+            --wrong-bg: #fdf0ee;
+            --shadow: 0 12px 35px rgba(74,29,47,.08);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark-theme {
+            --paper: #181119;
+            --paper-dark: #241926;
+            --card: #2c1e2e;
+            --ink: #ecdcec;
+            --plum: #ebb8d1;
+            --plum-light: #d69db8;
+            --gold: #dfc176;
+            --gold-dark: #ebd08d;
+            --rose: #e6a8bc;
+            --muted: #b7a8b5;
+            --line: #493345;
+            --correct: #66c17e;
+            --correct-bg: rgba(46,111,64,.25);
+            --wrong: #ef7468;
+            --wrong-bg: rgba(184,50,39,.25);
+            --shadow: 0 12px 35px rgba(0,0,0,.35);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Sarabun', 'Noto Sans SC', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.75;
+            transition: var(--transition);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            background: url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+        }
+
+        button, select, input, textarea { font: inherit; }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--plum);
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,.16);
+        }
+        .nav-inner {
+            max-width: 1120px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            gap: 12px;
+        }
+        .nav-logo {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.05rem;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+        .nav-links { display: flex; overflow: auto; scrollbar-width: none; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-tab-btn {
+            color: #f1e4ea;
+            background: transparent;
+            border: none;
+            padding: 15px 14px;
+            font-size: .88rem;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .nav-tab-btn:hover, .nav-tab-btn.active {
+            color: #fff;
+            background: rgba(255,255,255,.08);
+            border-bottom-color: var(--gold);
+        }
+
+        .theme-btn, .ghost-btn, .speak-btn, .primary-btn, .quiz-opt, .chip-btn {
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .theme-btn { background: transparent; color: #fff; border-color: rgba(255,255,255,.35); white-space: nowrap; }
+        .ghost-btn:hover, .speak-btn:hover, .primary-btn:hover, .chip-btn:hover {
+            transform: translateY(-1px);
+            border-color: var(--gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        }
+        .primary-btn { background: var(--plum); border-color: var(--plum); color: #fff; font-weight: 700; }
+        .speak-btn { color: var(--plum-light); font-weight: 600; }
+
+        /* Voice settings bar */
+        .settings-bar {
+            background: var(--paper-dark);
+            border-bottom: 1px solid var(--line);
+            padding: 10px 16px;
+            font-size: .88rem;
+        }
+        .settings-inner {
+            max-width: 1120px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .settings-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .voice-select {
+            background: var(--card);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: .85rem;
+            max-width: 260px;
+        }
+        .speed-range { width: 90px; cursor: pointer; }
+
+        header.cover {
+            text-align: center;
+            padding: 45px 20px 35px;
+            background: radial-gradient(circle at 50% 0, rgba(212,175,55,.15), transparent 48%),
+                        linear-gradient(180deg, rgba(74,29,47,.06), transparent);
+            border-bottom: 1px solid var(--line);
+        }
+        .badge {
+            display: inline-block;
+            color: var(--gold-dark);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font: 700 .75rem 'Cinzel Decorative', serif;
+            letter-spacing: .08em;
+        }
+        header.cover h1 {
+            font: 900 clamp(2rem, 5vw, 3.5rem) 'Noto Serif SC', serif;
+            color: var(--plum);
+            line-height: 1.2;
+            margin: 12px 0 4px;
+        }
+        .cover-th { font-size: 1.15rem; font-weight: 600; margin-top: 4px; }
+        .cover-desc { max-width: 760px; margin: 14px auto 0; color: var(--muted); font-size: .92rem; }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            min-width: 110px;
+            padding: 12px 18px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .stat strong { display: block; color: var(--plum); font-size: 1.4rem; font-family: 'Noto Serif SC', serif; }
+        .stat span { font-size: .78rem; color: var(--muted); }
+
+        main { max-width: 1120px; margin: auto; padding: 30px 16px 80px; }
+        
+        .session-tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+        .session-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-head { display: flex; gap: 14px; align-items: center; margin-bottom: 10px; }
+        .section-num { font: 700 .75rem 'Cinzel Decorative', serif; color: var(--gold-dark); letter-spacing: .08em; white-space: nowrap; }
+        .section h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); color: var(--plum); font-family: 'Noto Serif SC', serif; }
+        .section-sub { color: var(--muted); margin: 0 0 25px 0; font-size: .95rem; }
+
+        .part-header {
+            margin: 30px 0 16px;
+            padding: 12px 18px;
+            background: linear-gradient(90deg, rgba(74,29,47,.08), transparent);
+            border-left: 4px solid var(--plum);
+            border-radius: 4px 8px 8px 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .part-header h3 { color: var(--plum); font-size: 1.15rem; }
+        .part-badge { font-size: .8rem; background: var(--card); border: 1px solid var(--line); padding: 3px 10px; border-radius: 99px; color: var(--gold-dark); font-weight: 600; }
+
+        /* Word Bank Box */
+        .word-bank-card {
+            background: var(--card);
+            border: 2px dashed var(--gold);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        .word-bank-title {
+            font-weight: 700;
+            color: var(--plum);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        .word-bank-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 10px;
+        }
+        .bank-item {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .bank-item:hover {
+            border-color: var(--gold);
+            background: var(--card);
+            transform: translateY(-2px);
+        }
+        .bank-item .b-key {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 700;
+            color: var(--plum);
+            background: rgba(74,29,47,.1);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: .85rem;
+        }
+        .bank-item .b-word { font-weight: 700; color: var(--ink); }
+        .bank-item .b-th { font-size: .78rem; color: var(--muted); }
+
+        /* Quiz Card & Grid */
+        .quiz-card-box {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .quiz-card-box:hover { border-color: var(--gold); }
+        .q-number { font: 700 .8rem 'Cinzel Decorative', serif; color: var(--gold-dark); margin-bottom: 6px; }
+        .q-text { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 16px; }
+        .quiz-options { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+        .quiz-opt {
+            text-align: left;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: .95rem;
+        }
+        .quiz-opt:hover { border-color: var(--gold); }
+        .quiz-opt.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); font-weight: 700; }
+        .quiz-opt.wrong { background: var(--wrong-bg); border-color: var(--wrong); color: var(--wrong); }
+        
+        /* Cloze Card */
+        .cloze-card-box {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .cloze-card-box:hover { border-color: var(--gold); }
+        .cloze-sentence {
+            font-size: 1.15rem;
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.9;
+            color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .cloze-input-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .cloze-input {
+            background: var(--paper);
+            border: 2px solid var(--line);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--plum);
+            min-width: 140px;
+            max-width: 220px;
+            transition: var(--transition);
+        }
+        .cloze-input:focus {
+            outline: none;
+            border-color: var(--plum);
+            background: var(--card);
+        }
+        .cloze-input.correct {
+            border-color: var(--correct);
+            background: var(--correct-bg);
+            color: var(--correct);
+        }
+        .cloze-input.wrong {
+            border-color: var(--wrong);
+            background: var(--wrong-bg);
+            color: var(--wrong);
+        }
+        .chip-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .chip-btn {
+            padding: 4px 10px;
+            font-size: .8rem;
+            border-radius: 6px;
+            background: var(--paper);
+            font-weight: 600;
+            color: var(--plum);
+        }
+        .chip-btn:hover {
+            background: var(--plum);
+            color: #fff;
+            border-color: var(--plum);
+        }
+
+        .q-feedback { margin-top: 14px; padding: 12px 16px; border-radius: 8px; background: var(--paper-dark); font-size: .9rem; display: none; }
+        .q-feedback.show { display: block; }
+
+        /* Reading Card */
+        .reading-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            margin-bottom: 35px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .reading-head {
+            padding: 18px 22px;
+            background: linear-gradient(110deg, var(--paper-dark), var(--card));
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .reading-head h3 { color: var(--plum); font-size: 1.25rem; font-family: 'Noto Serif SC', serif; }
+        .level { font-size: .75rem; color: var(--gold-dark); border: 1px solid var(--gold); border-radius: 99px; padding: 3px 10px; }
+        
+        .story-figure {
+            position: relative;
+            margin: 0;
+            background: var(--paper-dark);
+            overflow: hidden;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .story-figure img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+        .story-figure figcaption {
+            position: absolute; left: 14px; bottom: 12px; max-width: calc(100% - 28px);
+            padding: 7px 12px; border-radius: 8px; background: rgba(38,20,29,.85);
+            color: #fff; font-size: .82rem; line-height: 1.4; backdrop-filter: blur(5px);
+        }
+
+        .reading-body { padding: 24px; }
+        .reading-cn { font: 400 1.15rem/2.1 'Noto Serif SC', serif; }
+        .reading-cn .target { color: var(--plum); font-weight: 700; border-bottom: 2px solid rgba(212,175,55,.6); cursor: pointer; }
+        .reading-pinyin, .reading-th { display: none; margin-top: 14px; padding: 14px 16px; border-radius: 10px; background: var(--paper-dark); }
+        .reading-pinyin.show, .reading-th.show { display: block; }
+        .reading-pinyin { color: var(--plum-light); font-size: .95rem; }
+        .reading-th { color: var(--muted); font-size: .92rem; }
+        .reading-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+        .reading-questions-container {
+            margin-top: 25px;
+            border-top: 2px dashed var(--line);
+            padding-top: 20px;
+        }
+        .reading-q-box {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+        .reading-q-title {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--plum);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        /* Session 4 AI Evaluator */
+        .ai-config-card {
+            background: var(--card);
+            border: 1px solid var(--gold);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .ai-config-card h3 { color: var(--plum); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .api-input-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+        .api-input {
+            flex: 1; min-width: 260px; background: var(--paper); color: var(--ink);
+            border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; font-size: .9rem;
+        }
+        .model-select {
+            background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+            border-radius: 8px; padding: 10px 12px; font-size: .9rem;
+        }
+
+        .writing-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        .writing-card h4 { color: var(--plum); font-size: 1.1rem; margin-bottom: 8px; }
+        .writing-textarea {
+            width: 100%; min-height: 110px; background: var(--paper); color: var(--ink);
+            border: 1px solid var(--line); border-radius: 10px; padding: 14px; font-size: 1.05rem;
+            margin: 14px 0; resize: vertical;
+        }
+        .ai-result-box {
+            display: none; margin-top: 16px; padding: 16px; border-radius: 10px;
+            background: var(--paper-dark); border-left: 4px solid var(--gold); font-size: .94rem;
+        }
+
+        .footer {
+            text-align: center; color: var(--muted); border-top: 1px solid var(--line);
+            padding: 30px 15px; font-size: .85rem; margin-top: 50px; background: var(--paper-dark);
+        }
+        .back-top {
+            position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px;
+            border: 1px solid var(--gold); border-radius: 50%; background: var(--plum);
+            color: #fff; cursor: pointer; z-index: 50; font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,.2);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="nav-inner">
+        <a class="nav-logo" href="../index.html">← กลับสารบัญ INDEX</a>
+        <div class="nav-links">
+            <button id="btnS1" class="nav-tab-btn active" type="button" onclick="switchSession(1)">S1: คำศัพท์ (20 ข้อ)</button>
+            <button id="btnS2" class="nav-tab-btn" type="button" onclick="switchSession(2)">S2: ไวยากรณ์ (20 ข้อ)</button>
+            <button id="btnS3" class="nav-tab-btn" type="button" onclick="switchSession(3)">S3: เรื่องอ่าน (3 เรื่อง HSK 4)</button>
+            <button id="btnS4" class="nav-tab-btn" type="button" onclick="switchSession(4)">S4: เขียน & AI ตรวจ</button>
+        </div>
+        <button id="themeBtn" class="theme-btn" type="button">🌙 ราตรี</button>
+    </div>
+</nav>
+
+<!-- Voice Settings Bar -->
+<div class="settings-bar">
+    <div class="settings-inner">
+        <div class="settings-group">
+            🗣️ <strong>เสียงภาษาจีน:</strong>
+            <select id="voiceSelect" class="voice-select">
+                <option>กำลังค้นหาเสียง…</option>
+            </select>
+        </div>
+        <div class="settings-group">
+            <label for="speed">ความเร็ว <span id="speedLabel">0.9×</span></label>
+            <input id="speed" class="speed-range" type="range" min="0.5" max="1.3" step="0.1" value="0.9">
+            <button class="ghost-btn" id="stopSpeech" type="button" style="padding:4px 12px; font-size:.8rem;">■ หยุดเสียง</button>
+        </div>
+    </div>
+</div>
+
+<header class="cover" id="top">
+    <span class="badge">HSK 4 · COMPREHENSIVE EXAM · DAY 1 - DAY 5</span>
+    <h1>HSK 4 综合能力测试</h1>
+    <div class="cover-th">แบบทดสอบประมวลความรู้สะสม Day 1 – Day 5</div>
+    <p class="cover-desc">ทดสอบความแม่นยำของคลังคำศัพท์ 116 คำ โครงสร้างไวยากรณ์ 20 หัวข้อ และการอ่านจับใจความโจทย์ภาษาจีนมาตรฐาน HSK 4 พร้อมระบบ Gemini AI ตรวจข้อเขียน</p>
+    
+    <div class="stats">
+        <div class="stat"><strong>116</strong><span>คำศัพท์ที่ทดสอบ</span></div>
+        <div class="stat"><strong>40</strong><span>ข้อสอบปรนัย & เติมคำ</span></div>
+        <div class="stat"><strong>6</strong><span>ข้อสอบการอ่านภาษาจีน</span></div>
+        <div class="stat"><strong>AI</strong><span>ตรวจประเมินเรียงความ</span></div>
+    </div>
+</header>
+
+<main>
+
+    <!-- SESSION 1: VOCABULARY -->
+    <div id="tabS1" class="session-tab-content active">
+        <div class="section-head">
+            <span class="section-num">Session 01</span>
+            <h2>词汇辨析 — การวัดผลคลังคำศัพท์ (รวม 20 ข้อ)</h2>
+        </div>
+        <p class="section-sub">ทดสอบความแม่นยำของคลังคำศัพท์ Day 1 ถึง Day 5 แบ่งเป็นข้อสอบปรนัย 10 ข้อ และข้อสอบเติมคำในช่องว่าง 10 ข้อ</p>
+
+        <!-- Part 1.1 -->
+        <div class="part-header">
+            <h3>Part 1.1: ปรนัยเลือกคำตอบ (ข้อ 1 - 10)</h3>
+            <span class="part-badge">4 ตัวเลือก A-D</span>
+        </div>
+        <div id="vocabQuizList"></div>
+
+        <!-- Part 1.2 -->
+        <div class="part-header">
+            <h3>Part 1.2: 选词填空 เติมคำในช่องว่าง (ข้อ 11 - 20)</h3>
+            <span class="part-badge">พิมพ์ตัวอักษร A-J หรือคำศัพท์ลงในช่อง</span>
+        </div>
+
+        <div class="word-bank-card">
+            <div class="word-bank-title">📦 คลังคำศัพท์ (Word Bank) สำหรับข้อ 11 - 20:</div>
+            <div class="word-bank-grid" id="vocabBankGrid"></div>
+        </div>
+
+        <div id="vocabClozeList"></div>
+    </div>
+
+    <!-- SESSION 2: GRAMMAR -->
+    <div id="tabS2" class="session-tab-content">
+        <div class="section-head">
+            <span class="section-num">Session 02</span>
+            <h2>句型语法 — การวัดผลไวยากรณ์และโครงสร้าง (รวม 20 ข้อ)</h2>
+        </div>
+        <p class="section-sub">ทดสอบจุดไวยากรณ์สำคัญ 20 หัวข้อที่เรียนผ่านมา (把, 从...起, 本来, 将, 无论, 于是, 亲自, 最好, 适合, V+成 ฯลฯ)</p>
+
+        <!-- Part 2.1 -->
+        <div class="part-header">
+            <h3>Part 2.1: ปรนัยเลือกคำตอบไวยากรณ์ (ข้อ 1 - 10)</h3>
+            <span class="part-badge">4 ตัวเลือก A-D</span>
+        </div>
+        <div id="grammarQuizList"></div>
+
+        <!-- Part 2.2 -->
+        <div class="part-header">
+            <h3>Part 2.2: 选词填空 เติมโครงสร้างไวยากรณ์ในช่องว่าง (ข้อ 11 - 20)</h3>
+            <span class="part-badge">พิมพ์ตัวอักษร A-J หรือโครงสร้างไวยากรณ์</span>
+        </div>
+
+        <div class="word-bank-card">
+            <div class="word-bank-title">📐 คลังไวยากรณ์ (Grammar Bank) สำหรับข้อ 11 - 20:</div>
+            <div class="word-bank-grid" id="grammarBankGrid"></div>
+        </div>
+
+        <div id="grammarClozeList"></div>
+    </div>
+
+    <!-- SESSION 3: COMPREHENSIVE READING (HSK 4 STYLE) -->
+    <div id="tabS3" class="session-tab-content">
+        <div class="section-head">
+            <span class="section-num">Session 03</span>
+            <h2>综合阅读 — เรื่องอ่านประมวลสถานการณ์ (มาตรฐานข้อสอบ HSK 4)</h2>
+        </div>
+        <p class="section-sub">อ่านบทความภาษาจีน 3 เรื่อง พร้อมทำข้อสอบจับใจความที่เป็นภาษาจีนทั้งหมด (HSK 3 - 4 Level) เพื่อเตรียมความพร้อมเสมือนสอบจริง</p>
+
+        <div id="readingExamList"></div>
+    </div>
+
+    <!-- SESSION 4: OPEN WRITING & GEMINI AI EVALUATOR -->
+    <div id="tabS4" class="session-tab-content">
+        <div class="section-head">
+            <span class="section-num">Session 04</span>
+            <h2>写作与 AI 智能批改 — แต่งประโยค & AI ตรวจสอบ</h2>
+        </div>
+        <p class="section-sub">แต่งประโยคภาษาจีนตามโจทย์ที่กำหนด จากนั้นกดให้ Gemini AI ช่วยตรวจไวยากรณ์และแนะนำรูปประโยคที่สละสลวย</p>
+
+        <!-- API Key Settings Card -->
+        <div class="ai-config-card">
+            <h3>🤖 ตั้งค่า Gemini API Key (สำหรับใช้งาน AI ตรวจ)</h3>
+            <p style="font-size: .88rem; color: var(--muted);">ใส่ API Key ของคุณที่นี่ ระบบจะบันทึกไว้ในเบราว์เซอร์เครื่องนี้โดยอัตโนมัติ (หากไม่ใส่ API Key ระบบจะแสดงตัวอย่างคำเฉลยและการประเมินแบบออฟไลน์ให้อัตโนมัติ)</p>
+            
+            <div class="api-input-group">
+                <input id="geminiApiKey" class="api-input" type="password" placeholder="วาง Gemini API Key ที่นี่ (AIzaSy...)" />
+                <select id="geminiModel" class="model-select">
+                    <option value="gemini-1.5-flash">Gemini 1.5 Flash (แนะนำ - รวดเร็ว)</option>
+                    <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro (วิเคราะห์ลึกซึ้ง)</option>
+                </select>
+                <button id="saveKeyBtn" class="primary-btn" type="button">บันทึก Key</button>
+            </div>
+            <div id="keyStatus" style="font-size: .8rem; margin-top: 6px; color: var(--correct);"></div>
+        </div>
+
+        <!-- Task 1 -->
+        <div class="writing-card">
+            <h4>โจทย์ที่ 1: แต่งประโยคโดยใช้คำว่า 不断 (อย่างต่อเนื่อง) และ 坚持 (ยืนหยัด)</h4>
+            <p style="font-size: .88rem; color: var(--muted);">แนวทาง: บรรยายการฝึกซ้อม หรือการเรียนรู้ภาษาจีนของคุณอย่างไม่ย่อท้อ</p>
+            <textarea id="write1" class="writing-textarea" placeholder="พิมพ์ประโยคภาษาจีนของคุณที่นี่..."></textarea>
+            <button class="primary-btn" onclick="evaluateWriting(1)">✨ ให้ AI ตรวจประโยคที่ 1</button>
+            <div id="result1" class="ai-result-box"></div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="writing-card">
+            <h4>โจทย์ที่ 2: แต่งประโยคโดยใช้ไวยากรณ์ 无论……都…… (ไม่ว่าจะ...ก็...) และ 准时 (ตรงเวลา)</h4>
+            <p style="font-size: .88rem; color: var(--muted);">แนวทาง: บรรยายเรื่องการเข้าเรียน การส่งงาน หรือการนัดหมายส่งอาหารเดลิเวอรี่</p>
+            <textarea id="write2" class="writing-textarea" placeholder="พิมพ์ประโยคภาษาจีนของคุณที่นี่..."></textarea>
+            <button class="primary-btn" onclick="evaluateWriting(2)">✨ ให้ AI ตรวจประโยคที่ 2</button>
+            <div id="result2" class="ai-result-box"></div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    แบบทดสอบประมวลผล HSK 4 SuperChinese (Day 1 - Day 5) • ออกแบบเพื่อการทบทวนอย่างมีประสิทธิภาพ
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="กลับด้านบน">↑</button>
+
+<script>
+// ==========================================
+// VOICE & SYNTHESIS SETUP
+// ==========================================
+let synth = window.speechSynthesis;
+let voice = null;
+
+function loadVoices() {
+    const all = synth ? synth.getVoices() : [];
+    const zh = all.filter(v => /^zh/i.test(v.lang));
+    const s = document.getElementById('voiceSelect');
+    if (!s) return;
+    s.innerHTML = '';
+    if (!zh.length) {
+        s.innerHTML = '<option value="">ใช้เสียงจีนเริ่มต้นของระบบ</option>';
+        return;
+    }
+    zh.sort((a, b) => (/premium|natural|tingting|meijia|xiaoxiao|yunxi/i.test(b.name) ? 1 : 0) - (/premium|natural|tingting|meijia|xiaoxiao|yunxi/i.test(a.name) ? 1 : 0));
+    zh.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v.name;
+        o.textContent = `${v.name} (${v.lang})`;
+        s.append(o);
+    });
+    voice = zh[0];
+}
+
+function plain(t) { const d = document.createElement('div'); d.innerHTML = t; return d.textContent; }
+
+function speak(text) {
+    if (!synth) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(plain(text));
+    u.lang = 'zh-CN';
+    const rate = parseFloat(document.getElementById('speed')?.value || '0.9');
+    u.rate = rate;
+    if (voice) u.voice = voice;
+    synth.speak(u);
+}
+
+// ==========================================
+// DATA: VOCABULARY SECTION (20 QUESTIONS)
+// ==========================================
+
+// Part 1.1: Multiple Choice (10 Questions)
+const vocabQuizzes = [
+    {
+        q: "1. คำว่า '获得' (huòdé) ในภาษาจีนมีความหมายและบริบทการใช้ตามข้อใด?",
+        o: ["A. ได้รับ (ใช้กับความสำเร็จ เช่น 获得冠军、获得经验)", "B. ซาบซึ้งใจ (ใช้กับความรู้สึก)", "C. รบกวน (ใช้เมื่อขอโทษ)", "D. วางสายโทรศัพท์"],
+        a: 0, why: "获得 หมายถึง ได้รับ/ได้มา มักใช้กับ 冠军 (แชมป์), 经验 (ประสบการณ์), 奖牌 (เหรียญรางวัล)"
+    },
+    {
+        q: "2. ข้อใดคือความแตกต่างระหว่าง '发明' และ '发现'?",
+        o: ["A. 发明 คือการประดิษฐ์สิ่งใหม่ขึ้นมา; 发现 คือการค้นพบสิ่งที่มีอยู่แล้ว", "B. 发现 คือการประดิษฐ์สิ่งใหม่; 发明 คือการค้นพบสิ่งที่มีอยู่แล้ว", "C. ทั้งสองคำใช้แทนกันได้ทุกกรณี", "D. 发明 แปลว่า พัฒนา; 发现 แปลว่า เกิดขึ้น"],
+        a: 0, why: "发明 = ประดิษฐ์สิ่งใหม่ (เช่น 发明技术); 发现 = ค้นพบสิ่งที่มีอยู่แล้ว (เช่น 发现问题)"
+    },
+    {
+        q: "3. คำว่า '严格' (yángé) มักใช้ขยายคำนามหรือกริยาใด?",
+        o: ["A. 严格训练 (ฝึกซ้อมอย่างเข้มงวด) / 要求严格", "B. 严格外卖 (เดลิเวอรี่เข้มงวด)", "C. 严格开玩笑 (ล้อเล่นอย่างเข้มงวด)", "D. 严格西红柿 (มะเขือเทศเข้มงวด)"],
+        a: 0, why: "严格 หมายถึง เข้มงวด กวดขัน เช่น 严格的要求, 严格的训练"
+    },
+    {
+        q: "4. หากต้องการชมว่าอาหารจานนี้มี 'รสชาติ' ดีมาก ควรใช้ประโยคใด?",
+        o: ["A. 这个菜的座位很好", "B. 这个菜的味道很好", "C. 这个菜的投诉很好", "D. 这个菜的速度很好"],
+        a: 1, why: "味道 (wèidào) หมายถึง รสชาติ หรือ กลิ่น"
+    },
+    {
+        q: "5. คำว่า '投诉' (tóusù) มักใช้ในสถานการณ์ใด?",
+        o: ["A. เมื่อต้องการร้องเรียนความไม่พึงพอใจต่อสินค้าหรือการบริการ", "B. เมื่อต้องการอวยพรให้ผู้อื่นประสบความสำเร็จ", "C. เมื่อต้องการเชิญชวนเพื่อนไปชมนิทรรศการ", "D. เมื่อต้องการฝึกซ้อมกีฬา"],
+        a: 0, why: "投诉 (tóusù) หมายถึง ร้องเรียน/คอมเพลน ต่อการบริการหรือสินค้า"
+    },
+    {
+        q: "6. คำว่า '外卖' (wàimài) หมายถึงสิ่งใดในชีวิตประจำวัน?",
+        o: ["A. อาหารสั่งเดลิเวอรี่ / สั่งกลับบ้าน", "B. การออกไปทานอาหารนอกบ้าน", "C. การซื้อของในซูเปอร์มาร์เก็ต", "D. การเดินทางด้วยรถไฟความเร็วสูง"],
+        a: 0, why: "外卖 (wàimài) หมายถึง อาหารสั่งเดลิเวอรี่ (เช่น 点外卖, 送外卖)"
+    },
+    {
+        q: "7. คำว่า '准时' (zhǔnshí) มีความหมายตรงกับข้อใด?",
+        o: ["A. ตรงเวลา (On time)", "B. เหน็ดเหนื่อย (Exhausted)", "C. ชั่วคราว (Temporary)", "D. ซับซ้อน (Complex)"],
+        a: 0, why: "准时 (zhǔnshí) หมายถึง ตรงเวลา เป๊ะตามกำหนด"
+    },
+    {
+        q: "8. คำว่า '吵架' (chǎojià) และ '开玩笑' (kāi wánxiào) ใน Day 5 สื่อถึงอะไร?",
+        o: ["A. 吵架 คือ ทะเลาะวิวาท; 开玩笑 คือ พูดล้อเล่น", "B. 吵架 คือ การแสดงความยินดี; 开玩笑 คือ ขอโทษ", "C. 吵架 คือ ขอความช่วยเหลือ; 开玩笑 คือ การทำอาหาร", "D. ทั้งสองคำแปลว่า เดินทางท่องเที่ยว"],
+        a: 0, why: "吵架 = ทะเลาะมีปากเสียง; 开玩笑 = พูดล้อเล่น"
+    },
+    {
+        q: "9. คำว่า '制造' (zhìzào) และ '创造' (chuàngzào) มีความหมายหลักเกี่ยวกับอะไร?",
+        o: ["A. 制造 = ผลิต/สร้างสิ่งของทางกายภาพ; 创造 = สร้างสรรค์สิ่งแปลกใหม่/แนวคิด", "B. 制造 = ทำอาหาร; 创造 = กินอาหาร", "C. 制造 = ขี่มอเตอร์ไซค์; 创造 = ซ่อมรถ", "D. ทั้งสองคำใช้แทนกันไม่ได้เลย"],
+        a: 0, why: "制造 = ผลิตสิ่งของ (เช่น 制造机器); 创造 = สร้างสรรค์ (เช่น 创造奇迹)"
+    },
+    {
+        q: "10. คำว่า '尊重' (zūnzhòng) มีความหมายตรงกับข้อใด?",
+        o: ["A. ให้เกียรติ / เคารพ (Respect)", "B. ให้อภัย (Forgive)", "C. ยอมรับ (Accept)", "D. ภาคภูมิใจ (Proud)"],
+        a: 0, why: "尊重 (zūnzhòng) หมายถึง ให้ความเคารพ / ให้เกียรติซึ่งกันและกัน"
+    }
+];
+
+// Part 1.2: Word Bank & Cloze Questions (10 Questions: 11 - 20)
+const vocabBank = [
+    { key: "A", word: "坚持", py: "jiānchí", th: "ยืนหยัด/อดทนทำต่อเนื่อง" },
+    { key: "B", word: "吸引", py: "xīyǐn", th: "ดึงดูด/ชักชวนใจ" },
+    { key: "C", word: "骄傲", py: "jiāo'ào", th: "ภาคภูมิใจ" },
+    { key: "D", word: "准时", py: "zhǔnshí", th: "ตรงเวลา" },
+    { key: "E", word: "道歉", py: "dàoqiàn", th: "กล่าวขอโทษ" },
+    { key: "F", word: "实用", py: "shíyòng", th: "ใช้ประโยชน์ได้จริง" },
+    { key: "G", word: "咸", py: "xián", th: "เค็ม" },
+    { key: "H", word: "祝贺", py: "zhùhè", th: "แสดงความยินดี" },
+    { key: "I", word: "放弃", py: "fàngqì", th: "ยอมแพ้/ละทิ้ง" },
+    { key: "J", word: "原谅", py: "yuánliàng", th: "ให้อภัย" }
+];
+
+const vocabCloze = [
+    {
+        num: 11,
+        before: "这本字典非常（ ",
+        after: " ），对学习中文很有帮助。",
+        key: "F", word: "实用",
+        why: "实用 (shíyòng) แปลว่า ใช้ประโยชน์ได้จริง เข้ากับบริบทของพจนานุกรมที่มีประโยชน์ต่อการเรียน"
+    },
+    {
+        num: 12,
+        before: "无论遇到多大的困难，我们都绝不能（ ",
+        after: " ）。",
+        key: "I", word: "放弃",
+        why: "绝不能放弃 (jué bù néng fàngqì) แปลว่า ไม่ยอมแพ้เด็ดขาด"
+    },
+    {
+        num: 13,
+        before: "这场精彩的科技展览（ ",
+        after: " ）了成千上万的观众。",
+        key: "B", word: "吸引",
+        why: "吸引 (xīyǐn) แปลว่า ดึงดูด (吸引观众 = ดึงดูดผู้ชม)"
+    },
+    {
+        num: 14,
+        before: "外卖小哥每天骑着摩托车，（ ",
+        after: " ）把热腾腾的饭菜送到顾客手中。",
+        key: "D", word: "准时",
+        why: "准时 (zhǔnshí) แปลว่า ตรงเวลา (准时送达 = ส่งถึงตรงเวลา)"
+    },
+    {
+        num: 15,
+        before: "听到儿子获得了世界冠军的消息，父母都感到非常（ ",
+        after: " ）。",
+        key: "C", word: "骄傲",
+        why: "感到非常骄傲 (jiāo'ào) แปลว่า รู้สึกภาคภูมิใจเป็นอย่างยิ่ง"
+    },
+    {
+        num: 16,
+        before: "这道菜你是不是放太多盐了？吃起来太（ ",
+        after: " ）了。",
+        key: "G", word: "咸",
+        why: "咸 (xián) แปลว่า เค็ม สอดคล้องกับการใส่เกลือ (放盐) มากเกินไป"
+    },
+    {
+        num: 17,
+        before: "他真诚地向朋友（ ",
+        after: " ），希望能得到朋友的理解。",
+        key: "E", word: "道歉",
+        why: "向……道歉 (xiàng... dàoqiàn) แปลว่า กล่าวขอโทษต่อ..."
+    },
+    {
+        num: 18,
+        before: "大家都带着鲜花来（ ",
+        after: " ）她顺利考上了理想的大学。",
+        key: "H", word: "祝贺",
+        why: "祝贺 (zhùhè) แปลว่า แสดงความยินดี ในโอกาสที่สอบติดมหาวิทยาลัย"
+    },
+    {
+        num: 19,
+        before: "只要每天（ ",
+        after: " ）练习听力和口语，中文水平就一定会提高。",
+        key: "A", word: "坚持",
+        why: "坚持 (jiānchí) แปลว่า ยืนหยัด/พากเพียรทำต่อเนื่อง (坚持练习)"
+    },
+    {
+        num: 20,
+        before: "既然他已经知道自己错了，你就（ ",
+        after: " ）他这一次吧。",
+        key: "J", word: "原谅",
+        why: "原谅 (yuánliàng) แปลว่า ให้อภัย เมื่ออีกฝ่ายยอมรับผิด"
+    }
+];
+
+// ==========================================
+// DATA: GRAMMAR SECTION (20 QUESTIONS)
+// ==========================================
+
+// Part 2.1: Multiple Choice (10 Questions)
+const grammarQuizzes = [
+    {
+        q: "1. ประโยคโครงสร้าง 把字句 ข้อใดถูกต้องตามหลักไวยากรณ์?",
+        o: ["A. 请把门打开。", "B. 请把门开。", "C. 请门打开把。", "D. 把请门打开。"],
+        a: 0, why: "หลังคำกริยาใน 把字句 ต้องมีส่วนเสริมหรือผลลัพธ์ เช่น 打开 (เปิดออกแล้ว) จะใช้กริยาเดี่ยวๆ 不ได้"
+    },
+    {
+        q: "2. ข้อใดอธิบายความแตกต่างระหว่าง '感动' และ '感觉' ได้ถูกต้อง?",
+        o: ["A. 感动 = ซาบซึ้งใจ; 感觉 = รู้สึก/ความรู้สึกทั่วไป", "B. 感动 = รู้สึกหนาว; 感觉 = ซาบซึ้งใจ", "C. ทั้งสองคำมีความหมายเหมือนกันทุกประการ", "D. 感动 ใช้กับอาหาร; 感觉 ใช้กับคน"],
+        a: 0, why: "感动 ใช้เมื่อใจถูกกระทบซาบซึ้ง (เช่น 让人感动); 感觉 ใช้กับความรู้สึกทั่วไป (เช่น 我感觉有点儿冷)"
+    },
+    {
+        q: "3. คำเชื่อม '从……起' (cóng...qǐ) มีความหมายและการใช้ตรงกับข้อใด?",
+        o: ["A. นับตั้งแต่...เป็นต้นไป (มองไปข้างหน้าจากจุดเริ่ม)", "B. เพราะว่า...ดังนั้น...", "C. ก่อนอื่น...จากนั้น...", "D. ไม่ว่า...ก็..."],
+        a: 0, why: "从……起 เช่น 从今天起 (ตั้งแต่วันนี้เป็นต้นไป)"
+    },
+    {
+        q: "4. ข้อใดใช้คำว่า '本来' (běnlái) ได้ถูกต้องตามบริบท?",
+        o: ["A. 我本来想去，可是下雨了。", "B. 本来是你！我没认出来。", "C. 我感觉本来有点儿冷。", "D. 请把本来打开。"],
+        a: 0, why: "本来 ใช้เมื่อเดิมทีตั้งใจอย่างหนึ่งแต่ต่อมาสถานการณ์เปลี่ยนไป"
+    },
+    {
+        q: "5. ความแตกต่างระหว่าง '无论' (wúlùn) และ '不管' (bùguǎn) คืออะไร?",
+        o: ["A. 无论 เป็นภาษาเขียนทางการ; 不管 เป็นภาษาพูด (ทั้งคู่แปลว่า ไม่ว่า...ก็...)", "B. 无论 ใช้กับอดีต; 不管 ใช้กับอนาคต", "C. 无论 แปลว่า เพราะว่า; 不管 แปลว่า ดังนั้น", "D. ทั้งสองคำใช้ร่วมกับ 都 不ได้"],
+        a: 0, why: "ทั้งคู่แปลว่า ไม่ว่า...ก็... แต่ 无论 เป็นทางการภาษาเขียน ส่วน 不管 นิยมใช้ในภาษาพูด"
+    },
+    {
+        q: "6. ไวยากรณ์ '适合' (shìhé) และ '合适' (héshì) ต่างกันอย่างไร?",
+        o: ["A. 适合 เป็นคำกริยา (มีกรรมตามหลังได้); 合适 เป็นคำคุณศัพท์ (ขยายคำนาม)", "B. 适合 เป็นคำคุณศัพท์; 合适 เป็นคำกริยา", "C. ทั้งคู่ไม่สามารถใช้ในภาษาเขียนได้", "D. 适合 แปลว่า เค็ม; 合适 แปลว่า หวาน"],
+        a: 0, why: "适合 + กรรม (เช่น 这件衣服适合你); ส่วน 合适 เป็นคุณศัพท์ (เช่น 这种工作很合适)"
+    },
+    {
+        q: "7. ไวยากรณ์ 'V + 成' (chéng) แสดงผลลัพธ์อย่างไร?",
+        o: ["A. แสดงว่าการกระทำทำให้เกิดการเปลี่ยนแปลงกลายสภาพเป็นอีกสิ่งหนึ่ง", "B. แสดงว่าการกระทำยังไม่เสร็จสิ้น", "C. แสดงว่าการกระทำเกิดขึ้นในอดีตเท่านั้น", "D. แสดงการปฏิเสธ"],
+        a: 0, why: "V + 成 เช่น 切成小块 (หั่นกลายเป็นชิ้นเล็กๆ), 翻译成中文 (แปลกลายเป็นภาษาจีน)"
+    },
+    {
+        q: "8. ข้อใดคือความหมายของไวยากรณ์ '首先……然后……'?",
+        o: ["A. ก่อนอื่น... จากนั้น...", "B. ยิ่ง... ก็ยิ่ง...", "C. ทั้ง... และ...", "D. ไม่เพียงแต่... แต่ยัง..."],
+        a: 0, why: "首先...然后... ใช้ลำดับขั้นตอนของเหตุการณ์"
+    },
+    {
+        q: "9. ข้อใดใช้ไวยากรณ์ '既……又……' ได้ถูกต้อง?",
+        o: ["A. 这个西瓜既大又甜。", "B. 首先既大，然后又甜。", "C. 因为既大，所以又甜。", "D. 既西瓜又大。"],
+        a: 0, why: "既...又... ใช้เชื่อมคุณลักษณะสองประการที่เกิดขึ้นพร้อมกัน"
+    },
+    {
+        q: "10. ข้อใดอธิบายความต่างระหว่าง '准时' และ '及时' ได้ถูกต้อง?",
+        o: ["A. 准时 = ตรงเวลา (On time); 及时 = ทันเวลา/ทันท่วงที (In time)", "B. 准时 = ทันเวลา; 及时 = ตรงเวลา", "C. ทั้งคู่แปลว่า ล่วงหน้า", "D. 准时 เป็นคำเชื่อม; 及时 เป็นคำนาม"],
+        a: 0, why: "准时 = ตรงตามเวลาที่กำหนดเป๊ะ; 及时 = ทันเวลาพอดีก่อนจะเกิดปัญหา"
+    }
+];
+
+// Part 2.2: Grammar Bank & Cloze Questions (10 Questions: 11 - 20)
+const grammarBank = [
+    { key: "A", word: "把", py: "bǎ", th: "โครงสร้างนำกรรมมาไว้หน้ากริยา" },
+    { key: "B", word: "无论……都……", py: "wúlùn...dōu...", th: "ไม่ว่าจะ...ก็..." },
+    { key: "C", word: "从……起", py: "cóng...qǐ", th: "นับตั้งแต่...เป็นต้นไป" },
+    { key: "D", word: "本来", py: "běnlái", th: "เดิมที / แต่แรก" },
+    { key: "E", word: "既……又……", py: "jì...yòu...", th: "ทั้ง...และ..." },
+    { key: "F", word: "于是", py: "yúshì", th: "ดังนั้น / ด้วยเหตุนี้" },
+    { key: "G", word: "首先……然后……", py: "shǒuxiān...ránhòu...", th: "ก่อนอื่น... จากนั้น..." },
+    { key: "H", word: "亲自", py: "qīnzì", th: "ด้วยตนเอง" },
+    { key: "I", word: "适合", py: "shìhé", th: "เหมาะสมกับ (+ กรรม)" },
+    { key: "J", word: "成", py: "chéng", th: "กลายสภาพเป็น (V + 成)" }
+];
+
+const grammarCloze = [
+    {
+        num: 11,
+        before: "请你（ ",
+        after: " ）桌子上的作业本收起来。",
+        key: "A", word: "把",
+        why: "ประโยคนี้เน้นการจัดการกรรม (作业本) ให้เกิดผลลัพธ์ (收起来) จึงใช้โครงสร้าง 把"
+    },
+    {
+        num: 12,
+        before: "（ ",
+        after: " ）明天下不下雨，我们的比赛（ 都 ）会照常举行。",
+        key: "B", word: "无论",
+        why: "无论……都…… ใช้เชื่อมเงื่อนไขที่ไม่ว่าจะเป็นอย่างไร ผลลัพธ์ก็ยังคงเดิม"
+    },
+    {
+        num: 13,
+        before: "（ ",
+        after: " ）下周一（ 起 ），图书馆将实行新的借书规定。",
+        key: "C", word: "从",
+        why: "从……起 หมายถึง นับตั้งแต่จุดเวลาหนึ่งเป็นต้นไป (从下周一起)"
+    },
+    {
+        num: 14,
+        before: "我（ ",
+        after: " ）打算今天去跑步，可是突然下起了大雨。",
+        key: "D", word: "本来",
+        why: "本来 แสดงถึงเจตนาเดิมแต่แรก ก่อนที่จะมีเหตุการณ์อื่นมาทำให้เปลี่ยนแปลง"
+    },
+    {
+        num: 15,
+        before: "这家餐厅的菜（ 既 ）便宜（ ",
+        after: " ）好吃，所以每天客人特别多。",
+        key: "E", word: "又",
+        why: "既……又…… ใช้เชื่อมคุณสมบัติเชิงบวกสองด้านพร้อมกัน (既便宜又好吃)"
+    },
+    {
+        num: 16,
+        before: "外面天气实在太热了，（ ",
+        after: " ）大家都去买冰淇淋吃。",
+        key: "F", word: "于是",
+        why: "于是 เชื่อมเหตุและผลที่เกิดขึ้นตามมาอย่างต่อเนื่องตามธรรมชาติ"
+    },
+    {
+        num: 17,
+        before: "做西红柿炒鸡蛋，（ 首先 ）要把西红柿切好，（ ",
+        after: " ）再下锅炒。",
+        key: "G", word: "然后",
+        why: "首先……然后…… แสดงลำดับขั้นตอนในการทำอาหาร"
+    },
+    {
+        num: 18,
+        before: "为了表示诚意，总经理（ ",
+        after: " ）去机场迎接外宾。",
+        key: "H", word: "亲自",
+        why: "亲自 (qīnzì) หมายถึง กระทำด้วยตนเอง เพื่อแสดงความจริงใจและให้เกียรติ"
+    },
+    {
+        num: 19,
+        before: "这本中文小说的难度不太大，非常（ ",
+        after: " ）HSK 4 的学生阅读。",
+        key: "I", word: "适合",
+        why: "适合 เป็นกริยาที่ตามด้วยกรรม (适合 + 学生阅读) ต่างจาก 合适 ที่เป็นคุณศัพท์"
+    },
+    {
+        num: 20,
+        before: "经过反复修改，他终于把这篇文章写（ ",
+        after: " ）了一篇优秀的故事。",
+        key: "J", word: "成",
+        why: "โครงสร้าง V + 成 (写成) แสดงว่าการเขียนทำให้บทความกลายสภาพเป็นเรื่องราวที่ยอดเยี่ยม"
+    }
+];
+
+// ==========================================
+// DATA: READING STORIES SECTION (HSK 3-4 ALL CHINESE QUESTIONS)
+// ==========================================
+const examStories = [
+    {
+        title: "เรื่องที่ 1 · 从小舞台到科技大世界 (จากเวทีเล็กสู่โลกเทคโนโลยี)",
+        level: "HSK 4 · 阅读第一篇 (รวมศัพท์ Day 1 - Day 2)",
+        img: "images/exam_story_stage_tech.png",
+        cap: "ภาพจำ: 从小舞台到大世界 — ความมุ่งมั่นพัฒนาตนเองจากเวทีเล็กสู่แชมป์โลกและนวัตกรรม",
+        cn: "我的<em>父亲</em>是一名<em>工程师</em>。二十一<em>世纪</em>，新的<em>科技</em>不断<em>发展</em>。父亲<em>提前</em>准备，<em>把</em>复杂的机器变成了<em>实用</em>的工具。他在中国<em>举办</em>的第5<em>届</em><em>展览</em>上<em>表演</em>了新技术，<em>吸引</em>了许多<em>观众</em>。最后，他<em>获得</em>了<em>世界冠军</em>。大家都来<em>祝贺</em>他，父亲觉得非常<em>骄傲</em>，也很<em>感动</em>。从那时<em>起</em>，世界<em>各地</em>的人都开始<em>了解</em>这项新<em>发明</em>。",
+        py: "Wǒ de fùqīn shì yì míng gōngchéngshī. Èrshíyī shìjì, xīn de kējì búduàn fāzhǎn. Fùqīn tíqián zhǔnbèi, bǎ fùzá de jīqì biàn chéng le shíyòng de gōngjù. Tā zài Zhōngguó jǔbàn de dì-wǔ jiè zhǎnlǎn shàng biǎoyǎn le xīn jìshù, xīyǐn le xǔduō guānzhòng. Zuìhòu, tā huòdé le shìjiè guànjūn. Dàjiā dōu lái zhùhè tā, fùqīn juéde fēicháng jiāo'ào, yě hěn gǎndòng. Cóng nà shí qǐ, shìjiè gèdì de rén dōu kāishǐ liǎojiě zhè xiàng xīn fāmíng.",
+        th: "พ่อของฉันเป็นวิศวกร ในศตวรรษที่ 21 เทคโนโลยีใหม่พัฒนาอย่างต่อเนื่อง พ่อฝึกล่วงหน้า เปลี่ยนเครื่องจักรซับซ้อนให้เป็นเครื่องมือที่ใช้ประโยชน์ได้จริง ในงานนิทรรศการครั้งที่ 5 ที่จัดขึ้นในจีน เขาแสดงเทคโนโลยีใหม่ ดึงดูดผู้ชมจำนวนมาก ในที่สุดเขาได้รับตำแหน่งแชมป์โลก ทุกคนมาแสดงความยินดี พ่อรู้สึกภูมิใจและซาบซึ้งมาก ตั้งแต่นั้นเป็นต้นมา ผู้คนจากทั่วทุกแห่งบนโลกก็เริ่มเข้าใจสิ่งประดิษฐ์ใหม่นี้",
+        questions: [
+            {
+                q: "1. 根据短文，父亲在展览会上做了什么？",
+                opts: ["A. 介绍了外国的朋友", "B. 表演并展示了新技术", "C. 购买了昂贵的机器", "D. 学习怎么做中国菜"],
+                ans: 1,
+                fb: "✓ 正确！文中提到：“他在中国举办的第5届展览上表演了新技术，吸引了许多观众。”"
+            },
+            {
+                q: "2. 为什么世界各地的人开始了解这项新发明？",
+                opts: ["A. 因为父亲获得了世界冠军并受到大家祝贺", "B. 因为这项发明非常便宜", "C. 因为父亲在网上卖机器", "D. 因为展览在学校里举行"],
+                ans: 0,
+                fb: "✓ 正确！文中指出父亲获得世界冠军后，“从那时起，世界各地的人都开始了解这项新发明。”"
+            }
+        ]
+    },
+    {
+        title: "เรื่องที่ 2 · 坚持训练与准时送达 (ความพากเพียรในการซ้อมและการส่งตรงเวลา)",
+        level: "HSK 4 · 阅读第二篇 (รวมศัพท์ Day 3 - Day 4)",
+        img: "images/exam_story_athlete_rider.png",
+        cap: "ภาพจำ: 坚持与准时 — ความยืนหยัดอดทนของนักกีฬากับความตรงเวลาของไรเดอร์ส่งอาหาร",
+        cn: "阿南是一名<em>来自</em>泰国的运动员。为了在比赛中获得<em>奖牌</em>，他每天都<em>进行</em><em>严格</em>的<em>训练</em>。教练告诉他：“<em>无论</em>多累，你都必须<em>坚持</em>，<em>绝不</em>能<em>放弃</em>。”阿南<em>非常</em><em>理解</em>教练的话，保持着<em>自信</em>与<em>活泼</em>的心态。与此同时，他的朋友小王是一名送<em>外卖</em>的<em>小伙子</em>。小王每天骑<em>摩托车</em>，<em>不管</em>下雨还是刮风，他都<em>准时</em>把<em>食物</em>送到<em>顾客</em>手里。他们的<em>态度</em>都<em>挺</em>让人感动的。",
+        py: "Ānán shì yì míng láizì Tàiguó de yùndòngyuán. Wèile zài bǐsài zhōng huòdé jiǎngpái, tā měitiān dōu jìnxíng yángé de xùnliàn. Jiàoliàn gàosu tā: “Wúlùn duō lèi, nǐ dōu bìxū jiānchí, jué bù néng fàngqì.” Ānán fēicháng lǐjiě jiàoliàn de huà, bǎochí zhe zìxìn yǔ huópō de xīntài. Yǔ cǐ tóngshí, tā de péngyou Xiǎo Wáng shì yì míng sòng wàimài de xiǎohuǒzi. Xiǎo Wáng měitiān qí mótuōchē, bùguǎn xià yǔ háishì guā fēng, tā dōu zhǔnshí bǎ shíwù sòng dào gùkè shǒu lǐ. Tāmen de tàidu dōu tǐng ràng rén gǎndòng de.",
+        th: "อานันท์เป็นนักกีฬาที่มาจากประเทศไทย เพื่อที่จะได้รับเหรียญรางวัลในการแข่งขัน เขาทำการฝึกซ้อมอย่างเข้มงวดทุกวัน โค้ชบอกเขาว่า 'ไม่ว่าจะเหนื่อยแค่ไหน เธอต้องยืนหยัด ห้ามยอมแพ้เด็ดขาด' อานันท์เข้าใจคำพูดของโค้ชอย่างดี รักษาสภาพจิตใจที่มั่นใจและสดใสร่าเริง ในขณะเดียวกัน เสี่ยวหวังเพื่อนของเขาก็เป็นชายหนุ่มส่งอาหารเดลิเวอรี่ เสี่ยวหวังขี่มอเตอร์ไซค์ทุกวัน ไม่ว่าฝนจะตกหรือลมพัด เขาก็ส่งอาหารให้ลูกค้าตรงเวลาเสมอ ท่าทีทัศนคติของพวกเขาทั้งคู่ค่อนข้างทำให้ผู้คนซาบซึ้งใจทีเดียว",
+        questions: [
+            {
+                q: "1. 教练对阿南提出了什么要求？",
+                opts: ["A. 每天都要骑摩托车送外卖", "B. 无论多累都要坚持，绝不能放弃", "C. 尽量少参加体育比赛", "D. 必须早点儿回家休息"],
+                ans: 1,
+                fb: "✓ 正确！教练的原话是：“无论多累，你都必须坚持，绝不能放弃。”"
+            },
+            {
+                q: "2. 关于小王，下列哪项是正确的？",
+                opts: ["A. 他也是一名运动员", "B. 他不喜欢在下雨天出门", "C. 他每天骑摩托车准时把外卖送到顾客手里", "D. 他经常被顾客投诉"],
+                ans: 2,
+                fb: "✓ 正确！文中写道：“小王每天骑摩托车，不管下雨还是刮风，他都准时把食物送到顾客手里。”"
+            }
+        ]
+    },
+    {
+        title: "เรื่องที่ 3 · 沟通、道歉与服务态度 (การสื่อสาร คำขอโทษ และทัศนคติการบริการ)",
+        level: "HSK 4 · 阅读第三篇 (รวมศัพท์ Day 4 - Day 5)",
+        img: "images/exam_story_reconciliation_service.png",
+        cap: "ภาพจำ: 沟通与理解 — ความจริงใจนำมาซึ่งการแก้ไขข้อขัดแย้งและการบริการที่ประทับใจ",
+        cn: "<em>人与人之间</em>难免会产生<em>矛盾</em>。昨天，王明和张强<em>吵架</em>了。王明<em>本来</em>是在<em>开玩笑</em>，但张强以为他不够<em>尊重</em>自己。王明知道后，决定<em>亲自</em>去张强家<em>道歉</em>，请求他的<em>原谅</em>。张强看到了王明的<em>真诚</em>，<em>于是</em><em>接受</em>了道歉。在餐厅里也是这样，如果<em>顾客</em>打电话来<em>投诉</em>菜太<em>咸</em>，经理会<em>首先</em>听完，<em>然后</em><em>及时</em>解决，<em>绝不</em>随便<em>挂</em>电话。这样良好的<em>态度</em>，<em>非常</em><em>适合</em>处理各种复杂<em>情况</em>。",
+        py: "Rén yǔ rén zhī jiān nánmiǎn huì chǎnshēng máodùn. Zuótiān, Wáng Míng hé Zhāng Qiáng chǎojià le. Wáng Míng běnlái shì zài kāi wánxiào, dàn Zhāng Qiáng yǐwéi tā bù gòu zūnzhòng zìjǐ. Wáng Míng zhīdào hòu, juédìng qīnzì qù Zhāng Qiáng jiā dàoqiàn, qǐngqiú tā de yuánliàng. Zhāng Qiáng kàndào le Wáng Míng de zhēnchéng, yúshì jiēshòu le dàoqiàn. Zài cāntīng lǐ yě shì zhèyàng, rúguǒ gùkè dǎ diànhuà lái tóusù cài tài xián, jīnglǐ huì shǒuxiān tīng wán, ránhòu jíshí jiějué, jué bù suíbiàn guà diànhuà. Zhèyàng liánghǎo de tàidu, fēicháng shìhé chǔlǐ gè zhǒng fùzá qíngkuàng.",
+        th: "ระหว่างบุคคลย่อมหลีกเลี่ยงการเกิดความขัดแย้งได้ยาก เมื่อวานนี้หวังหมิงและจางเฉียงทะเลาะกัน เดิมทีหวังหมิงแค่ล้อเล่น แต่จางเฉียงคิดว่าเขาไม่เคารพตนเอง พอหวังหมิงรู้เข้า จึงตัดสินใจไปบ้านจางเฉียงด้วยตัวเองเพื่อขอโทษและขอให้อภัย จางเฉียงเห็นความจริงใจของหวังหมิง ดังนั้นจึงยอมรับคำขอโทษ ในร้านอาหารก็เช่นกัน หากลูกค้าโทรมาร้องเรียนว่าอาหารเค็มเกินไป ผู้จัดการจะฟังให้จบก่อน จากนั้นแก้ไขทันท่วงที จะไม่ยอมวางสายสุ่มสี่สุ่มห้าเด็ดขาด ทัศนคติที่ดีเช่นนี้เหมาะอย่างยิ่งกับการจัดการสถานการณ์ซับซ้อนต่างๆ",
+        questions: [
+            {
+                q: "1. 王明为什么亲自去张强家？",
+                opts: ["A. 真诚地向张强道歉并请求原谅", "B. 找张强一起去餐厅吃晚饭", "C. 去张强家借一本实用的词典", "D. 去向张强解释送外卖的事情"],
+                ans: 0,
+                fb: "✓ 正确！文中写道：“王明知道后，决定亲自去张强家道歉，请求他的原谅。”"
+            },
+            {
+                q: "2. 餐厅经理遇到顾客投诉时，会怎么做？",
+                opts: ["A. 觉得顾客太麻烦并马上挂电话", "B. 首先听完，然后及时解决问题", "C. 告诉顾客这不是餐厅的错", "D. 请厨师出来跟顾客吵架"],
+                ans: 1,
+                fb: "✓ 正确！文中强调：“经理会首先听完，然后及时解决，绝不随便挂电话。”"
+            }
+        ]
+    }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme
+    if (localStorage.getItem('superchinese_theme') === 'dark') document.body.classList.add('dark-theme');
+    document.getElementById('themeBtn').onclick = () => {
+        const d = document.body.classList.toggle('dark-theme');
+        localStorage.setItem('superchinese_theme', d ? 'dark' : 'light');
+        document.getElementById('themeBtn').textContent = d ? '☀️ สว่าง' : '🌙 ราตรี';
+    };
+
+    // Voice synth
+    loadVoices();
+    if (synth) synth.onvoiceschanged = loadVoices;
+
+    document.getElementById('voiceSelect').onchange = (e) => {
+        voice = synth.getVoices().find(v => v.name === e.target.value);
+    };
+    document.getElementById('speed').oninput = (e) => {
+        document.getElementById('speedLabel').textContent = `${e.target.value}×`;
+    };
+    document.getElementById('stopSpeech').onclick = () => synth && synth.cancel();
+
+    renderVocabBank();
+    renderVocabQuizzes();
+    renderVocabCloze();
+
+    renderGrammarBank();
+    renderGrammarQuizzes();
+    renderGrammarCloze();
+
+    renderReadings();
+
+    // API Key setup
+    const savedKey = localStorage.getItem('user_gemini_api_key') || '';
+    if (savedKey) {
+        document.getElementById('geminiApiKey').value = savedKey;
+        document.getElementById('keyStatus').textContent = '✓ บันทึก Key เรียบร้อยแล้ว';
+    }
+    document.getElementById('saveKeyBtn').onclick = () => {
+        const keyVal = document.getElementById('geminiApiKey').value.trim();
+        localStorage.setItem('user_gemini_api_key', keyVal);
+        document.getElementById('keyStatus').textContent = keyVal ? '✓ บันทึก API Key สำเร็จแล้ว' : 'เคลียร์ Key เรียบร้อยแล้ว';
+    };
+});
+
+function switchSession(sNum) {
+    for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById(`btnS${i}`);
+        const tab = document.getElementById(`tabS${i}`);
+        if (i === sNum) {
+            btn.classList.add('active');
+            tab.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+            tab.classList.remove('active');
+        }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ----------------- VOCAB SECTION -----------------
+function renderVocabBank() {
+    const el = document.getElementById('vocabBankGrid');
+    el.innerHTML = vocabBank.map(b => `
+        <div class="bank-item" onclick="speak('${b.word}')">
+            <span class="b-key">${b.key}</span>
+            <div>
+                <div class="b-word">${b.word} <span style="font-weight:normal; font-size:.8rem; color:var(--plum-light);">(${b.py})</span></div>
+                <div class="b-th">${b.th}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderVocabQuizzes() {
+    const container = document.getElementById('vocabQuizList');
+    container.innerHTML = vocabQuizzes.map((q, idx) => `
+        <div class="quiz-card-box">
+            <div class="q-number">Vocab Question ${idx+1}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="quiz-options">
+                ${q.o.map((opt, oIdx) => `<button class="quiz-opt" onclick="checkQ(this, 'vocab', ${idx}, ${oIdx})">${opt}</button>`).join('')}
+            </div>
+            <div id="v_fb_${idx}" class="q-feedback"></div>
+        </div>
+    `).join('');
+}
+
+function renderVocabCloze() {
+    const container = document.getElementById('vocabClozeList');
+    container.innerHTML = vocabCloze.map((item, idx) => `
+        <div class="cloze-card-box">
+            <div class="q-number">Vocab Question ${item.num} (选词填空)</div>
+            <div class="cloze-sentence">
+                ${item.num}. ${item.before}
+                <input type="text" id="vc_in_${idx}" class="cloze-input" placeholder="พิมพ์ A-J หรือคำศัพท์" onkeydown="if(event.key==='Enter')checkCloze('vocab', ${idx})">
+                ${item.after}
+            </div>
+            <div class="cloze-input-row">
+                <button class="primary-btn" style="padding:6px 14px; font-size:.85rem;" onclick="checkCloze('vocab', ${idx})">ตรวจคำตอบ</button>
+                <div style="font-size:.8rem; color:var(--muted);">เลือกเร็ว:</div>
+                <div class="chip-group">
+                    ${vocabBank.map(b => `<button type="button" class="chip-btn" onclick="fillChip('vocab', ${idx}, '${b.key}')">[${b.key}] ${b.word}</button>`).join('')}
+                </div>
+            </div>
+            <div id="vc_fb_${idx}" class="q-feedback"></div>
+        </div>
+    `).join('');
+}
+
+// ----------------- GRAMMAR SECTION -----------------
+function renderGrammarBank() {
+    const el = document.getElementById('grammarBankGrid');
+    el.innerHTML = grammarBank.map(b => `
+        <div class="bank-item" onclick="speak('${b.word}')">
+            <span class="b-key">${b.key}</span>
+            <div>
+                <div class="b-word">${b.word} <span style="font-weight:normal; font-size:.8rem; color:var(--plum-light);">(${b.py})</span></div>
+                <div class="b-th">${b.th}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderGrammarQuizzes() {
+    const container = document.getElementById('grammarQuizList');
+    container.innerHTML = grammarQuizzes.map((q, idx) => `
+        <div class="quiz-card-box">
+            <div class="q-number">Grammar Question ${idx+1}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="quiz-options">
+                ${q.o.map((opt, oIdx) => `<button class="quiz-opt" onclick="checkQ(this, 'grammar', ${idx}, ${oIdx})">${opt}</button>`).join('')}
+            </div>
+            <div id="g_fb_${idx}" class="q-feedback"></div>
+        </div>
+    `).join('');
+}
+
+function renderGrammarCloze() {
+    const container = document.getElementById('grammarClozeList');
+    container.innerHTML = grammarCloze.map((item, idx) => `
+        <div class="cloze-card-box">
+            <div class="q-number">Grammar Question ${item.num} (选词填空)</div>
+            <div class="cloze-sentence">
+                ${item.num}. ${item.before}
+                <input type="text" id="gc_in_${idx}" class="cloze-input" placeholder="พิมพ์ A-J หรือคำศัพท์" onkeydown="if(event.key==='Enter')checkCloze('grammar', ${idx})">
+                ${item.after}
+            </div>
+            <div class="cloze-input-row">
+                <button class="primary-btn" style="padding:6px 14px; font-size:.85rem;" onclick="checkCloze('grammar', ${idx})">ตรวจคำตอบ</button>
+                <div style="font-size:.8rem; color:var(--muted);">เลือกเร็ว:</div>
+                <div class="chip-group">
+                    ${grammarBank.map(b => `<button type="button" class="chip-btn" onclick="fillChip('grammar', ${idx}, '${b.key}')">[${b.key}] ${b.word}</button>`).join('')}
+                </div>
+            </div>
+            <div id="gc_fb_${idx}" class="q-feedback"></div>
+        </div>
+    `).join('');
+}
+
+// ----------------- CHECK LOGIC -----------------
+function checkQ(btn, type, qIdx, oIdx) {
+    const qList = type === 'vocab' ? vocabQuizzes : grammarQuizzes;
+    const q = qList[qIdx];
+    const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+    opts.forEach(b => b.disabled = true);
+
+    const isOk = oIdx === q.a;
+    btn.classList.add(isOk ? 'correct' : 'wrong');
+    if (!isOk) opts[q.a].classList.add('correct');
+
+    const fb = document.getElementById(`${type === 'vocab' ? 'v' : 'g'}_fb_${qIdx}`);
+    fb.className = 'q-feedback show';
+    fb.innerHTML = isOk ? `✓ ถูกต้อง! ${q.why}` : `✗ คำตอบที่ถูกต้องคือ ${q.o[q.a]} — ${q.why}`;
+}
+
+function fillChip(type, idx, key) {
+    const input = document.getElementById(`${type === 'vocab' ? 'vc' : 'gc'}_in_${idx}`);
+    input.value = key;
+    checkCloze(type, idx);
+}
+
+function checkCloze(type, idx) {
+    const isVocab = type === 'vocab';
+    const list = isVocab ? vocabCloze : grammarCloze;
+    const bank = isVocab ? vocabBank : grammarBank;
+    const item = list[idx];
+    const input = document.getElementById(`${isVocab ? 'vc' : 'gc'}_in_${idx}`);
+    const fb = document.getElementById(`${isVocab ? 'vc' : 'gc'}_fb_${idx}`);
+    
+    const userVal = input.value.trim().toUpperCase();
+    if (!userVal) {
+        alert('กรุณาพิมพ์ตัวเลือก (A-J) หรือคำศัพท์ก่อนตรวจคำตอบครับ');
+        return;
+    }
+
+    const matchedBank = bank.find(b => b.key === item.key);
+    const correctLetter = item.key.toUpperCase();
+    const correctWord = item.word.trim();
+
+    const isOk = (userVal === correctLetter) || (input.value.trim() === correctWord) || (userVal.includes(correctLetter) && userVal.length <= 2);
+
+    input.classList.remove('correct', 'wrong');
+    input.classList.add(isOk ? 'correct' : 'wrong');
+
+    fb.className = 'q-feedback show';
+    if (isOk) {
+        fb.innerHTML = `✓ ถูกต้องสมบูรณ์! คำตอบคือ <b>[${item.key}] ${matchedBank ? matchedBank.word : item.word}</b> — ${item.why}`;
+    } else {
+        fb.innerHTML = `✗ ยังไม่ถูกต้อง คำตอบที่ถูกต้องคือ <b>[${item.key}] ${matchedBank ? matchedBank.word : item.word}</b> — ${item.why}`;
+    }
+}
+
+// ----------------- READING & HIGHLIGHT -----------------
+function highlight(t) {
+    return t.replace(/<em>(.*?)<\/em>/g, '<span class="target" onclick="speak(this.innerText)">$1</span>');
+}
+
+function renderReadings() {
+    const container = document.getElementById('readingExamList');
+    container.innerHTML = examStories.map((r, i) => `
+        <article class="reading-card">
+            <div class="reading-head">
+                <div><span class="level">${r.level}</span><h3>${r.title}</h3></div>
+                <button class="speak-btn" onclick="speak(examStories[${i}].cn)">🔊 ฟังเรื่องอ่าน</button>
+            </div>
+            <figure class="story-figure">
+                <img src="${r.img}" alt="${r.title}" loading="lazy">
+                <figcaption>${r.cap}</figcaption>
+            </figure>
+            <div class="reading-body">
+                <div class="reading-cn">${highlight(r.cn)}</div>
+                <div id="r_py_${i}" class="reading-pinyin">${r.py}</div>
+                <div id="r_th_${i}" class="reading-th">${r.th}</div>
+                <div class="reading-actions">
+                    <button class="ghost-btn" onclick="toggleBox('r_py_${i}')">拼音 เปิด/ปิดพินอิน</button>
+                    <button class="ghost-btn" onclick="toggleBox('r_th_${i}')">ไทย เปิด/ปิดคำแปล</button>
+                </div>
+                
+                <!-- HSK 4 Style Reading Questions -->
+                <div class="reading-questions-container">
+                    <div style="font-weight:700; color:var(--plum); font-size:1.05rem; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+                        📝 阅读理解题 (HSK 4 ข้อสอบจับใจความภาษาจีน):
+                    </div>
+                    ${r.questions.map((qObj, qIdx) => `
+                        <div class="reading-q-box">
+                            <div class="reading-q-title">${qObj.q}</div>
+                            <div class="quiz-options">
+                                ${qObj.opts.map((opt, oIdx) => `<button class="quiz-opt" onclick="checkReadingQ(this, ${i}, ${qIdx}, ${oIdx})">${opt}</button>`).join('')}
+                            </div>
+                            <div id="rq_fb_${i}_${qIdx}" class="q-feedback"></div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </article>
+    `).join('');
+}
+
+function toggleBox(id) { document.getElementById(id).classList.toggle('show'); }
+
+function checkReadingQ(btn, storyIdx, qIdx, optIdx) {
+    const qObj = examStories[storyIdx].questions[qIdx];
+    const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+    opts.forEach(b => b.disabled = true);
+
+    const isOk = optIdx === qObj.ans;
+    btn.classList.add(isOk ? 'correct' : 'wrong');
+    if (!isOk) opts[qObj.ans].classList.add('correct');
+
+    const fb = document.getElementById(`rq_fb_${storyIdx}_${qIdx}`);
+    fb.className = 'q-feedback show';
+    fb.innerHTML = isOk ? `${qObj.fb}` : `✗ 回答错误 — 答案是 ${qObj.opts[qObj.ans]} (${qObj.fb})`;
+}
+
+// ----------------- GEMINI AI EVALUATOR -----------------
+async function evaluateWriting(taskId) {
+    const text = document.getElementById(`write${taskId}`).value.trim();
+    const resultBox = document.getElementById(`result${taskId}`);
+    resultBox.style.display = 'block';
+
+    if (!text) {
+        resultBox.innerHTML = '<span style="color:var(--wrong);">⚠️ กรุณาพิมพ์ประโยคภาษาจีนก่อนส่งให้ AI ตรวจสอบ</span>';
+        return;
+    }
+
+    const apiKey = localStorage.getItem('user_gemini_api_key') || document.getElementById('geminiApiKey').value.trim();
+    const model = document.getElementById('geminiModel').value;
+
+    resultBox.innerHTML = '⏳ กำลังส่งประโยคให้ Gemini AI ตรวจสอบและให้ข้อแนะนำ...';
+
+    if (!apiKey) {
+        setTimeout(() => {
+            resultBox.innerHTML = `
+                <div style="color:var(--gold-dark); font-weight:700; margin-bottom:6px;">💡 ผลการประเมินแบบออฟไลน์ (โหมดสาธิต):</div>
+                <div><b>ประโยคของคุณ:</b> "${text}"</div>
+                <div style="margin-top:6px;"><b>คะแนนประเมินเบื้องต้น:</b> 8.5/10</div>
+                <div style="margin-top:4px;"><b>ข้อแนะนำ:</b> โครงสร้างประโยคของคุณเข้าใจได้ดี หากต้องการให้ Gemini AI ตรวจอย่างละเอียดและแก้ไขไวยากรณ์จริง กรุณาใส่ Gemini API Key ที่ช่องตั้งค่าด้านบนครับ!</div>
+            `;
+        }, 800);
+        return;
+    }
+
+    try {
+        const prompt = `คุณคือครูผู้สอนภาษาจีนระดับ HSK 4 ที่ใจดีและมีความเชี่ยวชาญ กรุณาตรวจประโยคภาษาจีนของผู้เรียนต่อไปนี้:
+ประโยคของผู้เรียน: "${text}"
+
+กรุณาให้ข้อเสนอแนะเป็นภาษาไทย โดยครอบคลุมหัวข้อต่อไปนี้:
+1. คะแนนเต็ม 10 พร้อมเหตุผล
+2. การตรวจสอบไวยากรณ์และการใช้คำศัพท์ (บอกจุดที่ถูกต้องและจุดที่ต้องแก้ไขหากมี)
+3. ประโยคภาษาจีนที่ปรับแก้ให้เป็นธรรมชาติและสละสลวยขึ้น (พร้อมคำแปลภาษาไทย)`;
+
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }]
+            })
+        });
+
+        const data = await res.json();
+        if (data.error) {
+            resultBox.innerHTML = `<span style="color:var(--wrong);">❌ เกิดข้อผิดพลาดจาก Gemini API: ${data.error.message}</span>`;
+            return;
+        }
+
+        const reply = data.candidates[0].content.parts[0].text;
+        resultBox.innerHTML = `
+            <div style="color:var(--plum); font-weight:700; font-size:1rem; margin-bottom:8px;">🤖 ผลการตรวจและประเมินจาก Gemini AI (${model}):</div>
+            <div style="white-space: pre-wrap; line-height: 1.6;">${reply}</div>
+        `;
+    } catch (err) {
+        resultBox.innerHTML = `<span style="color:var(--wrong);">❌ ไม่สามารถเชื่อมต่อกับ Gemini API ได้: ${err.message}</span>`;
+    }
+}
+</script>
+</body>
+</html>

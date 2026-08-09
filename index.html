@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperChinese HSK4 Vocabulary Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;700;900&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #fcf9f2;
+            --paper-dark: #f0e6d2;
+            --card: #ffffff;
+            --ink: #2b1f1d;
+            --plum: #4a1d2f;
+            --plum-light: #7a3c56;
+            --gold: #d4af37;
+            --gold-dark: #9a7605;
+            --rose: #a66a7b;
+            --muted: #74645f;
+            --line: #e3d5b9;
+            --correct: #2e6f40;
+            --correct-bg: #eaf5ec;
+            --wrong: #b83227;
+            --wrong-bg: #fdf0ee;
+            --shadow: 0 12px 35px rgba(74, 29, 47, 0.08);
+            --radius: 16px;
+        }
+
+        .dark-theme {
+            --paper: #181119;
+            --paper-dark: #241926;
+            --card: #2c1e2e;
+            --ink: #ecdcec;
+            --plum: #ebb8d1;
+            --plum-light: #d69db8;
+            --gold: #dfc176;
+            --gold-dark: #ebd08d;
+            --rose: #e6a8bc;
+            --muted: #b7a8b5;
+            --line: #493345;
+            --correct: #66c17e;
+            --correct-bg: rgba(46, 111, 64, 0.25);
+            --wrong: #ef7468;
+            --wrong-bg: rgba(184, 50, 39, 0.25);
+            --shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Sarabun', 'Noto Sans SC', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: var(--plum);
+            color: #fff;
+            padding: 40px 20px 30px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .header-sub {
+            font-size: 1.1rem;
+            color: #f1e4ea;
+            font-weight: 300;
+        }
+
+        .header-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 2.2rem;
+            color: var(--plum);
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.2;
+        }
+
+        .stat-card span {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .overall-progress-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-header h3 {
+            font-size: 1.1rem;
+            color: var(--plum);
+        }
+
+        .progress-track {
+            height: 12px;
+            background: var(--paper-dark);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--plum-light), var(--gold));
+            transition: width 0.5s ease;
+        }
+
+        .search-section {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            font-size: 1rem;
+            background: var(--paper);
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--gold);
+        }
+
+        .search-results {
+            max-height: 350px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .search-item {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-item:hover {
+            border-color: var(--gold);
+            transform: translateX(3px);
+            background: var(--paper-dark);
+        }
+
+        .search-item-hanzi {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--plum);
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .search-item-pinyin {
+            font-size: 0.85rem;
+            color: var(--plum-light);
+        }
+
+        .search-item-meaning {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .day-badge-mini {
+            font-size: 0.72rem;
+            background: var(--plum-light);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .day-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 35px rgba(74, 29, 47, 0.12);
+        }
+
+        .day-badge {
+            display: inline-block;
+            background: var(--paper-dark);
+            color: var(--gold-dark);
+            border: 1px solid var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 20px;
+            width: fit-content;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .day-title {
+            font-size: 1.5rem;
+            color: var(--plum);
+            font-family: 'Noto Serif SC', serif;
+            margin-bottom: 4px;
+        }
+
+        .day-th {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .day-words {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 20px;
+            font-size: 0.88rem;
+        }
+
+        .tags-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: var(--paper-dark);
+            color: var(--plum-light);
+            font-size: 0.8rem;
+            padding: 3px 9px;
+            border-radius: 6px;
+        }
+
+        .progress-bar-container {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px dashed var(--line);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .view-details-btn {
+            display: inline-block;
+            text-align: center;
+            background: var(--card);
+            color: var(--plum);
+            border: 1px solid var(--line);
+            padding: 9px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s;
+        }
+
+        .view-details-btn:hover {
+            background: var(--gold);
+            color: #fff;
+            border-color: var(--gold);
+        }
+
+        .exam-card {
+            background: linear-gradient(135deg, var(--card), var(--paper-dark));
+            border: 2px solid var(--gold);
+        }
+
+        .exam-badge {
+            background: var(--gold-dark);
+            color: #fff;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--line);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-controls">
+            <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">🌙 ราตรี</button>
+        </div>
+        <h1 class="header-title">SuperChinese HSK 4</h1>
+        <p class="header-sub">คลังคัมภีร์คำศัพท์และไวยากรณ์จีน · ระบบเรียนรู้สะสมรายวัน</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <strong>6 บท</strong>
+                <span>บทเรียนสะสม</span>
+            </div>
+            <div class="stat-card">
+                <strong id="totalVocabCount">149</strong>
+                <span>149 คำศัพท์ผ่านการคัดสรร</span>
+            </div>
+            <div class="stat-card">
+                <strong id="masteredCount">0</strong>
+                <span>คำที่จำได้แล้ว</span>
+            </div>
+        </div>
+
+        <!-- Overall Progress Card -->
+        <div class="overall-progress-card">
+            <div class="progress-header">
+                <h3>🏆 ความคืบหน้าการเรียนรวม HSK4 (6 Days)</h3>
+                <span id="overallProgressText" style="font-weight: 700; color: var(--plum);">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="overallProgressFill" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Search Bar Section -->
+        <div class="search-section">
+            <h3 style="color: var(--plum); margin-bottom: 12px;">🔍 ค้นหาคำศัพท์ทุกบทเรียน (Global Search)</h3>
+            <div class="search-bar">
+                <input type="text" id="globalSearch" class="search-input" placeholder="พิมพ์คำศัพท์จีน, พินอิน หรือคำแปลภาษาไทย..." oninput="handleSearch()">
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+
+        <!-- Days Grid -->
+        <div class="days-grid">
+
+            <!-- Day 1 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 1</span>
+                <h3 class="day-title">表演与成就</h3>
+                <p class="day-th">การแสดงและความสำเร็จ</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (30 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">表演</span>
+                    <span class="tag">观众</span>
+                    <span class="tag">获得</span>
+                    <span class="tag">经验</span>
+                    <span class="tag">发明</span>
+                    <span class="tag">工程师</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d1ProgressLabel">0 / 30 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d1ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY1/HSK4_L1_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 1</a>
+                    <a href="DAY1/HSK4_L1_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Day 2 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 2</span>
+                <h3 class="day-title">训练与科技</h3>
+                <p class="day-th">การฝึกซ้อมและเทคโนโลยี</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (21 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">不断</span>
+                    <span class="tag">训练</span>
+                    <span class="tag">放弃</span>
+                    <span class="tag">科技</span>
+                    <span class="tag">复杂</span>
+                    <span class="tag">道歉</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d2ProgressLabel">0 / 21 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d2ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY2/HSK4_L2_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 2</a>
+                    <a href="DAY2/HSK4_L2_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Day 3 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 3</span>
+                <h3 class="day-title">参观与人际关系</h3>
+                <p class="day-th">การเยี่ยมชมและความสัมพันธ์ระหว่างบุคคล</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (27 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">提议</span>
+                    <span class="tag">参观</span>
+                    <span class="tag">奖牌</span>
+                    <span class="tag">无论</span>
+                    <span class="tag">矛盾</span>
+                    <span class="tag">尊重</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d3ProgressLabel">0 / 27 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d3ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY3/HSK4_L3_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 3</a>
+                    <a href="DAY3/HSK4_L3_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Day 4 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 4</span>
+                <h3 class="day-title">性格与网红餐厅</h3>
+                <p class="day-th">อุปนิสัยและร้านอาหารคนดัง</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (15 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">自信</span>
+                    <span class="tag">活泼</span>
+                    <span class="tag">网红</span>
+                    <span class="tag">朋友圈</span>
+                    <span class="tag">顾客</span>
+                    <span class="tag">适合</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d4ProgressLabel">0 / 15 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d4ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY4/HSK4_L4_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 4</a>
+                    <a href="DAY4/HSK4_L4_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Day 5 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 5</span>
+                <h3 class="day-title">美食与服务</h3>
+                <p class="day-th">อาหารและการบริการ</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (23 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">西红柿</span>
+                    <span class="tag">外卖</span>
+                    <span class="tag">投诉</span>
+                    <span class="tag">态度</span>
+                    <span class="tag">准时</span>
+                    <span class="tag">辛苦</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d5ProgressLabel">0 / 23 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d5ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY5/HSK4_L5_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 5</a>
+                    <a href="DAY5/HSK4_L5_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Day 6 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 6</span>
+                <h3 class="day-title">航班与购物</h3>
+                <p class="day-th">เที่ยวบิน ช้อปปิ้ง และการตัดสินใจ</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (33 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">航班</span>
+                    <span class="tag">惊喜</span>
+                    <span class="tag">出发</span>
+                    <span class="tag">堵车</span>
+                    <span class="tag">打折</span>
+                    <span class="tag">货到付款</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d6ProgressLabel">0 / 33 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d6ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY6/HSK4_L6_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 6</a>
+                    <a href="DAY6/HSK4_L6_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Exam Card -->
+            <div class="day-card exam-card">
+                <span class="day-badge exam-badge">EXAM DAY 1-5</span>
+                <h3 class="day-title">HSK4 Combined Test</h3>
+                <p class="day-th">แบบทดสอบรวมชุดที่ 1 (Day 1 - 5)</p>
+                <div class="day-words">
+                    <span>📝 ข้อสอบปรนัย 20 ข้อ (ABCD & พิมพ์ตอบ)</span>
+                    <span>📖 3 บทอ่านไล่ระดับ HSK4</span>
+                    <span>💡 รวมคำศัพท์ 116 คำ</span>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="EXAM_DAY1_5/HSK4_Exam_Day1_5.html" class="view-details-btn" style="flex:1; background:var(--gold-dark); color:#fff; border-color:var(--gold-dark);">🔥 ทำข้อสอบรวม DAY 1-5 ↗</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        SuperChinese HSK 4 Learning System · ออกแบบด้วยความใส่ใจสำหรับการสอบและใช้งานจริง
+    </footer>
+
+    <script>
+        const allVocab = [
+            {h:'父亲',p:'fùqīn',m:'บิดา / คุณพ่อ',coll:'尊敬的父亲',day:1},
+            {h:'表演',p:'biǎoyǎn',m:'การแสดง / แสดง',coll:'精彩的表演',day:1},
+            {h:'观众',p:'guānzhòng',m:'ผู้ชม',coll:'热烈的观众',day:1},
+            {h:'获得',p:'huòdé',m:'ได้รับ',coll:'获得成功',day:1},
+            {h:'祝贺',p:'zhùhè',m:'แสดงความยินดี',coll:'表示祝贺',day:1},
+            {h:'感动',p:'gǎndòng',m:'ซาบซึ้ง / ประทับใจ',coll:'非常感动',day:1},
+            {h:'感觉',p:'gǎnjué',m:'ความรู้สึก / รู้สึกว่า',coll:'良好的感觉',day:1},
+            {h:'感谢',p:'gǎnxiè',m:'ขอบคุณ',coll:'衷心感谢',day:1},
+            {h:'经验',p:'jīngyàn',m:'ประสบการณ์',coll:'丰富的经验',day:1},
+            {h:'发生',p:'fāshēng',m:'เกิดขึ้น',coll:'发生变化',day:1},
+            {h:'提前',p:'tíqián',m:'ล่วงหน้า',coll:'提前完成',day:1},
+            {h:'世纪',p:'shìjì',m:'ศตวรรษ',coll:'21世纪',day:1},
+            {h:'成为',p:'chéngwéi',m:'กลายเป็น',coll:'成为工程师',day:1},
+            {h:'出现',p:'chūxiàn',m:'ปรากฏขึ้น',coll:'突然出现',day:1},
+            {h:'发明',p:'fāmíng',m:'ประดิษฐ์ / สิ่งประดิษฐ์',coll:'伟大的发明',day:1},
+            {h:'发展',p:'fāzhǎn',m:'พัฒนา / การพัฒนา',coll:'快速发展',day:1},
+            {h:'届',p:'jiè',m:'รุ่น / ครั้งที่ (ลักษณนาม)',coll:'第一届',day:1},
+            {h:'举办',p:'jǔbàn',m:'จัดงาน / จัดขึ้น',coll:'举办活动',day:1},
+            {h:'了解',p:'liǎojiě',m:'เข้าใจ / รู้จักดี',coll:'深入了解',day:1},
+            {h:'意大利',p:'Yìdàlì',m:'ประเทศอิตาลี',coll:'意大利文化',day:1},
+            {h:'世界',p:'shìjiè',m:'โลก',coll:'全世界',day:1},
+            {h:'冠军',p:'guànjūn',m:'แชมป์ / ชนะเลิศ',coll:'获得冠军',day:1},
+            {h:'场地',p:'chǎngdì',m:'สถานที่ / สนาม',coll:'比赛场地',day:1},
+            {h:'技术',p:'jìshù',m:'เทคโนโลยี / ทักษะ',coll:'先进的技术',day:1},
+            {h:'工程师',p:'gōngchéngshī',m:'วิศวกร',coll:'优秀的工程师',day:1},
+            {h:'把……',p:'bǎ...',m:'ไวยากรณ์ประโยค 把',coll:'把东西放在桌上',day:1},
+            {h:'骄傲',p:'jiāoào',m:'ภาคภูมิใจ / จองหอง',coll:'感到骄傲',day:1},
+            {h:'吸引',p:'xīyǐn',m:'ดึงดูด',coll:'吸引观众',day:1},
+            {h:'从……起',p:'cóng...qǐ',m:'เริ่มตั้งแต่...',coll:'从今天起',day:1},
+            {h:'费',p:'fèi',m:'เปลือง / ค่าใช้จ่าย',coll:'免费 / 浪费',day:1},
+
+            {h:'不断',p:'búduàn',m:'อย่างต่อเนื่อง',coll:'不断努力',day:2},
+            {h:'训练',p:'xùnliàn',m:'ฝึกซ้อม / ฝึกอบรม',coll:'刻苦训练',day:2},
+            {h:'放弃',p:'fàngqì',m:'ยอมแพ้ / ละทิ้ง',coll:'决不放弃',day:2},
+            {h:'各地',p:'gèdì',m:'ทุกแห่ง / ทั่วสารทิศ',coll:'全国各地',day:2},
+            {h:'关注',p:'guānzhù',m:'ให้ความสนใจ / ติดตาม',coll:'引起关注',day:2},
+            {h:'科技',p:'kējì',m:'วิทยาศาสตร์และเทคโนโลยี',coll:'高科技',day:2},
+            {h:'将',p:'jiāng',m:'จะ / นำเอา',coll:'将要',day:2},
+            {h:'展览',p:'zhǎnlǎn',m:'นิทรรศการ / จัดแสดง',coll:'举办展览',day:2},
+            {h:'一群',p:'yìqún',m:'ฝูงหนึ่ง / กลุ่มหนึ่ง',coll:'一群年轻人',day:2},
+            {h:'复杂',p:'fùzá',m:'ซับซ้อน',coll:'关系复杂',day:2},
+            {h:'另',p:'lìng',m:'อื่น / ต่างหาก',coll:'另外 / 另一个人',day:2},
+            {h:'实用',p:'shíyòng',m:'ใช้ได้จริง / มีประโยชน์',coll:'非常实用',day:2},
+            {h:'可是',p:'kěshì',m:'แต่ว่า',coll:'可是他没来',day:2},
+            {h:'本来',p:'běnlái',m:'เดิมที / แต่แรก',coll:'本来打算',day:2},
+            {h:'约会',p:'yuēhuì',m:'นัดหมาย / นัดเดต',coll:'浪漫的约会',day:2},
+            {h:'打扰',p:'dǎrǎo',m:'รบกวน',coll:'不好意思打扰了',day:2},
+            {h:'接受',p:'jiēshòu',m:'ยอมรับ / รับไว้',coll:'接受道歉',day:2},
+            {h:'道歉',p:'dàoqiàn',m:'ขอโทษ',coll:'向他道歉',day:2},
+            {h:'开玩笑',p:'kāi wánxiào',m:'พูดเล่น / ล้อเล่น',coll:'只是开玩笑',day:2},
+            {h:'放松',p:'fàngsōng',m:'ผ่อนคลาย',coll:'放松心情',day:2},
+            {h:'理解',p:'lǐjiě',m:'เข้าใจอย่างลึกซึ้ง',coll:'互相理解',day:2},
+
+            {h:'计划',p:'jìhuà',m:'แผนการ / วางแผน',coll:'制定计划',day:3},
+            {h:'提议',p:'tíyì',m:'เสนอ / ข้อเสนอ',coll:'提出提议',day:3},
+            {h:'参观',p:'cānguān',m:'เยี่ยมชม',coll:'参观博物馆',day:3},
+            {h:'排队',p:'pái duì',m:'เข้าคิว / ต่อแถว',coll:'按顺序排队',day:3},
+            {h:'乐意',p:'lèyì',m:'ยินดี / เต็มใจ',coll:'非常乐意帮助',day:3},
+            {h:'来自',p:'láizì',m:'มาจาก',coll:'来自全国',day:3},
+            {h:'奖牌',p:'jiǎngpái',m:'เหรียญรางวัล',coll:'金牌奖牌',day:3},
+            {h:'进行',p:'jìnxíng',m:'ดำเนินต่อไป',coll:'进行比赛',day:3},
+            {h:'严格',p:'yángé',m:'เข้มงวด',coll:'要求严格',day:3},
+            {h:'绝不',p:'juébù',m:'เด็ดขาด / ไม่...เป็นอันขาด',coll:'绝不放弃',day:3},
+            {h:'取得',p:'qǔdé',m:'ได้รับ / คว้ามาได้',coll:'取得好成绩',day:3},
+            {h:'因此',p:'yīncǐ',m:'เพราะฉะนั้น',coll:'因此大家都很努力',day:3},
+            {h:'无论',p:'wúlùn',m:'ไม่ว่าจะ...',coll:'无论如何',day:3},
+            {h:'不管',p:'bùguǎn',m:'ไม่ว่า / ไม่ดูแล',coll:'不管怎样',day:3},
+            {h:'坚持',p:'jiānchí',m:'ยืนหยัด',coll:'坚持到底',day:3},
+            {h:'媒体',p:'méitǐ',m:'สื่อมวลชน',coll:'新闻媒体',day:3},
+            {h:'保持',p:'bǎochí',m:'รักษาไว้',coll:'保持联系',day:3},
+            {h:'状态',p:'zhuàngtài',m:'สถานะ / สภาพ',coll:'良好状态',day:3},
+            {h:'人与人之间',p:'rén yǔ rén zhī jiān',m:'ระหว่างบุคคล',coll:'人与人之间的信任',day:3},
+            {h:'矛盾',p:'máodùn',m:'ความขัดแย้ง',coll:'产生矛盾',day:3},
+            {h:'尊重',p:'zūnzhòng',m:'ให้เกียรติ / เคารพ',coll:'互相尊重',day:3},
+            {h:'于是',p:'yúshì',m:'ดังนั้น / จึง',coll:'于是我决定去',day:3},
+            {h:'亲自',p:'qīnzì',m:'ด้วยตัวเอง',coll:'亲自处理',day:3},
+            {h:'原谅',p:'yuánliàng',m:'ให้อภัย',coll:'请原谅我',day:3},
+            {h:'真诚',p:'zhēnchéng',m:'จริงใจ',coll:'态度真诚',day:3},
+            {h:'想法',p:'xiǎngfǎ',m:'ความคิดเห็น',coll:'独特的想法',day:3},
+            {h:'对方',p:'duìfāng',m:'อีกฝ่ายหนึ่ง',coll:'了解对方',day:3},
+
+            {h:'自信',p:'zìxìn',m:'มั่นใจในตนเอง',coll:'充满自信',day:4},
+            {h:'活泼',p:'huópo',m:'ร่าเริง',coll:'性格活泼',day:4},
+            {h:'有趣',p:'yǒuqù',m:'น่าสนใจ',coll:'非常有趣',day:4},
+            {h:'最好',p:'zuìhǎo',m:'ดีที่สุด / ทางที่ดีควร',coll:'最好去看看',day:4},
+            {h:'吵架',p:'chǎo jià',m:'ทะเลาะกัน',coll:'跟朋友吵架',day:4},
+            {h:'陪',p:'péi',m:'อยู่เป็นเพื่อน',coll:'陪他去医院',day:4},
+            {h:'座位',p:'zuòwèi',m:'ที่นั่ง',coll:'预订座位',day:4},
+            {h:'网红',p:'wǎnghóng',m:'เน็ตไอดอล / ร้านดังอินเทอร์เน็ต',coll:'网红餐厅',day:4},
+            {h:'朋友圈',p:'péngyouquān',m:'โมเมนต์ Wechat',coll:'发朋友圈',day:4},
+            {h:'顾客',p:'gùkè',m:'ลูกค้า',coll:'满意顾客',day:4},
+            {h:'许多',p:'xǔduō',m:'มากมาย',coll:'许多人',day:4},
+            {h:'味道',p:'wèidào',m:'รสชาติ',coll:'美味的味道',day:4},
+            {h:'适合',p:'shìhé',m:'เหมาะสมกับ',coll:'适合你',day:4},
+            {h:'留下',p:'liúxià',m:'ทิ้งไว้ / เหลือไว้',coll:'留下深刻印象',day:4},
+            {h:'挺',p:'tǐng',m:'ค่อนข้าง / มาก',coll:'挺好的',day:4},
+
+            {h:'窗户',p:'chuānghu',m:'หน้าต่าง',coll:'打开窗户',day:5},
+            {h:'实在',p:'shízài',m:'จริงใจ / จริงๆ แล้ว',coll:'实在抱歉',day:5},
+            {h:'投诉',p:'tóusù',m:'ร้องเรียน',coll:'向客服投诉',day:5},
+            {h:'西红柿',p:'xīhóngshì',m:'มะเขือเทศ',coll:'西红柿炒鸡蛋',day:5},
+            {h:'汤',p:'tāng',m:'ซุป / น้ำแกง',coll:'喝热汤',day:5},
+            {h:'打',p:'dǎ',m:'ตอก (ไข่) / ตี / โทร',coll:'打鸡蛋',day:5},
+            {h:'切',p:'qiē',m:'หั่น / หั่นเป็นชิ้น',coll:'切成小块',day:5},
+            {h:'快',p:'kuài',m:'เร็ว / ใกล้จะ...',coll:'动作快一点',day:5},
+            {h:'盐',p:'yán',m:'เกลือ',coll:'放一点盐',day:5},
+            {h:'咸',p:'xián',m:'เค็ม',coll:'味道太咸了',day:5},
+            {h:'锅',p:'guō',m:'กระทะ / หม้อ',coll:'洗干净锅',day:5},
+            {h:'炒',p:'chǎo',m:'ผัด',coll:'炒菜',day:5},
+            {h:'开（水）',p:'kāi',m:'เดือด (น้ำเดือด)',coll:'水开了',day:5},
+            {h:'外卖',p:'wàimài',m:'อาหารเดลิเวอรี่',coll:'叫外卖',day:5},
+            {h:'小伙子',p:'xiǎohuǒzi',m:'ชายหนุ่ม',coll:'年轻的小伙子',day:5},
+            {h:'饼干',p:'bǐnggān',m:'คุกกี้ / ขนมปังกรอบ',coll:'吃饼干',day:5},
+            {h:'原因',p:'yuányīn',m:'สาเหตุ',coll:'主要原因',day:5},
+            {h:'态度',p:'tàidu',m:'ทัศนคติ / ท่าที',coll:'服务态度良好',day:5},
+            {h:'摩托车',p:'mótuōchē',m:'รถจักรยานยนต์',coll:'骑摩托车',day:5},
+            {h:'情况',p:'qíngkuàng',m:'สถานการณ์',coll:'了解情况',day:5},
+            {h:'辛苦',p:'xīnkǔ',m:'เหน็ดเหนื่อย',coll:'外卖员很辛苦',day:5},
+            {h:'准时',p:'zhǔnshí',m:'ตรงเวลา',coll:'准时送达',day:5},
+            {h:'挂',p:'guà',m:'วางสาย / แขวน',coll:'挂电话',day:5},
+
+            {h:'航班',p:'hángbān',m:'เที่ยวบิน',coll:'国际航班',day:6},
+            {h:'惊喜',p:'jīngxǐ',m:'ประหลาดใจและดีใจ',coll:'大惊喜',day:6},
+            {h:'出发',p:'chūfā',m:'ออกเดินทาง',coll:'准备出发',day:6},
+            {h:'左右',p:'zuǒyòu',m:'ประมาณ',coll:'三点左右',day:6},
+            {h:'正好',p:'zhènghǎo',m:'พอดี',coll:'正好遇到',day:6},
+            {h:'高速公路',p:'gāosù gōnglù',m:'ทางด่วน',coll:'开上高速公路',day:6},
+            {h:'速度',p:'sùdù',m:'ความเร็ว',coll:'速度很快',day:6},
+            {h:'堵车',p:'dǔchē',m:'รถติด',coll:'严重堵车',day:6},
+            {h:'醒',p:'xǐng',m:'ตื่น',coll:'睡醒',day:6},
+            {h:'兴奋',p:'xīngfèn',m:'ตื่นเต้น',coll:'非常兴奋',day:6},
+            {h:'没想到',p:'méi xiǎngdào',m:'คิดไม่ถึง',coll:'没想到会这样',day:6},
+            {h:'有货',p:'yǒu huò',m:'มีสินค้า',coll:'商店有货',day:6},
+            {h:'直接',p:'zhíjiē',m:'โดยตรง',coll:'直接付款',day:6},
+            {h:'价格',p:'jiàgé',m:'ราคา',coll:'价格合理',day:6},
+            {h:'打折',p:'dǎzhé',m:'ลดราคา',coll:'打折商品',day:6},
+            {h:'三折',p:'sān zhé',m:'ลดเหลือ 30%',coll:'打三折',day:6},
+            {h:'货',p:'huò',m:'สินค้า',coll:'发货验货',day:6},
+            {h:'流行',p:'liúxíng',m:'เป็นที่นิยม',coll:'非常流行',day:6},
+            {h:'保证',p:'bǎozhèng',m:'รับประกัน',coll:'质量保证',day:6},
+            {h:'种',p:'zhǒng',m:'ชนิด / ประเภท',coll:'这种方法',day:6},
+            {h:'付款',p:'fùkuǎn',m:'ชำระเงิน',coll:'在线付款',day:6},
+            {h:'内',p:'nèi',m:'ภายใน',coll:'三天内',day:6},
+            {h:'收',p:'shōu',m:'รับ / ได้รับ',coll:'收到快递',day:6},
+            {h:'退',p:'tuì',m:'คืนสินค้า',coll:'申请退货',day:6},
+            {h:'货到付款',p:'huò dào fù kuǎn',m:'เก็บเงินปลายทาง',coll:'选择货到付款',day:6},
+            {h:'申请',p:'shēnqǐng',m:'ยื่นคำร้อง / สมัคร',coll:'申请奖学金',day:6},
+            {h:'来得及',p:'láidejí',m:'ทันเวลา',coll:'还来得及',day:6},
+            {h:'见一面',p:'jiàn yí miàn',m:'เจอหน้ากัน',coll:'出来见一面',day:6},
+            {h:'来不及',p:'láibují',m:'ไม่ทันเวลา',coll:'恐怕来不及',day:6},
+            {h:'礼拜',p:'lǐbài',m:'สัปดาห์',coll:'礼拜天',day:6},
+            {h:'还是',p:'háishi',m:'...ดีกว่า (ผ่านการตัดสินใจ)',coll:'思考后还是决定',day:6},
+            {h:'白天',p:'báitiān',m:'ตอนกลางวัน',coll:'白天工作',day:6},
+            {h:'预计',p:'yùjì',m:'คาดว่า',coll:'预计明天到达',day:6}
+        ];
+
+        function updateMasteredCounts() {
+            let mastered = new Set();
+            try {
+                for(let i=1; i<=6; i++) {
+                    let m = JSON.parse(localStorage.getItem(`hsk4_day${i}_mastered`) || '[]');
+                    m.forEach(x => mastered.add(x));
+                }
+            } catch(e){}
+
+            document.getElementById('masteredCount').textContent = mastered.size;
+
+            let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33;
+            let totalVocab = 149;
+
+            let d1M = allVocab.filter(x => x.day === 1 && mastered.has(x.h)).length;
+            let d2M = allVocab.filter(x => x.day === 2 && mastered.has(x.h)).length;
+            let d3M = allVocab.filter(x => x.day === 3 && mastered.has(x.h)).length;
+            let d4M = allVocab.filter(x => x.day === 4 && mastered.has(x.h)).length;
+            let d5M = allVocab.filter(x => x.day === 5 && mastered.has(x.h)).length;
+            let d6M = allVocab.filter(x => x.day === 6 && mastered.has(x.h)).length;
+
+            document.getElementById('d1ProgressLabel').textContent = `${d1M} / ${d1Total} คำ`;
+            document.getElementById('d1ProgressFill').style.width = `${(d1M/d1Total)*100}%`;
+
+            document.getElementById('d2ProgressLabel').textContent = `${d2M} / ${d2Total} คำ`;
+            document.getElementById('d2ProgressFill').style.width = `${(d2M/d2Total)*100}%`;
+
+            document.getElementById('d3ProgressLabel').textContent = `${d3M} / ${d3Total} คำ`;
+            document.getElementById('d3ProgressFill').style.width = `${(d3M/d3Total)*100}%`;
+
+            document.getElementById('d4ProgressLabel').textContent = `${d4M} / ${d4Total} คำ`;
+            document.getElementById('d4ProgressFill').style.width = `${(d4M/d4Total)*100}%`;
+
+            document.getElementById('d5ProgressLabel').textContent = `${d5M} / ${d5Total} คำ`;
+            document.getElementById('d5ProgressFill').style.width = `${(d5M/d5Total)*100}%`;
+
+            document.getElementById('d6ProgressLabel').textContent = `${d6M} / ${d6Total} คำ`;
+            document.getElementById('d6ProgressFill').style.width = `${(d6M/d6Total)*100}%`;
+
+            let overallPct = Math.round((mastered.size / totalVocab) * 100);
+            document.getElementById('overallProgressText').textContent = `${overallPct}%`;
+            document.getElementById('overallProgressFill').style.width = `${overallPct}%`;
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('globalSearch').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (!query) {
+                resultsContainer.innerHTML = '';
+                return;
+            }
+
+            const filtered = allVocab.filter(item => {
+                return item.h.toLowerCase().includes(query) || 
+                       item.p.toLowerCase().includes(query) || 
+                       item.m.toLowerCase().includes(query) ||
+                       item.coll.toLowerCase().includes(query);
+            });
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = '<div style="color: var(--muted); padding: 10px;">ไม่พบคำศัพท์ที่ค้นหา</div>';
+                return;
+            }
+
+            resultsContainer.innerHTML = filtered.map(item => `
+                <div class="search-item" onclick="window.location.href='DAY${item.day}/HSK4_L${item.day}_SuperChinese.html?search=${encodeURIComponent(item.h)}'">
+                    <div>
+                        <div class="search-item-hanzi">${item.h}</div>
+                        <div class="search-item-pinyin">${item.p}</div>
+                        <div class="search-item-meaning">${item.m}</div>
+                    </div>
+                    <div>
+                        <span class="day-badge-mini">Day ${item.day}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('superchinese_theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeBtn').textContent = isDark ? '☀️ สว่าง' : '🌙 ราตรี';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('superchinese_theme') === 'dark') {
+                document.body.classList.add('dark-theme');
+                document.getElementById('themeBtn').textContent = '☀️ สว่าง';
+            }
+            updateMasteredCounts();
+        });
+    </script>
+</body>
+</html>
