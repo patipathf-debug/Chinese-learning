@@ -294,6 +294,8 @@ main {
 }
 .stats-bar span { color: var(--plum); font-weight: 700; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase_sync.js"></script>
 </head>
 <body>
 
@@ -398,7 +400,7 @@ function getWeakWords() {
 }
 
 function saveWeakWords(list) {
-    localStorage.setItem(WEAK_KEY, JSON.stringify(list));
+    localStorage.setItem(WEAK_KEY, JSON.stringify(list)); if (typeof syncToCloud === 'function') syncToCloud();
 }
 
 function addWeakWord(wordObj) {
@@ -420,7 +422,7 @@ function getHighScore() {
 
 function updateHighScore(score) {
     if (score > getHighScore()) {
-        localStorage.setItem(HIGH_SCORE_KEY, score.toString());
+        localStorage.setItem(HIGH_SCORE_KEY, score.toString()); if (typeof syncToCloud === 'function') syncToCloud();
     }
 }
 

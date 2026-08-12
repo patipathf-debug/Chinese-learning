@@ -399,13 +399,16 @@
             margin-top: 50px;
         }
     </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_sync.js"></script>
 </head>
 <body>
 
     <header>
         <div class="header-controls">
             <a href="GAME/vocab_game.html" class="theme-btn" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold)); color:#120c15; font-weight:700; text-decoration:none;">🎮 เล่นเกมสปีด 10 วิ</a>
-            <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">🌙 ราตรี</button>
+            <button id="syncBadgeBtn" class="theme-btn" onclick="promptChangeUserKey()" title="กดเพื่อเปลี่ยนชื่อผู้ใช้ซิงก์ข้อมูลข้ามเครื่อง">☁️ ซิงก์ Cloud (patipat)</button>
+<button id="themeBtn" class="theme-btn" onclick="toggleTheme()">🌙 ราตรี</button>
         </div>
         <h1 class="header-title">SuperChinese HSK 4</h1>
         <p class="header-sub">คลังคัมภีร์คำศัพท์และไวยากรณ์จีน · ระบบเรียนรู้สะสมรายวัน</p>

@@ -516,6 +516,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,.2);
         }
     </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase_sync.js"></script>
 </head>
 <body>
 
@@ -528,7 +530,8 @@
             <button id="btnS3" class="nav-tab-btn" type="button" onclick="switchSession(3)">S3: เรื่องอ่าน (3 เรื่อง HSK 4)</button>
             <button id="btnS4" class="nav-tab-btn" type="button" onclick="switchSession(4)">S4: เขียน & AI ตรวจ</button>
         </div>
-        <button id="themeBtn" class="theme-btn" type="button">🌙 ราตรี</button>
+        <button id="syncBadgeBtn" class="theme-btn" onclick="promptChangeUserKey()" title="กดเพื่อเปลี่ยนชื่อผู้ใช้ซิงก์ข้อมูลข้ามเครื่อง">☁️ ซิงก์ Cloud (patipat)</button>
+<button id="themeBtn" class="theme-btn" type="button">🌙 ราตรี</button>
     </div>
 </nav>
 
