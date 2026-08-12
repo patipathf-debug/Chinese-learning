@@ -1,0 +1,15 @@
+#separator:tab
+#html:false
+#tags column:4
+快递	[kuàidì] พัสดุ / ส่งด่วน	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+联系	[liánxì] ติดต่อ / ความสัมพันธ์	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+信息	[xìnxī] ข้อมูล / ข้อความ	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+查	[chá] ตรวจสอบ / ค้นหา	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+解释	[jiěshì] อธิบาย / ชี้แจง	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+既然……就……	[jìrán... jiù...] ในเมื่อ...ก็...	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+及时	[jíshí] ทันท่วงที	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+盒子	[hézi] กล่อง	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+打开	[dǎkāi] เปิด	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+只好	[zhǐhǎo] จำต้อง / ได้แต่	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+重新	[chóngxīn] อีกครั้ง / ทำใหม่	SuperChinese_HSK4_Day6_1	HSK4_Day6_1
+原来	[yuánlái] ที่แท้ / เดิมที	SuperChinese_HSK4_Day6_1	HSK4_Day6_1

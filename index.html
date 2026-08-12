@@ -419,8 +419,8 @@
                 <span>บทเรียนสะสม</span>
             </div>
             <div class="stat-card">
-                <strong id="totalVocabCount">149</strong>
-                <span>149 คำศัพท์ผ่านการคัดสรร</span>
+                <strong id="totalVocabCount">161</strong>
+                <span>161 คำศัพท์ผ่านการคัดสรร</span>
             </div>
             <div class="stat-card">
                 <strong id="masteredCount">0</strong>
@@ -649,6 +649,40 @@
                 </div>
             </div>
 
+            
+            <!-- Day 6.1 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 6.1</span>
+                <h3 class="day-title">快递与解释</h3>
+                <p class="day-th">พัสดุ ข้อมูล และการอธิบาย</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (12 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">快递</span>
+                    <span class="tag">联系</span>
+                    <span class="tag">解释</span>
+                    <span class="tag">既然……就……</span>
+                    <span class="tag">及时</span>
+                    <span class="tag">原来</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d6_1ProgressLabel">0 / 12 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d6_1ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY6.1/HSK4_L6_1_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 6.1</a>
+                    <a href="DAY6.1/HSK4_L6_1_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
             <!-- Exam Card -->
             <div class="day-card exam-card">
                 <span class="day-badge exam-badge">EXAM DAY 1-5</span>
@@ -827,29 +861,49 @@
             {h:'礼拜',p:'lǐbài',m:'สัปดาห์',coll:'礼拜天',day:6},
             {h:'还是',p:'háishi',m:'...ดีกว่า (ผ่านการตัดสินใจ)',coll:'思考后还是决定',day:6},
             {h:'白天',p:'báitiān',m:'ตอนกลางวัน',coll:'白天工作',day:6},
-            {h:'预计',p:'yùjì',m:'คาดว่า',coll:'预计明天到达',day:6}
+            {h:'预计',p:'yùjì',m:'คาดว่า',coll:'预计明天到达',day:6},
+
+            {h:'快递',p:'kuàidì',m:'พัสดุ / ส่งด่วน',coll:'收快递、发快递',day:'6.1'},
+            {h:'联系',p:'liánxì',m:'ติดต่อ / ความสัมพันธ์',coll:'保持联系、联系客服',day:'6.1'},
+            {h:'信息',p:'xìnxī',m:'ข้อมูล / ข้อความ',coll:'收到信息、发信息',day:'6.1'},
+            {h:'查',p:'chá',m:'ตรวจสอบ / ค้นหา',coll:'查资料、查快递',day:'6.1'},
+            {h:'解释',p:'jiěshì',m:'อธิบาย / ชี้แจง',coll:'解释清楚、解释原因',day:'6.1'},
+            {h:'既然……就……',p:'jìrán... jiù...',m:'ในเมื่อ...ก็...',coll:'既然来了就坐下吧',day:'6.1'},
+            {h:'及时',p:'jíshí',m:'ทันท่วงที',coll:'及时处理、及时通知',day:'6.1'},
+            {h:'盒子',p:'hézi',m:'กล่อง',coll:'打开盒子、礼物盒子',day:'6.1'},
+            {h:'打开',p:'dǎkāi',m:'เปิด',coll:'打开门、打开盒子',day:'6.1'},
+            {h:'只好',p:'zhǐhǎo',m:'จำต้อง / ได้แต่',coll:'只好走路、只好等',day:'6.1'},
+            {h:'重新',p:'chóngxīn',m:'อีกครั้ง / ทำใหม่',coll:'重新开始、重新写',day:'6.1'},
+            {h:'原来',p:'yuánlái',m:'ที่แท้ / เดิมที',coll:'原来是你、原来如此',day:'6.1'}
         ];
 
         function updateMasteredCounts() {
             let mastered = new Set();
             try {
-                for(let i=1; i<=6; i++) {
-                    let m = JSON.parse(localStorage.getItem(`hsk4_day${i}_mastered`) || '[]');
+                const keys = ['hsk4_day1_mastered','hsk4_day2_mastered','hsk4_day3_mastered','hsk4_day4_mastered','hsk4_day5_mastered','hsk4_day6_mastered','hsk4_day6_1_mastered'];
+            keys.forEach(k => {
+                    let m = JSON.parse(localStorage.getItem(k) || '[]');
                     m.forEach(x => mastered.add(x));
-                }
+                });
             } catch(e){}
 
             document.getElementById('masteredCount').textContent = mastered.size;
 
-            let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33;
-            let totalVocab = 149;
+            let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33, d6_1Total = 12;
+            let totalVocab = 161;
 
-            let d1M = allVocab.filter(x => x.day === 1 && mastered.has(x.h)).length;
-            let d2M = allVocab.filter(x => x.day === 2 && mastered.has(x.h)).length;
-            let d3M = allVocab.filter(x => x.day === 3 && mastered.has(x.h)).length;
-            let d4M = allVocab.filter(x => x.day === 4 && mastered.has(x.h)).length;
-            let d5M = allVocab.filter(x => x.day === 5 && mastered.has(x.h)).length;
-            let d6M = allVocab.filter(x => x.day === 6 && mastered.has(x.h)).length;
+            let d1M = allVocab.filter(x => String(x.day) === '1' && mastered.has(x.h)).length;
+            let d2M = allVocab.filter(x => String(x.day) === '2' && mastered.has(x.h)).length;
+            let d3M = allVocab.filter(x => String(x.day) === '3' && mastered.has(x.h)).length;
+            let d4M = allVocab.filter(x => String(x.day) === '4' && mastered.has(x.h)).length;
+            let d5M = allVocab.filter(x => String(x.day) === '5' && mastered.has(x.h)).length;
+            let d6M = allVocab.filter(x => String(x.day) === '6' && mastered.has(x.h)).length;
+            let d6_1M = allVocab.filter(x => String(x.day) === '6.1' && mastered.has(x.h)).length;
+
+            if(document.getElementById('d6_1ProgressLabel')) {
+                document.getElementById('d6_1ProgressLabel').textContent = `${d6_1M} / 12 คำ`;
+                document.getElementById('d6_1ProgressFill').style.width = `${(d6_1M/12)*100}%`;
+            }
 
             document.getElementById('d1ProgressLabel').textContent = `${d1M} / ${d1Total} คำ`;
             document.getElementById('d1ProgressFill').style.width = `${(d1M/d1Total)*100}%`;
