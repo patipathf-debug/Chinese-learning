@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 788" role="img" aria-labelledby="title desc">
+  <title id="title">毕业旅行计划</title><desc id="desc">แผนการเดินทางหลังเรียนจบไปปักกิ่ง</desc>
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6d9c8"/><stop offset="1" stop-color="#d7e8e2"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-opacity=".16"/></filter></defs>
+  <rect width="1400" height="788" fill="url(#sky)"/><circle cx="1180" cy="145" r="72" fill="#d4af37" opacity=".72"/>
+  <path d="M0 585 Q250 470 470 590 T930 565 T1400 550 V788 H0Z" fill="#79988d" opacity=".72"/>
+  <path d="M0 645 Q250 555 520 660 T980 625 T1400 630 V788 H0Z" fill="#3f645d"/>
+  <g filter="url(#shadow)"><rect x="510" y="410" width="380" height="225" rx="22" fill="#fffaf0"/><path d="M575 410v-52c0-42 35-77 78-77h94c43 0 78 35 78 77v52" fill="none" stroke="#6c3349" stroke-width="24"/><rect x="676" y="410" width="48" height="225" fill="#d4af37" opacity=".7"/><circle cx="620" cy="520" r="28" fill="#6c3349"/><circle cx="780" cy="520" r="28" fill="#6c3349"/></g>
+  <path d="M935 210c90 3 145 32 198 92-86-14-142-6-224 35l-32-31 58-96Z" fill="#fff" opacity=".92"/><path d="M913 306 810 356l85 17 47-47Z" fill="#fff"/>
+  <text x="90" y="125" font-family="Noto Serif SC, serif" font-size="64" font-weight="700" fill="#4a1d2f">毕业旅行计划</text><text x="94" y="185" font-family="sans-serif" font-size="30" fill="#6c3349">毕业 · 旅行 · 首都 · 交通</text>
+</svg>

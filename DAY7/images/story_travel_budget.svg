@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 788" role="img" aria-labelledby="title desc">
+  <title id="title">旅行预算</title><desc id="desc">วางแผนค่าเดินทางและเลือกสถานที่ที่คุ้มค่า</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ead7df"/><stop offset="1" stop-color="#dce7cf"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-opacity=".18"/></filter></defs>
+  <rect width="1400" height="788" fill="url(#bg)"/><path d="M0 610 Q260 500 520 625 T1030 590 T1400 610V788H0Z" fill="#5f7c6d"/>
+  <g transform="translate(160 270)" filter="url(#s)"><rect width="520" height="330" rx="28" fill="#fffaf2"/><rect x="42" y="44" width="436" height="54" rx="12" fill="#4a1d2f"/><g fill="#d4af37"><rect x="42" y="130" width="112" height="112" rx="14"/><rect x="183" y="130" width="112" height="112" rx="14"/><rect x="324" y="130" width="154" height="112" rx="14"/></g><path d="M82 278h350" stroke="#9b8779" stroke-width="18" stroke-linecap="round"/></g>
+  <g transform="translate(830 250)" filter="url(#s)"><circle cx="175" cy="175" r="175" fill="#d4af37"/><circle cx="175" cy="175" r="132" fill="#fff7d8"/><text x="175" y="215" text-anchor="middle" font-family="serif" font-size="142" font-weight="700" fill="#6c3349">钱</text><path d="M360 260c92-72 184-66 260 9l-65 84c-59-44-111-43-168 2Z" fill="#4a1d2f"/><circle cx="415" cy="415" r="34" fill="#2b1f1d"/><circle cx="555" cy="415" r="34" fill="#2b1f1d"/></g>
+  <text x="78" y="112" font-family="Noto Serif SC, serif" font-size="64" font-weight="700" fill="#4a1d2f">旅行预算</text><text x="82" y="172" font-family="sans-serif" font-size="30" fill="#6c3349">挣钱 · 赚钱 · 花光 · 全部</text>
+</svg>

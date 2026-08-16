@@ -6,7 +6,7 @@
 
 ## 🌟 ฟีเจอร์หลัก (Key Features)
 
-1. **📚 คลังบทเรียนประจำวัน (Day 1 - Day 6):**
+1. **📚 คลังบทเรียนประจำวัน (Day 1 - Day 7 พร้อมบทเสริม Day 6.1):**
    * **คำศัพท์เจาะลึก (Vocab Cards):** แสดงตัวอักษรจีน พินอิน คำแปล Collocation เคล็ดลับการจำ และตัวอย่างประโยค
    * **จุดไวยากรณ์ (Grammar Points):** อธิบายโครงสร้างประโยคพร้อมตัวอย่างเปรียบเทียบและการออกเสียง
    * **เรื่องอ่านไล่ระดับ 3 ระดับ (Graded Readings):** อ่านง่าย ได้ระดับมาตรฐาน HSK 4 พร้อมภาพประกอบสีน้ำและปุ่มเปิด-ปิดพินอิน/คำแปล
@@ -51,6 +51,14 @@
 ├── DAY6/
 │   ├── HSK4_L6_SuperChinese.html
 │   ├── anki_day6_vocab.txt
+│   └── images/
+├── DAY6.1/
+│   ├── HSK4_L6_1_SuperChinese.html
+│   ├── anki_day6_1_vocab.txt
+│   └── images/
+├── DAY7/
+│   ├── HSK4_L7_SuperChinese.html
+│   ├── anki_day7_vocab.txt
 │   └── images/
 └── EXAM_DAY1_5/
     ├── HSK4_Exam_Day1_5.html
