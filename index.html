@@ -423,8 +423,8 @@
                 <span>บทเรียนสะสม</span>
             </div>
             <div class="stat-card">
-                <strong id="totalVocabCount">179</strong>
-                <span>179 คำศัพท์ผ่านการคัดสรร</span>
+                <strong id="totalVocabCount">191</strong>
+                <span>191 คำศัพท์ผ่านการคัดสรร</span>
             </div>
             <div class="stat-card">
                 <strong id="masteredCount">0</strong>
@@ -720,6 +720,40 @@
                 </div>
             </div>
 
+            
+            <!-- Day 8 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 8</span>
+                <h3 class="day-title">经历与生活</h3>
+                <p class="day-th">ประสบการณ์ คุณค่า และเรื่องราวที่ไม่คาดคิด</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (12 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง (เจาะลึกภาพโจทย์)</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">节约</span>
+                    <span class="tag">路线</span>
+                    <span class="tag">经历</span>
+                    <span class="tag">意外地</span>
+                    <span class="tag">通过</span>
+                    <span class="tag">自由</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d8ProgressLabel">0 / 12 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d8ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY8/HSK4_L8_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 8</a>
+                    <a href="DAY8/HSK4_L8_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
             <!-- Exam Card -->
             <div class="day-card exam-card">
                 <span class="day-badge exam-badge">EXAM DAY 1-5</span>
@@ -930,7 +964,20 @@
             {h:'光（grammar)',p:'guāng',m:'หมดเกลี้ยง / เพียงแค่',coll:'吃光、光说不做',day:7},
             {h:'所有',p:'suǒyǒu',m:'ทั้งหมด / ทุก...',coll:'所有人、所有问题',day:7},
             {h:'全部',p:'quánbù',m:'ทั้งหมด',coll:'全部完成、全部内容',day:7},
-            {h:'交通',p:'jiāotōng',m:'การจราจร / คมนาคม',coll:'公共交通、交通方便',day:7}
+            {h:'交通',p:'jiāotōng',m:'การจราจร / คมนาคม',coll:'公共交通、交通方便',day:'7'},
+
+            {h:'节约',p:'jiéyuē',m:'ประหยัด (เงิน, เวลา, น้ำ)',coll:'节约用水、节约时间',day:'8'},
+            {h:'路线',p:'lùxiàn',m:'เส้นทาง / แผนการเดินทาง',coll:'旅游路线、最佳路线',day:'8'},
+            {h:'当……时',p:'dāng... shí',m:'เมื่อ... / ในขณะที่...',coll:'当遇到困难时',day:'8'},
+            {h:'比如',p:'bǐrú',m:'เช่น / ยกตัวอย่างเช่น',coll:'比如像、比如说',day:'8'},
+            {h:'通过',p:'tōngguò',m:'ผ่าน / ได้รับการอนุมัติ / โดยผ่านทาง...',coll:'申请通过、通过努力',day:'8'},
+            {h:'浪费',p:'làngfèi',m:'สิ้นเปลือง / สุรุ่ยสุร่าย / เสียเวลา',coll:'浪费时间、浪费金钱',day:'8'},
+            {h:'经历',p:'jīnglì',m:'ประสบการณ์ (ชีวิต) / ผ่านพบเจอมา',coll:'一段经历、难忘的经历',day:'8'},
+            {h:'意义',p:'yìyì',m:'ความหมาย / คุณค่า / ประโยชน์',coll:'有意义、很有意义',day:'8'},
+            {h:'自由',p:'zìyóu',m:'อิสระ / เสรีภาพ / คล่องตัว',coll:'自由时间、自由职业',day:'8'},
+            {h:'意外',p:'yìwài',m:'ไม่คาดคิด / เกินความคาดหมาย / อุบัติเหตุ',coll:'意外地少、意外惊喜',day:'8'},
+            {h:'却',p:'què',m:'แต่กลับ... / กลับกลายเป็นว่า...',coll:'却睡不着、虽然……却……',day:'8'},
+            {h:'等',p:'děng',m:'เป็นต้น / และอื่นๆ',coll:'苹果、香蕉等水果',day:'8'}
         ];
 
         function updateMasteredCounts() {
@@ -946,7 +993,7 @@
             document.getElementById('masteredCount').textContent = mastered.size;
 
             let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33, d6_1Total = 12, d7Total = 18;
-            let totalVocab = 179;
+            let totalVocab = 191;
 
             let d1M = allVocab.filter(x => String(x.day) === '1' && mastered.has(x.h)).length;
             let d2M = allVocab.filter(x => String(x.day) === '2' && mastered.has(x.h)).length;
@@ -956,6 +1003,12 @@
             let d6M = allVocab.filter(x => String(x.day) === '6' && mastered.has(x.h)).length;
             let d6_1M = allVocab.filter(x => String(x.day) === '6.1' && mastered.has(x.h)).length;
             let d7M = allVocab.filter(x => String(x.day) === '7' && mastered.has(x.h)).length;
+            let d8M = allVocab.filter(x => String(x.day) === '8' && mastered.has(x.h)).length;
+
+            if(document.getElementById('d8ProgressLabel')) {
+                document.getElementById('d8ProgressLabel').textContent = `${d8M} / 12 คำ`;
+                document.getElementById('d8ProgressFill').style.width = `${(d8M/12)*100}%`;
+            }
 
             if(document.getElementById('d6_1ProgressLabel')) {
                 document.getElementById('d6_1ProgressLabel').textContent = `${d6_1M} / 12 คำ`;
