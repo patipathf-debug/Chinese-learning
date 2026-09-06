@@ -114,7 +114,15 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
         }
+
+        .stats-overview { order: 1; }
+        .overall-progress-card { order: 2; }
+        .lesson-directory-heading { order: 3; }
+        .days-grid { order: 4; }
+        .vocab-bank-section { order: 5; margin-top: 46px; }
 
         .stats-overview {
             display: grid;
@@ -616,6 +624,40 @@
             gap: 16px;
         }
 
+        .bank-vocab-grid.grouped {
+            display: block;
+        }
+
+        .bank-day-section + .bank-day-section {
+            margin-top: 30px;
+            padding-top: 26px;
+            border-top: 1px solid var(--line);
+        }
+
+        .bank-day-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .bank-day-heading h3 {
+            color: var(--plum);
+            font: 700 1.18rem 'Noto Serif SC', serif;
+        }
+
+        .bank-day-heading span {
+            color: var(--muted);
+            font-size: .84rem;
+        }
+
+        .bank-day-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+            gap: 14px;
+        }
+
         .bank-card {
             background: var(--paper);
             border: 1px solid var(--line);
@@ -858,7 +900,7 @@
                 <div class="bank-title-group">
                     <span class="bank-badge">VOCABULARY HUB</span>
                     <h2>📚 รวมคลังคำศัพท์ HSK 4 ทุกบท</h2>
-                    <p>รวบรวมคำศัพท์ทุกคำตั้งแต่ Day 1 ถึงปัจจุบัน แบ่งหมวดหมู่ตามศัพท์ และมีช่องรวมทุกคำในที่เดียว</p>
+                    <p>จัดคำศัพท์แยกเป็นรายบทให้เห็นที่มาชัดเจน เลือกบทหรือหมวดที่ต้องการก่อนเริ่มทบทวน</p>
                 </div>
                 <div class="bank-stats-pills">
                     <span class="stat-pill"><strong id="bankFilteredCount">209</strong> คำที่แสดง</span>
@@ -906,7 +948,7 @@
         </section>
 
         <!-- Section Separator -->
-        <div style="margin: 45px 0 25px; border-top: 2px dashed var(--line); padding-top: 32px;">
+        <div class="lesson-directory-heading" style="margin: 45px 0 25px; border-top: 2px dashed var(--line); padding-top: 32px;">
             <span class="day-badge" style="background:var(--plum-light); color:#fff; border:none;">LESSON DIRECTORY</span>
             <h2 style="font-size: 1.7rem; color: var(--plum); font-family: 'Noto Serif SC', serif; margin-top: 5px;">📖 เข้าห้องเรียนรายวัน (Daily Lessons Day 1–9)</h2>
             <p style="color: var(--muted); font-size: 0.92rem; margin-top: 4px;">คลิกเลือกบทเพื่อเข้าเรียนบทเรียนเต็ม: คำศัพท์ละเอียด, ไวยากรณ์ 5 จุด, เรื่องสั้น 3 ระดับ และแบบทดสอบประจำบท</p>
@@ -1669,6 +1711,12 @@
             if (currentVal) select.value = currentVal;
         }
 
+        function getLessonHref(day) {
+            return String(day) === '6.1'
+                ? 'DAY6.1/HSK4_L6_1_SuperChinese.html'
+                : `DAY${day}/HSK4_L${day}_SuperChinese.html`;
+        }
+
         function toggleBankDisplay() {
             const grid = document.getElementById('bankVocabGrid');
             if (!grid) return;
@@ -1736,7 +1784,7 @@
 
             if (empty) empty.style.display = 'none';
 
-            grid.innerHTML = filtered.map(item => {
+            const renderBankCard = item => {
                 const isMastered = masteredSet.has(item.h);
                 const itemCat = item.cat || 'grammar';
                 const catObj = VOCAB_CATEGORIES[itemCat] || VOCAB_CATEGORIES['grammar'];
@@ -1765,13 +1813,34 @@
                             <button class="bank-action-btn" onclick="speakWord('${item.h}')" title="ฟังเสียงอ่าน">
                                 🔊 ฟังเสียง
                             </button>
-                            <a href="DAY${item.day}/HSK4_L${item.day}_SuperChinese.html?search=${encodeURIComponent(item.h)}" class="bank-action-btn jump-btn" title="เปิดดูประโยคตัวอย่างและเรื่องสั้นใน Day ${item.day}">
+                            <a href="${getLessonHref(item.day)}?search=${encodeURIComponent(item.h)}" class="bank-action-btn jump-btn" title="เปิดดูประโยคตัวอย่างและเรื่องสั้นใน Day ${item.day}">
                                 📖 ดูในบทเรียน Day ${item.day} ↗
                             </a>
                         </div>
                     </div>
                 `;
-            }).join('');
+            };
+
+            if (selectedDay === 'all') {
+                const days = [...new Set(filtered.map(item => String(item.day)))]
+                    .sort((a,b) => parseFloat(a) - parseFloat(b));
+                grid.classList.add('grouped');
+                grid.innerHTML = days.map(day => {
+                    const words = filtered.filter(item => String(item.day) === day);
+                    return `
+                        <section class="bank-day-section" aria-labelledby="bank-day-${day.replace('.', '-')}">
+                            <div class="bank-day-heading">
+                                <h3 id="bank-day-${day.replace('.', '-')}">Day ${day}</h3>
+                                <span>${words.length} คำ</span>
+                            </div>
+                            <div class="bank-day-grid">${words.map(renderBankCard).join('')}</div>
+                        </section>
+                    `;
+                }).join('');
+            } else {
+                grid.classList.remove('grouped');
+                grid.innerHTML = filtered.map(renderBankCard).join('');
+            }
 
             toggleBankDisplay();
         }
@@ -1798,7 +1867,7 @@
             }
 
             resultsContainer.innerHTML = filtered.map(item => `
-                <div class="search-item" onclick="window.location.href='DAY${item.day}/HSK4_L${item.day}_SuperChinese.html?search=${encodeURIComponent(item.h)}'">
+                <div class="search-item" onclick="window.location.href='${getLessonHref(item.day)}?search=${encodeURIComponent(item.h)}'">
                     <div>
                         <div class="search-item-hanzi">${item.h}</div>
                         <div class="search-item-pinyin">${item.p}</div>
