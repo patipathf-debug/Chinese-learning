@@ -398,6 +398,414 @@
             border-top: 1px solid var(--line);
             margin-top: 50px;
         }
+
+        /* === VOCABULARY BANK STYLES === */
+        .vocab-bank-section {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            scroll-margin-top: 30px;
+        }
+
+        .bank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .bank-badge {
+            display: inline-block;
+            background: var(--paper-dark);
+            color: var(--gold-dark);
+            border: 1px solid var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .bank-title-group h2 {
+            font-size: 1.6rem;
+            color: var(--plum);
+            font-family: 'Noto Serif SC', serif;
+            margin-bottom: 4px;
+        }
+
+        .bank-title-group p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .bank-stats-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            background: var(--paper-dark);
+            border: 1px solid var(--line);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+
+        .stat-pill strong {
+            color: var(--plum);
+            font-size: 1rem;
+        }
+
+        .stat-pill.success strong {
+            color: var(--correct);
+        }
+
+        /* Category Tabs */
+        .bank-categories {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .bank-cat-btn {
+            background: var(--paper);
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            padding: 8px 16px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bank-cat-btn:hover {
+            border-color: var(--gold);
+            background: var(--paper-dark);
+            transform: translateY(-1px);
+        }
+
+        .bank-cat-btn.active {
+            background: var(--plum);
+            color: #fff;
+            border-color: var(--plum);
+            box-shadow: 0 4px 12px rgba(74, 29, 47, 0.25);
+        }
+
+        .bank-cat-count {
+            background: rgba(0, 0, 0, 0.08);
+            padding: 1px 7px;
+            border-radius: 12px;
+            font-size: 0.76rem;
+        }
+
+        .bank-cat-btn.active .bank-cat-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        /* Bank Toolbar */
+        .bank-toolbar {
+            background: var(--paper-dark);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .bank-tool-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .bank-tool-right {
+            flex: 1;
+            min-width: 240px;
+            max-width: 380px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.86rem;
+        }
+
+        .filter-group label {
+            color: var(--muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .bank-select {
+            background: var(--card);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .bank-select:focus {
+            border-color: var(--gold);
+        }
+
+        .filter-group.toggles {
+            display: flex;
+            gap: 10px;
+            border-left: 1px solid var(--line);
+            padding-left: 14px;
+        }
+
+        .bank-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 0.84rem;
+            user-select: none;
+        }
+
+        .bank-toggle input {
+            accent-color: var(--plum);
+        }
+
+        .bank-search-input {
+            width: 100%;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 25px;
+            padding: 8px 16px;
+            font-size: 0.88rem;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .bank-search-input:focus {
+            border-color: var(--gold);
+        }
+
+        /* Vocab Grid */
+        .bank-vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .bank-card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(74, 29, 47, 0.04);
+        }
+
+        .bank-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(74, 29, 47, 0.1);
+            background: var(--card);
+        }
+
+        .bank-card.mastered {
+            border-color: var(--correct);
+            background: rgba(46, 111, 64, 0.035);
+        }
+
+        .bank-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .bank-card-badges {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bank-origin-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            background: var(--plum);
+            color: #fff;
+            padding: 3px 9px;
+            border-radius: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .bank-cat-badge {
+            font-size: 0.72rem;
+            background: var(--paper-dark);
+            color: var(--muted);
+            padding: 3px 8px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+        }
+
+        .bank-master-btn {
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 3px 9px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .bank-master-btn:hover {
+            border-color: var(--correct);
+            color: var(--correct);
+        }
+
+        .bank-master-btn.done {
+            background: var(--correct);
+            border-color: var(--correct);
+            color: #fff;
+        }
+
+        .bank-card-body {
+            cursor: pointer;
+            margin-bottom: 14px;
+            padding: 4px 0;
+        }
+
+        .bank-hanzi {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: var(--plum);
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.15;
+            margin-bottom: 4px;
+            transition: color 0.2s;
+        }
+
+        .bank-card-body:hover .bank-hanzi {
+            color: var(--plum-light);
+        }
+
+        .bank-pinyin {
+            font-size: 0.95rem;
+            color: var(--plum-light);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .bank-meaning {
+            font-size: 1rem;
+            color: var(--ink);
+            font-weight: 600;
+            line-height: 1.45;
+            margin-bottom: 8px;
+        }
+
+        .bank-coll {
+            font-size: 0.8rem;
+            color: var(--muted);
+            background: var(--paper-dark);
+            padding: 6px 10px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+            line-height: 1.4;
+        }
+
+        .bank-coll b {
+            color: var(--plum);
+            font-weight: 600;
+        }
+
+        .bank-card-actions {
+            display: flex;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--line);
+            margin-top: auto;
+        }
+
+        .bank-action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--plum);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .bank-action-btn:hover {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: #fff;
+        }
+
+        .bank-action-btn.jump-btn {
+            color: var(--muted);
+        }
+
+        .bank-action-btn.jump-btn:hover {
+            color: #fff;
+            background: var(--plum);
+            border-color: var(--plum);
+        }
+
+        .bank-pinyin-hidden .bank-pinyin {
+            visibility: hidden;
+        }
+
+        .bank-meaning-hidden .bank-meaning {
+            visibility: hidden;
+        }
+
+        .bank-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
     </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase_sync.js"></script>
@@ -406,6 +814,7 @@
 
     <header>
         <div class="header-controls">
+            <a href="#vocabBank" class="theme-btn" style="background:rgba(212,175,55,0.22); color:var(--gold-dark); border-color:var(--gold); font-weight:700; text-decoration:none;">📚 คลังคำศัพท์รวม</a>
             <a href="GAME/vocab_game.html" class="theme-btn" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold)); color:#120c15; font-weight:700; text-decoration:none;">🎮 เล่นเกมสปีด 10 วิ</a>
             <button id="syncBadgeBtn" class="theme-btn" onclick="promptChangeUserKey()" title="กดเพื่อเปลี่ยนชื่อผู้ใช้ซิงก์ข้อมูลข้ามเครื่อง">☁️ ซิงก์ Cloud (patipat)</button>
 <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">🌙 ราตรี</button>
@@ -419,12 +828,12 @@
         <!-- Stats Overview -->
         <div class="stats-overview">
             <div class="stat-card">
-                <strong>8 บท</strong>
+                <strong>9 บท</strong>
                 <span>บทเรียนสะสม</span>
             </div>
             <div class="stat-card">
-                <strong id="totalVocabCount">191</strong>
-                <span>191 คำศัพท์ผ่านการคัดสรร</span>
+                <strong id="totalVocabCount">209</strong>
+                <span>209 คำศัพท์ผ่านการคัดสรร</span>
             </div>
             <div class="stat-card">
                 <strong id="masteredCount">0</strong>
@@ -443,13 +852,64 @@
             </div>
         </div>
 
-        <!-- Search Bar Section -->
-        <div class="search-section">
-            <h3 style="color: var(--plum); margin-bottom: 12px;">🔍 ค้นหาคำศัพท์ทุกบทเรียน (Global Search)</h3>
-            <div class="search-bar">
-                <input type="text" id="globalSearch" class="search-input" placeholder="พิมพ์คำศัพท์จีน, พินอิน หรือคำแปลภาษาไทย..." oninput="handleSearch()">
+        <!-- Vocabulary Bank Section (รวมศัพท์ทุกบท + หมวดหมู่ & ช่องรวม) -->
+        <section class="vocab-bank-section" id="vocabBank">
+            <div class="bank-header">
+                <div class="bank-title-group">
+                    <span class="bank-badge">VOCABULARY HUB</span>
+                    <h2>📚 รวมคลังคำศัพท์ HSK 4 ทุกบท</h2>
+                    <p>รวบรวมคำศัพท์ทุกคำตั้งแต่ Day 1 ถึงปัจจุบัน แบ่งหมวดหมู่ตามศัพท์ และมีช่องรวมทุกคำในที่เดียว</p>
+                </div>
+                <div class="bank-stats-pills">
+                    <span class="stat-pill"><strong id="bankFilteredCount">209</strong> คำที่แสดง</span>
+                    <span class="stat-pill success"><strong id="bankMasteredCount">0</strong> จำได้แล้ว</span>
+                </div>
             </div>
-            <div id="searchResults" class="search-results"></div>
+
+            <!-- Category Tabs (หมวดหมู่ตามศัพท์ + ช่องรวม) -->
+            <div class="bank-categories" id="bankCategories"></div>
+
+            <!-- Filter & Toolbar -->
+            <div class="bank-toolbar">
+                <div class="bank-tool-left">
+                    <div class="filter-group">
+                        <label for="bankDaySelect">📅 บทเรียน:</label>
+                        <select id="bankDaySelect" class="bank-select" onchange="filterVocabBank()">
+                            <option value="all">ทุกบทเรียน (รวมทุกวัน)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="bankStatusSelect">🎯 สถานะ:</label>
+                        <select id="bankStatusSelect" class="bank-select" onchange="filterVocabBank()">
+                            <option value="all">ทุกสถานะ</option>
+                            <option value="mastered">✓ จำได้แล้ว</option>
+                            <option value="unmastered">⭕ ยังต้องฝึก</option>
+                        </select>
+                    </div>
+                    <div class="filter-group toggles">
+                        <label class="bank-toggle"><input id="bankShowPinyin" type="checkbox" checked onchange="toggleBankDisplay()"> Pinyin</label>
+                        <label class="bank-toggle"><input id="bankShowMeaning" type="checkbox" checked onchange="toggleBankDisplay()"> คำแปลไทย</label>
+                    </div>
+                </div>
+                <div class="bank-tool-right">
+                    <input id="bankSearchInput" type="search" class="bank-search-input" placeholder="🔍 ค้นหาศัพท์ / pinyin / คำแปล / collocations..." oninput="filterVocabBank()">
+                </div>
+            </div>
+
+            <!-- Vocab Cards Grid -->
+            <div class="bank-vocab-grid" id="bankVocabGrid"></div>
+            
+            <!-- Empty state -->
+            <div id="bankEmptyState" class="bank-empty" style="display:none;">
+                <p>ไม่พบคำศัพท์ที่ตรงกับเงื่อนไขการค้นหาในหมวดนี้</p>
+            </div>
+        </section>
+
+        <!-- Section Separator -->
+        <div style="margin: 45px 0 25px; border-top: 2px dashed var(--line); padding-top: 32px;">
+            <span class="day-badge" style="background:var(--plum-light); color:#fff; border:none;">LESSON DIRECTORY</span>
+            <h2 style="font-size: 1.7rem; color: var(--plum); font-family: 'Noto Serif SC', serif; margin-top: 5px;">📖 เข้าห้องเรียนรายวัน (Daily Lessons Day 1–9)</h2>
+            <p style="color: var(--muted); font-size: 0.92rem; margin-top: 4px;">คลิกเลือกบทเพื่อเข้าเรียนบทเรียนเต็ม: คำศัพท์ละเอียด, ไวยากรณ์ 5 จุด, เรื่องสั้น 3 ระดับ และแบบทดสอบประจำบท</p>
         </div>
 
         <!-- Days Grid -->
@@ -754,6 +1214,40 @@
                 </div>
             </div>
 
+            
+            <!-- Day 9 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 9</span>
+                <h3 class="day-title">办理与安全</h3>
+                <p class="day-th">ธุรกรรม เอกสาร ความปลอดภัย และการแก้ปัญหา</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (18 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง (ธนาคาร วีซ่า ของหาย)</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">办理</span>
+                    <span class="tag">业务</span>
+                    <span class="tag">填表格</span>
+                    <span class="tag">签证</span>
+                    <span class="tag">输入密码</span>
+                    <span class="tag">挂失</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d9ProgressLabel">0 / 18 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d9ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY9/HSK4_L9_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 9</a>
+                    <a href="DAY9/HSK4_L9_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
             <!-- Exam Card -->
             <div class="day-card exam-card">
                 <span class="day-badge exam-badge">EXAM DAY 1-5</span>
@@ -779,211 +1273,223 @@
 
     <script>
         const allVocab = [
-            {h:'父亲',p:'fùqīn',m:'บิดา / คุณพ่อ',coll:'尊敬的父亲',day:1},
-            {h:'表演',p:'biǎoyǎn',m:'การแสดง / แสดง',coll:'精彩的表演',day:1},
-            {h:'观众',p:'guānzhòng',m:'ผู้ชม',coll:'热烈的观众',day:1},
-            {h:'获得',p:'huòdé',m:'ได้รับ',coll:'获得成功',day:1},
-            {h:'祝贺',p:'zhùhè',m:'แสดงความยินดี',coll:'表示祝贺',day:1},
-            {h:'感动',p:'gǎndòng',m:'ซาบซึ้ง / ประทับใจ',coll:'非常感动',day:1},
-            {h:'感觉',p:'gǎnjué',m:'ความรู้สึก / รู้สึกว่า',coll:'良好的感觉',day:1},
-            {h:'感谢',p:'gǎnxiè',m:'ขอบคุณ',coll:'衷心感谢',day:1},
-            {h:'经验',p:'jīngyàn',m:'ประสบการณ์',coll:'丰富的经验',day:1},
-            {h:'发生',p:'fāshēng',m:'เกิดขึ้น',coll:'发生变化',day:1},
-            {h:'提前',p:'tíqián',m:'ล่วงหน้า',coll:'提前完成',day:1},
-            {h:'世纪',p:'shìjì',m:'ศตวรรษ',coll:'21世纪',day:1},
-            {h:'成为',p:'chéngwéi',m:'กลายเป็น',coll:'成为工程师',day:1},
-            {h:'出现',p:'chūxiàn',m:'ปรากฏขึ้น',coll:'突然出现',day:1},
-            {h:'发明',p:'fāmíng',m:'ประดิษฐ์ / สิ่งประดิษฐ์',coll:'伟大的发明',day:1},
-            {h:'发展',p:'fāzhǎn',m:'พัฒนา / การพัฒนา',coll:'快速发展',day:1},
-            {h:'届',p:'jiè',m:'รุ่น / ครั้งที่ (ลักษณนาม)',coll:'第一届',day:1},
-            {h:'举办',p:'jǔbàn',m:'จัดงาน / จัดขึ้น',coll:'举办活动',day:1},
-            {h:'了解',p:'liǎojiě',m:'เข้าใจ / รู้จักดี',coll:'深入了解',day:1},
-            {h:'意大利',p:'Yìdàlì',m:'ประเทศอิตาลี',coll:'意大利文化',day:1},
-            {h:'世界',p:'shìjiè',m:'โลก',coll:'全世界',day:1},
-            {h:'冠军',p:'guànjūn',m:'แชมป์ / ชนะเลิศ',coll:'获得冠军',day:1},
-            {h:'场地',p:'chǎngdì',m:'สถานที่ / สนาม',coll:'比赛场地',day:1},
-            {h:'技术',p:'jìshù',m:'เทคโนโลยี / ทักษะ',coll:'先进的技术',day:1},
-            {h:'工程师',p:'gōngchéngshī',m:'วิศวกร',coll:'优秀的工程师',day:1},
-            {h:'把……',p:'bǎ...',m:'ไวยากรณ์ประโยค 把',coll:'把东西放在桌上',day:1},
-            {h:'骄傲',p:'jiāoào',m:'ภาคภูมิใจ / จองหอง',coll:'感到骄傲',day:1},
-            {h:'吸引',p:'xīyǐn',m:'ดึงดูด',coll:'吸引观众',day:1},
-            {h:'从……起',p:'cóng...qǐ',m:'เริ่มตั้งแต่...',coll:'从今天起',day:1},
-            {h:'费',p:'fèi',m:'เปลือง / ค่าใช้จ่าย',coll:'免费 / 浪费',day:1},
-
-            {h:'不断',p:'búduàn',m:'อย่างต่อเนื่อง',coll:'不断努力',day:2},
-            {h:'训练',p:'xùnliàn',m:'ฝึกซ้อม / ฝึกอบรม',coll:'刻苦训练',day:2},
-            {h:'放弃',p:'fàngqì',m:'ยอมแพ้ / ละทิ้ง',coll:'决不放弃',day:2},
-            {h:'各地',p:'gèdì',m:'ทุกแห่ง / ทั่วสารทิศ',coll:'全国各地',day:2},
-            {h:'关注',p:'guānzhù',m:'ให้ความสนใจ / ติดตาม',coll:'引起关注',day:2},
-            {h:'科技',p:'kējì',m:'วิทยาศาสตร์และเทคโนโลยี',coll:'高科技',day:2},
-            {h:'将',p:'jiāng',m:'จะ / นำเอา',coll:'将要',day:2},
-            {h:'展览',p:'zhǎnlǎn',m:'นิทรรศการ / จัดแสดง',coll:'举办展览',day:2},
-            {h:'一群',p:'yìqún',m:'ฝูงหนึ่ง / กลุ่มหนึ่ง',coll:'一群年轻人',day:2},
-            {h:'复杂',p:'fùzá',m:'ซับซ้อน',coll:'关系复杂',day:2},
-            {h:'另',p:'lìng',m:'อื่น / ต่างหาก',coll:'另外 / 另一个人',day:2},
-            {h:'实用',p:'shíyòng',m:'ใช้ได้จริง / มีประโยชน์',coll:'非常实用',day:2},
-            {h:'可是',p:'kěshì',m:'แต่ว่า',coll:'可是他没来',day:2},
-            {h:'本来',p:'běnlái',m:'เดิมที / แต่แรก',coll:'本来打算',day:2},
-            {h:'约会',p:'yuēhuì',m:'นัดหมาย / นัดเดต',coll:'浪漫的约会',day:2},
-            {h:'打扰',p:'dǎrǎo',m:'รบกวน',coll:'不好意思打扰了',day:2},
-            {h:'接受',p:'jiēshòu',m:'ยอมรับ / รับไว้',coll:'接受道歉',day:2},
-            {h:'道歉',p:'dàoqiàn',m:'ขอโทษ',coll:'向他道歉',day:2},
-            {h:'开玩笑',p:'kāi wánxiào',m:'พูดเล่น / ล้อเล่น',coll:'只是开玩笑',day:2},
-            {h:'放松',p:'fàngsōng',m:'ผ่อนคลาย',coll:'放松心情',day:2},
-            {h:'理解',p:'lǐjiě',m:'เข้าใจอย่างลึกซึ้ง',coll:'互相理解',day:2},
-
-            {h:'计划',p:'jìhuà',m:'แผนการ / วางแผน',coll:'制定计划',day:3},
-            {h:'提议',p:'tíyì',m:'เสนอ / ข้อเสนอ',coll:'提出提议',day:3},
-            {h:'参观',p:'cānguān',m:'เยี่ยมชม',coll:'参观博物馆',day:3},
-            {h:'排队',p:'pái duì',m:'เข้าคิว / ต่อแถว',coll:'按顺序排队',day:3},
-            {h:'乐意',p:'lèyì',m:'ยินดี / เต็มใจ',coll:'非常乐意帮助',day:3},
-            {h:'来自',p:'láizì',m:'มาจาก',coll:'来自全国',day:3},
-            {h:'奖牌',p:'jiǎngpái',m:'เหรียญรางวัล',coll:'金牌奖牌',day:3},
-            {h:'进行',p:'jìnxíng',m:'ดำเนินต่อไป',coll:'进行比赛',day:3},
-            {h:'严格',p:'yángé',m:'เข้มงวด',coll:'要求严格',day:3},
-            {h:'绝不',p:'juébù',m:'เด็ดขาด / ไม่...เป็นอันขาด',coll:'绝不放弃',day:3},
-            {h:'取得',p:'qǔdé',m:'ได้รับ / คว้ามาได้',coll:'取得好成绩',day:3},
-            {h:'因此',p:'yīncǐ',m:'เพราะฉะนั้น',coll:'因此大家都很努力',day:3},
-            {h:'无论',p:'wúlùn',m:'ไม่ว่าจะ...',coll:'无论如何',day:3},
-            {h:'不管',p:'bùguǎn',m:'ไม่ว่า / ไม่ดูแล',coll:'不管怎样',day:3},
-            {h:'坚持',p:'jiānchí',m:'ยืนหยัด',coll:'坚持到底',day:3},
-            {h:'媒体',p:'méitǐ',m:'สื่อมวลชน',coll:'新闻媒体',day:3},
-            {h:'保持',p:'bǎochí',m:'รักษาไว้',coll:'保持联系',day:3},
-            {h:'状态',p:'zhuàngtài',m:'สถานะ / สภาพ',coll:'良好状态',day:3},
-            {h:'人与人之间',p:'rén yǔ rén zhī jiān',m:'ระหว่างบุคคล',coll:'人与人之间的信任',day:3},
-            {h:'矛盾',p:'máodùn',m:'ความขัดแย้ง',coll:'产生矛盾',day:3},
-            {h:'尊重',p:'zūnzhòng',m:'ให้เกียรติ / เคารพ',coll:'互相尊重',day:3},
-            {h:'于是',p:'yúshì',m:'ดังนั้น / จึง',coll:'于是我决定去',day:3},
-            {h:'亲自',p:'qīnzì',m:'ด้วยตัวเอง',coll:'亲自处理',day:3},
-            {h:'原谅',p:'yuánliàng',m:'ให้อภัย',coll:'请原谅我',day:3},
-            {h:'真诚',p:'zhēnchéng',m:'จริงใจ',coll:'态度真诚',day:3},
-            {h:'想法',p:'xiǎngfǎ',m:'ความคิดเห็น',coll:'独特的想法',day:3},
-            {h:'对方',p:'duìfāng',m:'อีกฝ่ายหนึ่ง',coll:'了解对方',day:3},
-
-            {h:'自信',p:'zìxìn',m:'มั่นใจในตนเอง',coll:'充满自信',day:4},
-            {h:'活泼',p:'huópo',m:'ร่าเริง',coll:'性格活泼',day:4},
-            {h:'有趣',p:'yǒuqù',m:'น่าสนใจ',coll:'非常有趣',day:4},
-            {h:'最好',p:'zuìhǎo',m:'ดีที่สุด / ทางที่ดีควร',coll:'最好去看看',day:4},
-            {h:'吵架',p:'chǎo jià',m:'ทะเลาะกัน',coll:'跟朋友吵架',day:4},
-            {h:'陪',p:'péi',m:'อยู่เป็นเพื่อน',coll:'陪他去医院',day:4},
-            {h:'座位',p:'zuòwèi',m:'ที่นั่ง',coll:'预订座位',day:4},
-            {h:'网红',p:'wǎnghóng',m:'เน็ตไอดอล / ร้านดังอินเทอร์เน็ต',coll:'网红餐厅',day:4},
-            {h:'朋友圈',p:'péngyouquān',m:'โมเมนต์ Wechat',coll:'发朋友圈',day:4},
-            {h:'顾客',p:'gùkè',m:'ลูกค้า',coll:'满意顾客',day:4},
-            {h:'许多',p:'xǔduō',m:'มากมาย',coll:'许多人',day:4},
-            {h:'味道',p:'wèidào',m:'รสชาติ',coll:'美味的味道',day:4},
-            {h:'适合',p:'shìhé',m:'เหมาะสมกับ',coll:'适合你',day:4},
-            {h:'留下',p:'liúxià',m:'ทิ้งไว้ / เหลือไว้',coll:'留下深刻印象',day:4},
-            {h:'挺',p:'tǐng',m:'ค่อนข้าง / มาก',coll:'挺好的',day:4},
-
-            {h:'窗户',p:'chuānghu',m:'หน้าต่าง',coll:'打开窗户',day:5},
-            {h:'实在',p:'shízài',m:'จริงใจ / จริงๆ แล้ว',coll:'实在抱歉',day:5},
-            {h:'投诉',p:'tóusù',m:'ร้องเรียน',coll:'向客服投诉',day:5},
-            {h:'西红柿',p:'xīhóngshì',m:'มะเขือเทศ',coll:'西红柿炒鸡蛋',day:5},
-            {h:'汤',p:'tāng',m:'ซุป / น้ำแกง',coll:'喝热汤',day:5},
-            {h:'打',p:'dǎ',m:'ตอก (ไข่) / ตี / โทร',coll:'打鸡蛋',day:5},
-            {h:'切',p:'qiē',m:'หั่น / หั่นเป็นชิ้น',coll:'切成小块',day:5},
-            {h:'快',p:'kuài',m:'เร็ว / ใกล้จะ...',coll:'动作快一点',day:5},
-            {h:'盐',p:'yán',m:'เกลือ',coll:'放一点盐',day:5},
-            {h:'咸',p:'xián',m:'เค็ม',coll:'味道太咸了',day:5},
-            {h:'锅',p:'guō',m:'กระทะ / หม้อ',coll:'洗干净锅',day:5},
-            {h:'炒',p:'chǎo',m:'ผัด',coll:'炒菜',day:5},
-            {h:'开（水）',p:'kāi',m:'เดือด (น้ำเดือด)',coll:'水开了',day:5},
-            {h:'外卖',p:'wàimài',m:'อาหารเดลิเวอรี่',coll:'叫外卖',day:5},
-            {h:'小伙子',p:'xiǎohuǒzi',m:'ชายหนุ่ม',coll:'年轻的小伙子',day:5},
-            {h:'饼干',p:'bǐnggān',m:'คุกกี้ / ขนมปังกรอบ',coll:'吃饼干',day:5},
-            {h:'原因',p:'yuányīn',m:'สาเหตุ',coll:'主要原因',day:5},
-            {h:'态度',p:'tàidu',m:'ทัศนคติ / ท่าที',coll:'服务态度良好',day:5},
-            {h:'摩托车',p:'mótuōchē',m:'รถจักรยานยนต์',coll:'骑摩托车',day:5},
-            {h:'情况',p:'qíngkuàng',m:'สถานการณ์',coll:'了解情况',day:5},
-            {h:'辛苦',p:'xīnkǔ',m:'เหน็ดเหนื่อย',coll:'外卖员很辛苦',day:5},
-            {h:'准时',p:'zhǔnshí',m:'ตรงเวลา',coll:'准时送达',day:5},
-            {h:'挂',p:'guà',m:'วางสาย / แขวน',coll:'挂电话',day:5},
-
-            {h:'航班',p:'hángbān',m:'เที่ยวบิน',coll:'国际航班',day:6},
-            {h:'惊喜',p:'jīngxǐ',m:'ประหลาดใจและดีใจ',coll:'大惊喜',day:6},
-            {h:'出发',p:'chūfā',m:'ออกเดินทาง',coll:'准备出发',day:6},
-            {h:'左右',p:'zuǒyòu',m:'ประมาณ',coll:'三点左右',day:6},
-            {h:'正好',p:'zhènghǎo',m:'พอดี',coll:'正好遇到',day:6},
-            {h:'高速公路',p:'gāosù gōnglù',m:'ทางด่วน',coll:'开上高速公路',day:6},
-            {h:'速度',p:'sùdù',m:'ความเร็ว',coll:'速度很快',day:6},
-            {h:'堵车',p:'dǔchē',m:'รถติด',coll:'严重堵车',day:6},
-            {h:'醒',p:'xǐng',m:'ตื่น',coll:'睡醒',day:6},
-            {h:'兴奋',p:'xīngfèn',m:'ตื่นเต้น',coll:'非常兴奋',day:6},
-            {h:'没想到',p:'méi xiǎngdào',m:'คิดไม่ถึง',coll:'没想到会这样',day:6},
-            {h:'有货',p:'yǒu huò',m:'มีสินค้า',coll:'商店有货',day:6},
-            {h:'直接',p:'zhíjiē',m:'โดยตรง',coll:'直接付款',day:6},
-            {h:'价格',p:'jiàgé',m:'ราคา',coll:'价格合理',day:6},
-            {h:'打折',p:'dǎzhé',m:'ลดราคา',coll:'打折商品',day:6},
-            {h:'三折',p:'sān zhé',m:'ลดเหลือ 30%',coll:'打三折',day:6},
-            {h:'货',p:'huò',m:'สินค้า',coll:'发货验货',day:6},
-            {h:'流行',p:'liúxíng',m:'เป็นที่นิยม',coll:'非常流行',day:6},
-            {h:'保证',p:'bǎozhèng',m:'รับประกัน',coll:'质量保证',day:6},
-            {h:'种',p:'zhǒng',m:'ชนิด / ประเภท',coll:'这种方法',day:6},
-            {h:'付款',p:'fùkuǎn',m:'ชำระเงิน',coll:'在线付款',day:6},
-            {h:'内',p:'nèi',m:'ภายใน',coll:'三天内',day:6},
-            {h:'收',p:'shōu',m:'รับ / ได้รับ',coll:'收到快递',day:6},
-            {h:'退',p:'tuì',m:'คืนสินค้า',coll:'申请退货',day:6},
-            {h:'货到付款',p:'huò dào fù kuǎn',m:'เก็บเงินปลายทาง',coll:'选择货到付款',day:6},
-            {h:'申请',p:'shēnqǐng',m:'ยื่นคำร้อง / สมัคร',coll:'申请奖学金',day:6},
-            {h:'来得及',p:'láidejí',m:'ทันเวลา',coll:'还来得及',day:6},
-            {h:'见一面',p:'jiàn yí miàn',m:'เจอหน้ากัน',coll:'出来见一面',day:6},
-            {h:'来不及',p:'láibují',m:'ไม่ทันเวลา',coll:'恐怕来不及',day:6},
-            {h:'礼拜',p:'lǐbài',m:'สัปดาห์',coll:'礼拜天',day:6},
-            {h:'还是',p:'háishi',m:'...ดีกว่า (ผ่านการตัดสินใจ)',coll:'思考后还是决定',day:6},
-            {h:'白天',p:'báitiān',m:'ตอนกลางวัน',coll:'白天工作',day:6},
-            {h:'预计',p:'yùjì',m:'คาดว่า',coll:'预计明天到达',day:6},
-
-            {h:'快递',p:'kuàidì',m:'พัสดุ / ส่งด่วน',coll:'收快递、发快递',day:'6.1'},
-            {h:'联系',p:'liánxì',m:'ติดต่อ / ความสัมพันธ์',coll:'保持联系、联系客服',day:'6.1'},
-            {h:'信息',p:'xìnxī',m:'ข้อมูล / ข้อความ',coll:'收到信息、发信息',day:'6.1'},
-            {h:'查',p:'chá',m:'ตรวจสอบ / ค้นหา',coll:'查资料、查快递',day:'6.1'},
-            {h:'解释',p:'jiěshì',m:'อธิบาย / ชี้แจง',coll:'解释清楚、解释原因',day:'6.1'},
-            {h:'既然……就……',p:'jìrán... jiù...',m:'ในเมื่อ...ก็...',coll:'既然来了就坐下吧',day:'6.1'},
-            {h:'及时',p:'jíshí',m:'ทันท่วงที',coll:'及时处理、及时通知',day:'6.1'},
-            {h:'盒子',p:'hézi',m:'กล่อง',coll:'打开盒子、礼物盒子',day:'6.1'},
-            {h:'打开',p:'dǎkāi',m:'เปิด',coll:'打开门、打开盒子',day:'6.1'},
-            {h:'只好',p:'zhǐhǎo',m:'จำต้อง / ได้แต่',coll:'只好走路、只好等',day:'6.1'},
-            {h:'重新',p:'chóngxīn',m:'อีกครั้ง / ทำใหม่',coll:'重新开始、重新写',day:'6.1'},
-            {h:'原来',p:'yuánlái',m:'ที่แท้ / เดิมที',coll:'原来是你、原来如此',day:'6.1'},
-
-            {h:'旅行',p:'lǚxíng',m:'ท่องเที่ยว / เดินทาง',coll:'去旅行、旅行计划',day:7},
-            {h:'首都',p:'shǒudū',m:'เมืองหลวง',coll:'国家的首都、首都机场',day:7},
-            {h:'语言',p:'yǔyán',m:'ภาษา',coll:'学习语言、语言能力',day:7},
-            {h:'毕业',p:'bìyè',m:'จบการศึกษา',coll:'大学毕业、毕业以后',day:7},
-            {h:'放暑假',p:'fàng shǔjià',m:'ปิดเทอมฤดูร้อน',coll:'开始放暑假、暑假期间',day:7},
-            {h:'建议',p:'jiànyì',m:'แนะนำ / ข้อเสนอแนะ',coll:'给建议、建议你去',day:7},
-            {h:'挣VS赚',p:'zhèng VS zhuàn',m:'หาเงินด้วยแรงงาน vs หาเงิน/ทำกำไร',coll:'挣钱、赚钱',day:7},
-            {h:'长城',p:'Chángchéng',m:'กำแพงเมืองจีน',coll:'参观长城、爬长城',day:7},
-            {h:'故宫',p:'Gùgōng',m:'พระราชวังต้องห้าม',coll:'参观故宫、故宫博物院',day:7},
-            {h:'导游',p:'dǎoyóu',m:'มัคคุเทศก์ / ไกด์',coll:'当导游、导游介绍',day:7},
-            {h:'游客',p:'yóukè',m:'นักท่องเที่ยว',coll:'外国游客、游客中心',day:7},
-            {h:'景点',p:'jǐngdiǎn',m:'สถานที่ท่องเที่ยว',coll:'著名景点、旅游景点',day:7},
-            {h:'遗产',p:'yíchǎn',m:'มรดก',coll:'文化遗产、世界遗产',day:7},
-            {h:'值得',p:'zhídé',m:'คุ้มค่า / น่า...',coll:'值得看、值得去',day:7},
-            {h:'光（grammar)',p:'guāng',m:'หมดเกลี้ยง / เพียงแค่',coll:'吃光、光说不做',day:7},
-            {h:'所有',p:'suǒyǒu',m:'ทั้งหมด / ทุก...',coll:'所有人、所有问题',day:7},
-            {h:'全部',p:'quánbù',m:'ทั้งหมด',coll:'全部完成、全部内容',day:7},
-            {h:'交通',p:'jiāotōng',m:'การจราจร / คมนาคม',coll:'公共交通、交通方便',day:'7'},
-
-            {h:'节约',p:'jiéyuē',m:'ประหยัด (เงิน, เวลา, น้ำ)',coll:'节约用水、节约时间',day:'8'},
-            {h:'路线',p:'lùxiàn',m:'เส้นทาง / แผนการเดินทาง',coll:'旅游路线、最佳路线',day:'8'},
-            {h:'当……时',p:'dāng... shí',m:'เมื่อ... / ในขณะที่...',coll:'当遇到困难时',day:'8'},
-            {h:'比如',p:'bǐrú',m:'เช่น / ยกตัวอย่างเช่น',coll:'比如像、比如说',day:'8'},
-            {h:'通过',p:'tōngguò',m:'ผ่าน / ได้รับการอนุมัติ / โดยผ่านทาง...',coll:'申请通过、通过努力',day:'8'},
-            {h:'浪费',p:'làngfèi',m:'สิ้นเปลือง / สุรุ่ยสุร่าย / เสียเวลา',coll:'浪费时间、浪费金钱',day:'8'},
-            {h:'经历',p:'jīnglì',m:'ประสบการณ์ (ชีวิต) / ผ่านพบเจอมา',coll:'一段经历、难忘的经历',day:'8'},
-            {h:'意义',p:'yìyì',m:'ความหมาย / คุณค่า / ประโยชน์',coll:'有意义、很有意义',day:'8'},
-            {h:'自由',p:'zìyóu',m:'อิสระ / เสรีภาพ / คล่องตัว',coll:'自由时间、自由职业',day:'8'},
-            {h:'意外',p:'yìwài',m:'ไม่คาดคิด / เกินความคาดหมาย / อุบัติเหตุ',coll:'意外地少、意外惊喜',day:'8'},
-            {h:'却',p:'què',m:'แต่กลับ... / กลับกลายเป็นว่า...',coll:'却睡不着、虽然……却……',day:'8'},
-            {h:'等',p:'děng',m:'เป็นต้น / และอื่นๆ',coll:'苹果、香蕉等水果',day:'8'}
+            {h:'父亲',p:'fùqīn',m:'บิดา / คุณพ่อ',coll:'尊敬的父亲',day:'1',cat:'life'},
+            {h:'表演',p:'biǎoyǎn',m:'การแสดง / แสดง',coll:'精彩的表演',day:'1',cat:'tech'},
+            {h:'观众',p:'guānzhòng',m:'ผู้ชม',coll:'热烈的观众',day:'1',cat:'tech'},
+            {h:'获得',p:'huòdé',m:'ได้รับ',coll:'获得成功',day:'1',cat:'grammar'},
+            {h:'祝贺',p:'zhùhè',m:'แสดงความยินดี',coll:'表示祝贺',day:'1',cat:'emotion'},
+            {h:'感动',p:'gǎndòng',m:'ซาบซึ้ง / ประทับใจ',coll:'非常感动',day:'1',cat:'emotion'},
+            {h:'感觉',p:'gǎnjué',m:'ความรู้สึก / รู้สึกว่า',coll:'良好的感觉',day:'1',cat:'emotion'},
+            {h:'感谢',p:'gǎnxiè',m:'ขอบคุณ',coll:'衷心感谢',day:'1',cat:'emotion'},
+            {h:'经验',p:'jīngyàn',m:'ประสบการณ์',coll:'丰富的经验',day:'1',cat:'work'},
+            {h:'发生',p:'fāshēng',m:'เกิดขึ้น',coll:'发生变化',day:'1',cat:'grammar'},
+            {h:'提前',p:'tíqián',m:'ล่วงหน้า',coll:'提前完成',day:'1',cat:'grammar'},
+            {h:'世纪',p:'shìjì',m:'ศตวรรษ',coll:'21世纪',day:'1',cat:'life'},
+            {h:'成为',p:'chéngwéi',m:'กลายเป็น',coll:'成为工程师',day:'1',cat:'grammar'},
+            {h:'出现',p:'chūxiàn',m:'ปรากฏขึ้น',coll:'突然出现',day:'1',cat:'grammar'},
+            {h:'发明',p:'fāmíng',m:'ประดิษฐ์ / สิ่งประดิษฐ์',coll:'伟大的发明',day:'1',cat:'tech'},
+            {h:'发展',p:'fāzhǎn',m:'พัฒนา / การพัฒนา',coll:'快速发展',day:'1',cat:'tech'},
+            {h:'届',p:'jiè',m:'รุ่น / ครั้งที่ (ลักษณนาม)',coll:'第一届',day:'1',cat:'work'},
+            {h:'举办',p:'jǔbàn',m:'จัดงาน / จัดขึ้น',coll:'举办活动',day:'1',cat:'work'},
+            {h:'了解',p:'liǎojiě',m:'เข้าใจ / รู้จักดี',coll:'深入了解',day:'1',cat:'grammar'},
+            {h:'意大利',p:'Yìdàlì',m:'ประเทศอิตาลี',coll:'意大利文化',day:'1',cat:'travel'},
+            {h:'世界',p:'shìjiè',m:'โลก',coll:'全世界',day:'1',cat:'travel'},
+            {h:'冠军',p:'guànjūn',m:'แชมป์ / ชนะเลิศ',coll:'获得冠军',day:'1',cat:'grammar'},
+            {h:'场地',p:'chǎngdì',m:'สถานที่ / สนาม',coll:'比赛场地',day:'1',cat:'work'},
+            {h:'技术',p:'jìshù',m:'เทคโนโลยี / ทักษะ',coll:'先进的技术',day:'1',cat:'tech'},
+            {h:'工程师',p:'gōngchéngshī',m:'วิศวกร',coll:'优秀的工程师',day:'1',cat:'work'},
+            {h:'把……',p:'bǎ...',m:'ไวยากรณ์ประโยค 把',coll:'把东西放在桌上',day:'1',cat:'grammar'},
+            {h:'骄傲',p:'jiāoào',m:'ภาคภูมิใจ / จองหอง',coll:'感到骄傲',day:'1',cat:'emotion'},
+            {h:'吸引',p:'xīyǐn',m:'ดึงดูด',coll:'吸引观众',day:'1',cat:'tech'},
+            {h:'从……起',p:'cóng...qǐ',m:'เริ่มตั้งแต่...',coll:'从今天起',day:'1',cat:'grammar'},
+            {h:'费',p:'fèi',m:'เปลือง / ค่าใช้จ่าย',coll:'免费 / 浪费',day:'1',cat:'finance'},
+            {h:'不断',p:'búduàn',m:'อย่างต่อเนื่อง',coll:'不断努力',day:'2',cat:'grammar'},
+            {h:'训练',p:'xùnliàn',m:'ฝึกซ้อม / ฝึกอบรม',coll:'刻苦训练',day:'2',cat:'work'},
+            {h:'放弃',p:'fàngqì',m:'ยอมแพ้ / ละทิ้ง',coll:'决不放弃',day:'2',cat:'work'},
+            {h:'各地',p:'gèdì',m:'ทุกแห่ง / ทั่วสารทิศ',coll:'全国各地',day:'2',cat:'travel'},
+            {h:'关注',p:'guānzhù',m:'ให้ความสนใจ / ติดตาม',coll:'引起关注',day:'2',cat:'emotion'},
+            {h:'科技',p:'kējì',m:'วิทยาศาสตร์และเทคโนโลยี',coll:'高科技',day:'2',cat:'tech'},
+            {h:'将',p:'jiāng',m:'จะ / นำเอา',coll:'将要',day:'2',cat:'grammar'},
+            {h:'展览',p:'zhǎnlǎn',m:'นิทรรศการ / จัดแสดง',coll:'举办展览',day:'2',cat:'tech'},
+            {h:'一群',p:'yìqún',m:'ฝูงหนึ่ง / กลุ่มหนึ่ง',coll:'一群年轻人',day:'2',cat:'life'},
+            {h:'复杂',p:'fùzá',m:'ซับซ้อน',coll:'关系复杂',day:'2',cat:'grammar'},
+            {h:'另',p:'lìng',m:'อื่น / ต่างหาก',coll:'另外 / 另一个人',day:'2',cat:'grammar'},
+            {h:'实用',p:'shíyòng',m:'ใช้ได้จริง / มีประโยชน์',coll:'非常实用',day:'2',cat:'grammar'},
+            {h:'可是',p:'kěshì',m:'แต่ว่า',coll:'可是他没来',day:'2',cat:'grammar'},
+            {h:'本来',p:'běnlái',m:'เดิมที / แต่แรก',coll:'本来打算',day:'2',cat:'grammar'},
+            {h:'约会',p:'yuēhuì',m:'นัดหมาย / นัดเดต',coll:'浪漫的约会',day:'2',cat:'life'},
+            {h:'打扰',p:'dǎrǎo',m:'รบกวน',coll:'不好意思打扰了',day:'2',cat:'emotion'},
+            {h:'接受',p:'jiēshòu',m:'ยอมรับ / รับไว้',coll:'接受道歉',day:'2',cat:'work'},
+            {h:'道歉',p:'dàoqiàn',m:'ขอโทษ',coll:'向他道歉',day:'2',cat:'emotion'},
+            {h:'开玩笑',p:'kāi wánxiào',m:'พูดเล่น / ล้อเล่น',coll:'只是开玩笑',day:'2',cat:'emotion'},
+            {h:'放松',p:'fàngsōng',m:'ผ่อนคลาย',coll:'放松心情',day:'2',cat:'emotion'},
+            {h:'理解',p:'lǐjiě',m:'เข้าใจอย่างลึกซึ้ง',coll:'互相理解',day:'2',cat:'emotion'},
+            {h:'计划',p:'jìhuà',m:'แผนการ / วางแผน',coll:'制定计划',day:'3',cat:'work'},
+            {h:'提议',p:'tíyì',m:'เสนอ / ข้อเสนอ',coll:'提出提议',day:'3',cat:'work'},
+            {h:'参观',p:'cānguān',m:'เยี่ยมชม',coll:'参观博物馆',day:'3',cat:'travel'},
+            {h:'排队',p:'pái duì',m:'เข้าคิว / ต่อแถว',coll:'按顺序排队',day:'3',cat:'travel'},
+            {h:'乐意',p:'lèyì',m:'ยินดี / เต็มใจ',coll:'非常乐意帮助',day:'3',cat:'emotion'},
+            {h:'来自',p:'láizì',m:'มาจาก',coll:'来自全国',day:'3',cat:'life'},
+            {h:'奖牌',p:'jiǎngpái',m:'เหรียญรางวัล',coll:'金牌奖牌',day:'3',cat:'grammar'},
+            {h:'进行',p:'jìnxíng',m:'ดำเนินต่อไป',coll:'进行比赛',day:'3',cat:'work'},
+            {h:'严格',p:'yángé',m:'เข้มงวด',coll:'要求严格',day:'3',cat:'grammar'},
+            {h:'绝不',p:'juébù',m:'เด็ดขาด / ไม่...เป็นอันขาด',coll:'绝不放弃',day:'3',cat:'grammar'},
+            {h:'取得',p:'qǔdé',m:'ได้รับ / คว้ามาได้',coll:'取得好成绩',day:'3',cat:'work'},
+            {h:'因此',p:'yīncǐ',m:'เพราะฉะนั้น',coll:'因此大家都很努力',day:'3',cat:'grammar'},
+            {h:'无论',p:'wúlùn',m:'ไม่ว่าจะ...',coll:'无论如何',day:'3',cat:'grammar'},
+            {h:'不管',p:'bùguǎn',m:'ไม่ว่า / ไม่ดูแล',coll:'不管怎样',day:'3',cat:'grammar'},
+            {h:'坚持',p:'jiānchí',m:'ยืนหยัด',coll:'坚持到底',day:'3',cat:'grammar'},
+            {h:'媒体',p:'méitǐ',m:'สื่อมวลชน',coll:'新闻媒体',day:'3',cat:'tech'},
+            {h:'保持',p:'bǎochí',m:'รักษาไว้',coll:'保持联系',day:'3',cat:'life'},
+            {h:'状态',p:'zhuàngtài',m:'สถานะ / สภาพ',coll:'良好状态',day:'3',cat:'life'},
+            {h:'人与人之间',p:'rén yǔ rén zhī jiān',m:'ระหว่างบุคคล',coll:'人与人之间的信任',day:'3',cat:'emotion'},
+            {h:'矛盾',p:'máodùn',m:'ความขัดแย้ง',coll:'产生矛盾',day:'3',cat:'emotion'},
+            {h:'尊重',p:'zūnzhòng',m:'ให้เกียรติ / เคารพ',coll:'互相尊重',day:'3',cat:'emotion'},
+            {h:'于是',p:'yúshì',m:'ดังนั้น / จึง',coll:'于是我决定去',day:'3',cat:'grammar'},
+            {h:'亲自',p:'qīnzì',m:'ด้วยตัวเอง',coll:'亲自处理',day:'3',cat:'grammar'},
+            {h:'原谅',p:'yuánliàng',m:'ให้อภัย',coll:'请原谅我',day:'3',cat:'emotion'},
+            {h:'真诚',p:'zhēnchéng',m:'จริงใจ',coll:'态度真诚',day:'3',cat:'emotion'},
+            {h:'想法',p:'xiǎngfǎ',m:'ความคิดเห็น',coll:'独特的想法',day:'3',cat:'emotion'},
+            {h:'对方',p:'duìfāng',m:'อีกฝ่ายหนึ่ง',coll:'了解对方',day:'3',cat:'emotion'},
+            {h:'自信',p:'zìxìn',m:'มั่นใจในตนเอง',coll:'充满自信',day:'4',cat:'emotion'},
+            {h:'活泼',p:'huópo',m:'ร่าเริง',coll:'性格活泼',day:'4',cat:'emotion'},
+            {h:'有趣',p:'yǒuqù',m:'น่าสนใจ',coll:'非常有趣',day:'4',cat:'emotion'},
+            {h:'最好',p:'zuìhǎo',m:'ดีที่สุด / ทางที่ดีควร',coll:'最好去看看',day:'4',cat:'grammar'},
+            {h:'吵架',p:'chǎo jià',m:'ทะเลาะกัน',coll:'跟朋友吵架',day:'4',cat:'emotion'},
+            {h:'陪',p:'péi',m:'อยู่เป็นเพื่อน',coll:'陪他去医院',day:'4',cat:'emotion'},
+            {h:'座位',p:'zuòwèi',m:'ที่นั่ง',coll:'预订座位',day:'4',cat:'travel'},
+            {h:'网红',p:'wǎnghóng',m:'เน็ตไอดอล / ร้านดังอินเทอร์เน็ต',coll:'网红餐厅',day:'4',cat:'tech'},
+            {h:'朋友圈',p:'péngyouquān',m:'โมเมนต์ Wechat',coll:'发朋友圈',day:'4',cat:'tech'},
+            {h:'顾客',p:'gùkè',m:'ลูกค้า',coll:'满意顾客',day:'4',cat:'finance'},
+            {h:'许多',p:'xǔduō',m:'มากมาย',coll:'许多人',day:'4',cat:'grammar'},
+            {h:'味道',p:'wèidào',m:'รสชาติ',coll:'美味的味道',day:'4',cat:'life'},
+            {h:'适合',p:'shìhé',m:'เหมาะสมกับ',coll:'适合你',day:'4',cat:'emotion'},
+            {h:'留下',p:'liúxià',m:'ทิ้งไว้ / เหลือไว้',coll:'留下深刻印象',day:'4',cat:'grammar'},
+            {h:'挺',p:'tǐng',m:'ค่อนข้าง / มาก',coll:'挺好的',day:'4',cat:'grammar'},
+            {h:'窗户',p:'chuānghu',m:'หน้าต่าง',coll:'打开窗户',day:'5',cat:'life'},
+            {h:'实在',p:'shízài',m:'จริงใจ / จริงๆ แล้ว',coll:'实在抱歉',day:'5',cat:'grammar'},
+            {h:'投诉',p:'tóusù',m:'ร้องเรียน',coll:'向客服投诉',day:'5',cat:'grammar'},
+            {h:'西红柿',p:'xīhóngshì',m:'มะเขือเทศ',coll:'西红柿炒鸡蛋',day:'5',cat:'life'},
+            {h:'汤',p:'tāng',m:'ซุป / น้ำแกง',coll:'喝热汤',day:'5',cat:'life'},
+            {h:'打',p:'dǎ',m:'ตอก (ไข่) / ตี / โทร',coll:'打鸡蛋',day:'5',cat:'life'},
+            {h:'切',p:'qiē',m:'หั่น / หั่นเป็นชิ้น',coll:'切成小块',day:'5',cat:'life'},
+            {h:'快',p:'kuài',m:'เร็ว / ใกล้จะ...',coll:'动作快一点',day:'5',cat:'life'},
+            {h:'盐',p:'yán',m:'เกลือ',coll:'放一点盐',day:'5',cat:'life'},
+            {h:'咸',p:'xián',m:'เค็ม',coll:'味道太咸了',day:'5',cat:'life'},
+            {h:'锅',p:'guō',m:'กระทะ / หม้อ',coll:'洗干净锅',day:'5',cat:'life'},
+            {h:'炒',p:'chǎo',m:'ผัด',coll:'炒菜',day:'5',cat:'life'},
+            {h:'开（水）',p:'kāi',m:'เดือด (น้ำเดือด)',coll:'水开了',day:'5',cat:'life'},
+            {h:'外卖',p:'wàimài',m:'อาหารเดลิเวอรี่',coll:'叫外卖',day:'5',cat:'life'},
+            {h:'小伙子',p:'xiǎohuǒzi',m:'ชายหนุ่ม',coll:'年轻的小伙子',day:'5',cat:'life'},
+            {h:'饼干',p:'bǐnggān',m:'คุกกี้ / ขนมปังกรอบ',coll:'吃饼干',day:'5',cat:'life'},
+            {h:'原因',p:'yuányīn',m:'สาเหตุ',coll:'主要原因',day:'5',cat:'grammar'},
+            {h:'态度',p:'tàidu',m:'ทัศนคติ / ท่าที',coll:'服务态度良好',day:'5',cat:'emotion'},
+            {h:'摩托车',p:'mótuōchē',m:'รถจักรยานยนต์',coll:'骑摩托车',day:'5',cat:'travel'},
+            {h:'情况',p:'qíngkuàng',m:'สถานการณ์',coll:'了解情况',day:'5',cat:'grammar'},
+            {h:'辛苦',p:'xīnkǔ',m:'เหน็ดเหนื่อย',coll:'外卖员很辛苦',day:'5',cat:'emotion'},
+            {h:'准时',p:'zhǔnshí',m:'ตรงเวลา',coll:'准时送达',day:'5',cat:'grammar'},
+            {h:'挂',p:'guà',m:'วางสาย / แขวน',coll:'挂电话',day:'5',cat:'grammar'},
+            {h:'航班',p:'hángbān',m:'เที่ยวบิน',coll:'国际航班',day:'6',cat:'travel'},
+            {h:'惊喜',p:'jīngxǐ',m:'ประหลาดใจและดีใจ',coll:'大惊喜',day:'6',cat:'emotion'},
+            {h:'出发',p:'chūfā',m:'ออกเดินทาง',coll:'准备出发',day:'6',cat:'travel'},
+            {h:'左右',p:'zuǒyòu',m:'ประมาณ',coll:'三点左右',day:'6',cat:'grammar'},
+            {h:'正好',p:'zhènghǎo',m:'พอดี',coll:'正好遇到',day:'6',cat:'grammar'},
+            {h:'高速公路',p:'gāosù gōnglù',m:'ทางด่วน',coll:'开上高速公路',day:'6',cat:'travel'},
+            {h:'速度',p:'sùdù',m:'ความเร็ว',coll:'速度很快',day:'6',cat:'travel'},
+            {h:'堵车',p:'dǔchē',m:'รถติด',coll:'严重堵车',day:'6',cat:'travel'},
+            {h:'醒',p:'xǐng',m:'ตื่น',coll:'睡醒',day:'6',cat:'life'},
+            {h:'兴奋',p:'xīngfèn',m:'ตื่นเต้น',coll:'非常兴奋',day:'6',cat:'emotion'},
+            {h:'没想到',p:'méi xiǎngdào',m:'คิดไม่ถึง',coll:'没想到会这样',day:'6',cat:'grammar'},
+            {h:'有货',p:'yǒu huò',m:'มีสินค้า',coll:'商店有货',day:'6',cat:'finance'},
+            {h:'直接',p:'zhíjiē',m:'โดยตรง',coll:'直接付款',day:'6',cat:'grammar'},
+            {h:'价格',p:'jiàgé',m:'ราคา',coll:'价格合理',day:'6',cat:'finance'},
+            {h:'打折',p:'dǎzhé',m:'ลดราคา',coll:'打折商品',day:'6',cat:'finance'},
+            {h:'三折',p:'sān zhé',m:'ลดเหลือ 30%',coll:'打三折',day:'6',cat:'finance'},
+            {h:'货',p:'huò',m:'สินค้า',coll:'发货验货',day:'6',cat:'finance'},
+            {h:'流行',p:'liúxíng',m:'เป็นที่นิยม',coll:'非常流行',day:'6',cat:'tech'},
+            {h:'保证',p:'bǎozhèng',m:'รับประกัน',coll:'质量保证',day:'6',cat:'grammar'},
+            {h:'种',p:'zhǒng',m:'ชนิด / ประเภท',coll:'这种方法',day:'6',cat:'grammar'},
+            {h:'付款',p:'fùkuǎn',m:'ชำระเงิน',coll:'在线付款',day:'6',cat:'finance'},
+            {h:'内',p:'nèi',m:'ภายใน',coll:'三天内',day:'6',cat:'grammar'},
+            {h:'收',p:'shōu',m:'รับ / ได้รับ',coll:'收到快递',day:'6',cat:'finance'},
+            {h:'退',p:'tuì',m:'คืนสินค้า',coll:'申请退货',day:'6',cat:'finance'},
+            {h:'货到付款',p:'huò dào fù kuǎn',m:'เก็บเงินปลายทาง',coll:'选择货到付款',day:'6',cat:'finance'},
+            {h:'申请',p:'shēnqǐng',m:'ยื่นคำร้อง / สมัคร',coll:'申请奖学金',day:'6',cat:'work'},
+            {h:'来得及',p:'láidejí',m:'ทันเวลา',coll:'还来得及',day:'6',cat:'grammar'},
+            {h:'见一面',p:'jiàn yí miàn',m:'เจอหน้ากัน',coll:'出来见一面',day:'6',cat:'grammar'},
+            {h:'来不及',p:'láibují',m:'ไม่ทันเวลา',coll:'恐怕来不及',day:'6',cat:'grammar'},
+            {h:'礼拜',p:'lǐbài',m:'สัปดาห์',coll:'礼拜天',day:'6',cat:'grammar'},
+            {h:'还是',p:'háishi',m:'...ดีกว่า (ผ่านการตัดสินใจ)',coll:'思考后还是决定',day:'6',cat:'grammar'},
+            {h:'白天',p:'báitiān',m:'ตอนกลางวัน',coll:'白天工作',day:'6',cat:'life'},
+            {h:'预计',p:'yùjì',m:'คาดว่า',coll:'预计明天到达',day:'6',cat:'grammar'},
+            {h:'快递',p:'kuàidì',m:'พัสดุ / ส่งด่วน',coll:'收快递、发快递',day:'6.1',cat:'tech'},
+            {h:'联系',p:'liánxì',m:'ติดต่อ / ความสัมพันธ์',coll:'保持联系、联系客服',day:'6.1',cat:'tech'},
+            {h:'信息',p:'xìnxī',m:'ข้อมูล / ข้อความ',coll:'收到信息、发信息',day:'6.1',cat:'tech'},
+            {h:'查',p:'chá',m:'ตรวจสอบ / ค้นหา',coll:'查资料、查快递',day:'6.1',cat:'tech'},
+            {h:'解释',p:'jiěshì',m:'อธิบาย / ชี้แจง',coll:'解释清楚、解释原因',day:'6.1',cat:'tech'},
+            {h:'既然……就……',p:'jìrán... jiù...',m:'ในเมื่อ...ก็...',coll:'既然来了就坐下吧',day:'6.1',cat:'grammar'},
+            {h:'及时',p:'jíshí',m:'ทันท่วงที',coll:'及时处理、及时通知',day:'6.1',cat:'grammar'},
+            {h:'盒子',p:'hézi',m:'กล่อง',coll:'打开盒子、礼物盒子',day:'6.1',cat:'life'},
+            {h:'打开',p:'dǎkāi',m:'เปิด',coll:'打开门、打开盒子',day:'6.1',cat:'life'},
+            {h:'只好',p:'zhǐhǎo',m:'จำต้อง / ได้แต่',coll:'只好走路、只好等',day:'6.1',cat:'grammar'},
+            {h:'重新',p:'chóngxīn',m:'อีกครั้ง / ทำใหม่',coll:'重新开始、重新写',day:'6.1',cat:'grammar'},
+            {h:'原来',p:'yuánlái',m:'ที่แท้ / เดิมที',coll:'原来是你、原来如此',day:'6.1',cat:'grammar'},
+            {h:'旅行',p:'lǚxíng',m:'ท่องเที่ยว / เดินทาง',coll:'去旅行、旅行计划',day:'7',cat:'travel'},
+            {h:'首都',p:'shǒudū',m:'เมืองหลวง',coll:'国家的首都、首都机场',day:'7',cat:'travel'},
+            {h:'语言',p:'yǔyán',m:'ภาษา',coll:'学习语言、语言能力',day:'7',cat:'tech'},
+            {h:'毕业',p:'bìyè',m:'จบการศึกษา',coll:'大学毕业、毕业以后',day:'7',cat:'work'},
+            {h:'放暑假',p:'fàng shǔjià',m:'ปิดเทอมฤดูร้อน',coll:'开始放暑假、暑假期间',day:'7',cat:'travel'},
+            {h:'建议',p:'jiànyì',m:'แนะนำ / ข้อเสนอแนะ',coll:'给建议、建议你去',day:'7',cat:'work'},
+            {h:'挣VS赚',p:'zhèng VS zhuàn',m:'หาเงินด้วยแรงงาน vs หาเงิน/ทำกำไร',coll:'挣钱、赚钱',day:'7',cat:'finance'},
+            {h:'长城',p:'Chángchéng',m:'กำแพงเมืองจีน',coll:'参观长城、爬长城',day:'7',cat:'travel'},
+            {h:'故宫',p:'Gùgōng',m:'พระราชวังต้องห้าม',coll:'参观故宫、故宫博物院',day:'7',cat:'travel'},
+            {h:'导游',p:'dǎoyóu',m:'มัคคุเทศก์ / ไกด์',coll:'当导游、导游介绍',day:'7',cat:'work'},
+            {h:'游客',p:'yóukè',m:'นักท่องเที่ยว',coll:'外国游客、游客中心',day:'7',cat:'travel'},
+            {h:'景点',p:'jǐngdiǎn',m:'สถานที่ท่องเที่ยว',coll:'著名景点、旅游景点',day:'7',cat:'travel'},
+            {h:'遗产',p:'yíchǎn',m:'มรดก',coll:'文化遗产、世界遗产',day:'7',cat:'travel'},
+            {h:'值得',p:'zhídé',m:'คุ้มค่า / น่า...',coll:'值得看、值得去',day:'7',cat:'grammar'},
+            {h:'光（grammar)',p:'guāng',m:'หมดเกลี้ยง / เพียงแค่',coll:'吃光、光说不做',day:'7',cat:'grammar'},
+            {h:'所有',p:'suǒyǒu',m:'ทั้งหมด / ทุก...',coll:'所有人、所有问题',day:'7',cat:'grammar'},
+            {h:'全部',p:'quánbù',m:'ทั้งหมด',coll:'全部完成、全部内容',day:'7',cat:'grammar'},
+            {h:'交通',p:'jiāotōng',m:'การจราจร / คมนาคม',coll:'公共交通、交通方便',day:'7',cat:'travel'},
+            {h:'节约',p:'jiéyuē',m:'ประหยัด (เงิน, เวลา, น้ำ)',coll:'节约用水、节约时间',day:'8',cat:'finance'},
+            {h:'路线',p:'lùxiàn',m:'เส้นทาง / แผนการเดินทาง',coll:'旅游路线、最佳路线',day:'8',cat:'travel'},
+            {h:'当……时',p:'dāng... shí',m:'เมื่อ... / ในขณะที่...',coll:'当遇到困难时',day:'8',cat:'grammar'},
+            {h:'比如',p:'bǐrú',m:'เช่น / ยกตัวอย่างเช่น',coll:'比如像、比如说',day:'8',cat:'grammar'},
+            {h:'通过',p:'tōngguò',m:'ผ่าน / ได้รับการอนุมัติ / โดยผ่านทาง...',coll:'申请通过、通过努力',day:'8',cat:'grammar'},
+            {h:'浪费',p:'làngfèi',m:'สิ้นเปลือง / สุรุ่ยสุร่าย / เสียเวลา',coll:'浪费时间、浪费金钱',day:'8',cat:'finance'},
+            {h:'经历',p:'jīnglì',m:'ประสบการณ์ (ชีวิต) / ผ่านพบเจอมา',coll:'一段经历、难忘的经历',day:'8',cat:'grammar'},
+            {h:'意义',p:'yìyì',m:'ความหมาย / คุณค่า / ประโยชน์',coll:'有意义、很有意义',day:'8',cat:'grammar'},
+            {h:'自由',p:'zìyóu',m:'อิสระ / เสรีภาพ / คล่องตัว',coll:'自由时间、自由职业',day:'8',cat:'grammar'},
+            {h:'意外',p:'yìwài',m:'ไม่คาดคิด / เกินความคาดหมาย / อุบัติเหตุ',coll:'意外地少、意外惊喜',day:'8',cat:'grammar'},
+            {h:'却',p:'què',m:'แต่กลับ... / กลับกลายเป็นว่า...',coll:'却睡不着、虽然……却……',day:'8',cat:'grammar'},
+            {h:'等',p:'děng',m:'เป็นต้น / และอื่นๆ',coll:'苹果、香蕉等水果',day:'8',cat:'grammar'},
+            {h:'办理',p:'bànlǐ',m:'จัดการ / ดำเนินการ (ธุรกรรม, เอกสาร)',coll:'办理业务、办理签证',day:'9',cat:'work'},
+            {h:'业务',p:'yèwù',m:'ธุรกรรม / ธุรกิจ / หน้าที่การงาน',coll:'办理业务、银行业务',day:'9',cat:'work'},
+            {h:'填',p:'tián',m:'กรอก (ข้อความ, แบบฟอร์ม)',coll:'填表格、填一下',day:'9',cat:'work'},
+            {h:'签证',p:'qiānzhèng',m:'วีซ่า',coll:'办理签证、申请签证',day:'9',cat:'work'},
+            {h:'表格',p:'biǎogé',m:'แบบฟอร์ม / ตาราง',coll:'填表格、申请表格',day:'9',cat:'work'},
+            {h:'证件',p:'zhèngjiàn',m:'เอกสารประจำตัว / บัตรประจำตัว',coll:'有效证件、带好证件',day:'9',cat:'life'},
+            {h:'密码',p:'mìmǎ',m:'รหัสผ่าน',coll:'输入密码、忘记密码',day:'9',cat:'finance'},
+            {h:'输入',p:'shūrù',m:'ป้อนข้อมูล / กรอก (รหัส, ข้อมูล)',coll:'输入密码、重新输入',day:'9',cat:'finance'},
+            {h:'正确',p:'zhèngquè',m:'ถูกต้อง',coll:'密码正确、正确的做法',day:'9',cat:'grammar'},
+            {h:'错误',p:'cuòwù',m:'ข้อผิดพลาด / ไม่ถูกต้อง',coll:'密码错误、犯错误',day:'9',cat:'grammar'},
+            {h:'警察',p:'jǐngchá',m:'ตำรวจ',coll:'找警察、警察局',day:'9',cat:'life'},
+            {h:'并且',p:'bìngqiě',m:'และ / อีกทั้ง / แถมยัง',coll:'简单并且有效',day:'9',cat:'grammar'},
+            {h:'减少',p:'jiǎnshǎo',m:'ลดลง / ทำให้ลดลง',coll:'减少麻烦、减少浪费',day:'9',cat:'grammar'},
+            {h:'提醒',p:'tíxǐng',m:'เตือน / เตือนความจำ',coll:'短信提醒、提醒大家',day:'9',cat:'tech'},
+            {h:'短信',p:'duǎnxìn',m:'ข้อความสั้น / SMS',coll:'发短信、收短信',day:'9',cat:'tech'},
+            {h:'丢',p:'diū',m:'หาย / ทำหาย / โยนทิ้ง',coll:'钱包丢了、钥匙丢了',day:'9',cat:'life'},
+            {h:'挂失',p:'guàshī',m:'แจ้งหาย / แจ้งอายัด (บัตร, เอกสาร)',coll:'办理挂失、电话挂失',day:'9',cat:'finance'},
+            {h:'麻烦',p:'máfan',m:'ยุ่งยาก / ลำบาก / รบกวน',coll:'真麻烦、麻烦你',day:'9',cat:'grammar'}
         ];
 
         function updateMasteredCounts() {
             let mastered = new Set();
             try {
-                const keys = ['hsk4_day1_mastered','hsk4_day2_mastered','hsk4_day3_mastered','hsk4_day4_mastered','hsk4_day5_mastered','hsk4_day6_mastered','hsk4_day6_1_mastered','hsk4_day7_mastered'];
+                let keys = [];
+            for (let i = 1; i <= 20; i++) keys.push(`hsk4_day${i}_mastered`);
+            keys.push('hsk4_day6_1_mastered');
             keys.forEach(k => {
                     let m = JSON.parse(localStorage.getItem(k) || '[]');
                     m.forEach(x => mastered.add(x));
@@ -993,7 +1499,7 @@
             document.getElementById('masteredCount').textContent = mastered.size;
 
             let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33, d6_1Total = 12, d7Total = 18;
-            let totalVocab = 191;
+            let totalVocab = 209;
 
             let d1M = allVocab.filter(x => String(x.day) === '1' && mastered.has(x.h)).length;
             let d2M = allVocab.filter(x => String(x.day) === '2' && mastered.has(x.h)).length;
@@ -1008,6 +1514,12 @@
             if(document.getElementById('d8ProgressLabel')) {
                 document.getElementById('d8ProgressLabel').textContent = `${d8M} / 12 คำ`;
                 document.getElementById('d8ProgressFill').style.width = `${(d8M/12)*100}%`;
+            }
+
+            let d9M = allVocab.filter(x => String(x.day) === '9' && mastered.has(x.h)).length;
+            if(document.getElementById('d9ProgressLabel')) {
+                document.getElementById('d9ProgressLabel').textContent = `${d9M} / 18 คำ`;
+                document.getElementById('d9ProgressFill').style.width = `${(d9M/18)*100}%`;
             }
 
             if(document.getElementById('d6_1ProgressLabel')) {
@@ -1039,6 +1551,229 @@
             let overallPct = Math.round((mastered.size / totalVocab) * 100);
             document.getElementById('overallProgressText').textContent = `${overallPct}%`;
             document.getElementById('overallProgressFill').style.width = `${overallPct}%`;
+        }
+
+        
+        // Categories definition
+        const VOCAB_CATEGORIES = {
+            'all': { name: '🌟 ทั้งหมด (รวม)', icon: '🌟' },
+            'work': { name: '💼 งาน ธุรกิจ & ธุรกรรม', icon: '💼' },
+            'finance': { name: '🛍️ ช้อปปิ้ง การเงิน & ธนาคาร', icon: '🛍️' },
+            'travel': { name: '✈️ ท่องเที่ยว & การเดินทาง', icon: '✈️' },
+            'emotion': { name: '💬 อารมณ์ สังคม & นิสัย', icon: '💬' },
+            'life': { name: '🌱 ชีวิตประจำวัน สุขภาพ & สิ่งรอบตัว', icon: '🌱' },
+            'tech': { name: '📱 เทคโนโลยี สื่อ & การติดต่อ', icon: '📱' },
+            'grammar': { name: '🧩 ไวยากรณ์ คำเชื่อม & การบอกสภาพ', icon: '🧩' }
+        };
+
+        let currentBankCategory = 'all';
+
+        function plainText(t) {
+            const d = document.createElement('div');
+            d.innerHTML = t;
+            return d.textContent;
+        }
+
+        function speakWord(text) {
+            if (!window.speechSynthesis) return;
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(plainText(text));
+            u.lang = 'zh-CN';
+            u.rate = 0.9;
+            const savedName = localStorage.getItem("preferred_voice");
+            if (savedName) {
+                const v = window.speechSynthesis.getVoices().find(x => x.name === savedName);
+                if (v) u.voice = v;
+            }
+            window.speechSynthesis.speak(u);
+        }
+
+        function getAllMasteredWordsSet() {
+            let mastered = new Set();
+            try {
+                for (let i = 1; i <= 20; i++) {
+                    let m = JSON.parse(localStorage.getItem(`hsk4_day${i}_mastered`) || '[]');
+                    m.forEach(x => mastered.add(x));
+                }
+                let m61 = JSON.parse(localStorage.getItem('hsk4_day6_1_mastered') || '[]');
+                m61.forEach(x => mastered.add(x));
+            } catch(e) {}
+            return mastered;
+        }
+
+        function toggleBankMaster(hanzi, day) {
+            const dayKey = `hsk4_day${day.replace('.', '_')}_mastered`;
+            let current = new Set(JSON.parse(localStorage.getItem(dayKey) || '[]'));
+            if (current.has(hanzi)) {
+                current.delete(hanzi);
+            } else {
+                current.add(hanzi);
+            }
+            localStorage.setItem(dayKey, JSON.stringify(Array.from(current)));
+            
+            // Sync with Supabase cloud if available
+            if (typeof syncToCloud === 'function') syncToCloud();
+            
+            updateMasteredCounts();
+            renderBankCategories();
+            populateBankDaySelect();
+            filterVocabBank();
+            filterVocabBank();
+        }
+
+        
+        function initVocabBank() {
+            renderBankCategories();
+            populateBankDaySelect();
+            filterVocabBank();
+        }
+
+        function renderBankCategories() {
+            const container = document.getElementById('bankCategories');
+            if (!container) return;
+            
+            // Calculate counts per category
+            const counts = {};
+            Object.keys(VOCAB_CATEGORIES).forEach(k => counts[k] = 0);
+            allVocab.forEach(item => {
+                counts['all']++;
+                const c = item.cat || 'grammar';
+                if (counts[c] !== undefined) counts[c]++;
+                else counts['grammar']++;
+            });
+
+            container.innerHTML = Object.entries(VOCAB_CATEGORIES).map(([key, cat]) => `
+                <button class="bank-cat-btn ${key === currentBankCategory ? 'active' : ''}" onclick="selectBankCategory('${key}')">
+                    <span>${cat.name}</span>
+                    <span class="bank-cat-count">${counts[key] || 0}</span>
+                </button>
+            `).join('');
+        }
+
+        function selectBankCategory(catKey) {
+            currentBankCategory = catKey;
+            renderBankCategories();
+            filterVocabBank();
+        }
+
+        function populateBankDaySelect() {
+            const select = document.getElementById('bankDaySelect');
+            if (!select) return;
+            
+            // Find unique days from allVocab dynamically!
+            const uniqueDays = [...new Set(allVocab.map(x => String(x.day)))].sort((a,b) => parseFloat(a) - parseFloat(b));
+            
+            const currentVal = select.value;
+            select.innerHTML = '<option value="all">ทุกบทเรียน (รวมทุกวัน)</option>' + 
+                uniqueDays.map(d => `<option value="${d}">Day ${d}</option>`).join('');
+            if (currentVal) select.value = currentVal;
+        }
+
+        function toggleBankDisplay() {
+            const grid = document.getElementById('bankVocabGrid');
+            if (!grid) return;
+            const showPinyin = document.getElementById('bankShowPinyin').checked;
+            const showMeaning = document.getElementById('bankShowMeaning').checked;
+            
+            grid.classList.toggle('bank-pinyin-hidden', !showPinyin);
+            grid.classList.toggle('bank-meaning-hidden', !showMeaning);
+        }
+
+        function filterVocabBank() {
+            const query = (document.getElementById('bankSearchInput')?.value || '').trim().toLowerCase();
+            const selectedDay = document.getElementById('bankDaySelect')?.value || 'all';
+            const selectedStatus = document.getElementById('bankStatusSelect')?.value || 'all';
+            const masteredSet = getAllMasteredWordsSet();
+            
+            const filtered = allVocab.filter(item => {
+                // Category filter
+                const itemCat = item.cat || 'grammar';
+                if (currentBankCategory !== 'all' && itemCat !== currentBankCategory) {
+                    return false;
+                }
+                
+                // Day filter
+                if (selectedDay !== 'all' && String(item.day) !== selectedDay) {
+                    return false;
+                }
+                
+                // Status filter
+                const isMastered = masteredSet.has(item.h);
+                if (selectedStatus === 'mastered' && !isMastered) return false;
+                if (selectedStatus === 'unmastered' && isMastered) return false;
+                
+                // Search query
+                if (query) {
+                    const match = item.h.toLowerCase().includes(query) ||
+                                  item.p.toLowerCase().includes(query) ||
+                                  item.m.toLowerCase().includes(query) ||
+                                  (item.coll && item.coll.toLowerCase().includes(query));
+                    if (!match) return false;
+                }
+                
+                return true;
+            });
+
+            // Update stats
+            const countElem = document.getElementById('bankFilteredCount');
+            if (countElem) countElem.textContent = filtered.length;
+            
+            const masteredCountElem = document.getElementById('bankMasteredCount');
+            if (masteredCountElem) {
+                const masteredInFiltered = filtered.filter(x => masteredSet.has(x.h)).length;
+                masteredCountElem.textContent = masteredInFiltered;
+            }
+
+            const grid = document.getElementById('bankVocabGrid');
+            const empty = document.getElementById('bankEmptyState');
+            if (!grid) return;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                if (empty) empty.style.display = 'block';
+                return;
+            }
+
+            if (empty) empty.style.display = 'none';
+
+            grid.innerHTML = filtered.map(item => {
+                const isMastered = masteredSet.has(item.h);
+                const itemCat = item.cat || 'grammar';
+                const catObj = VOCAB_CATEGORIES[itemCat] || VOCAB_CATEGORIES['grammar'];
+                const shortCatName = catObj.name.split(' ')[1] || catObj.name;
+                
+                return `
+                    <div class="bank-card ${isMastered ? 'mastered' : ''}">
+                        <div class="bank-card-top">
+                            <div class="bank-card-badges">
+                                <span class="bank-origin-badge">📍 มาจาก Day ${item.day}</span>
+                                <span class="bank-cat-badge">${catObj.icon} ${shortCatName}</span>
+                            </div>
+                            <button class="bank-master-btn ${isMastered ? 'done' : ''}" 
+                                    title="${isMastered ? '✓ จำได้แล้ว (คลิกเพื่อทบทวนใหม่)' : 'คลิกเพื่อทำเครื่องหมายว่าจำได้'}" 
+                                    onclick="toggleBankMaster('${item.h}', '${item.day}')">
+                                ${isMastered ? '✓ จำได้แล้ว' : '○ ฝึกจำ'}
+                            </button>
+                        </div>
+                        <div class="bank-card-body" onclick="speakWord('${item.h}')" title="คลิกที่นี่เพื่อฟังการออกเสียง">
+                            <div class="bank-hanzi">${item.h}</div>
+                            <div class="bank-pinyin">${item.p}</div>
+                            <div class="bank-meaning">${item.m}</div>
+                            ${item.coll ? `<div class="bank-coll"><b>ใช้คู่กับ:</b> ${item.coll}</div>` : ''}
+                        </div>
+                        <div class="bank-card-actions">
+                            <button class="bank-action-btn" onclick="speakWord('${item.h}')" title="ฟังเสียงอ่าน">
+                                🔊 ฟังเสียง
+                            </button>
+                            <a href="DAY${item.day}/HSK4_L${item.day}_SuperChinese.html?search=${encodeURIComponent(item.h)}" class="bank-action-btn jump-btn" title="เปิดดูประโยคตัวอย่างและเรื่องสั้นใน Day ${item.day}">
+                                📖 ดูในบทเรียน Day ${item.day} ↗
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            toggleBankDisplay();
         }
 
         function handleSearch() {
@@ -1083,13 +1818,20 @@
             document.getElementById('themeBtn').textContent = isDark ? '☀️ สว่าง' : '🌙 ราตรี';
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        function onPageReady() {
             if (localStorage.getItem('superchinese_theme') === 'dark') {
                 document.body.classList.add('dark-theme');
                 document.getElementById('themeBtn').textContent = '☀️ สว่าง';
             }
             updateMasteredCounts();
-        });
+            initVocabBank();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', onPageReady);
+        } else {
+            onPageReady();
+        }
     </script>
 </body>
 </html>
