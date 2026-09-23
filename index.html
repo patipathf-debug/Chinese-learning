@@ -857,6 +857,7 @@
     <header>
         <div class="header-controls">
             <a href="#vocabBank" class="theme-btn" style="background:rgba(212,175,55,0.22); color:var(--gold-dark); border-color:var(--gold); font-weight:700; text-decoration:none;">📚 คลังคำศัพท์รวม</a>
+            <a href="EXAM_DAY1_10/HSK4_Exam_Day1_10.html" class="theme-btn" style="background:linear-gradient(135deg,var(--plum),var(--plum-light)); color:#fff; font-weight:700; text-decoration:none; border-color:var(--gold);">🔥 ข้อสอบรวม Day 1-10</a>
             <a href="GAME/vocab_game.html" class="theme-btn" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold)); color:#120c15; font-weight:700; text-decoration:none;">🎮 เล่นเกมสปีด 10 วิ</a>
             <button id="syncBadgeBtn" class="theme-btn" onclick="promptChangeUserKey()" title="กดเพื่อเปลี่ยนชื่อผู้ใช้ซิงก์ข้อมูลข้ามเครื่อง">☁️ ซิงก์ Cloud (patipat)</button>
 <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">🌙 ราตรี</button>
@@ -870,12 +871,12 @@
         <!-- Stats Overview -->
         <div class="stats-overview">
             <div class="stat-card">
-                <strong>9 บท</strong>
+                <strong>10 บท</strong>
                 <span>บทเรียนสะสม</span>
             </div>
             <div class="stat-card">
-                <strong id="totalVocabCount">209</strong>
-                <span>209 คำศัพท์ผ่านการคัดสรร</span>
+                <strong id="totalVocabCount">233</strong>
+                <span>233 คำศัพท์ผ่านการคัดสรร</span>
             </div>
             <div class="stat-card">
                 <strong id="masteredCount">0</strong>
@@ -886,7 +887,7 @@
         <!-- Overall Progress Card -->
         <div class="overall-progress-card">
             <div class="progress-header">
-                <h3>🏆 ความคืบหน้าการเรียนรวม HSK4 (Day 1–7 + Day 6.1)</h3>
+                <h3>🏆 ความคืบหน้าการเรียนรวม HSK4 (Day 1–10)</h3>
                 <span id="overallProgressText" style="font-weight: 700; color: var(--plum);">0%</span>
             </div>
             <div class="progress-track">
@@ -950,7 +951,7 @@
         <!-- Section Separator -->
         <div class="lesson-directory-heading" style="margin: 45px 0 25px; border-top: 2px dashed var(--line); padding-top: 32px;">
             <span class="day-badge" style="background:var(--plum-light); color:#fff; border:none;">LESSON DIRECTORY</span>
-            <h2 style="font-size: 1.7rem; color: var(--plum); font-family: 'Noto Serif SC', serif; margin-top: 5px;">📖 เข้าห้องเรียนรายวัน (Daily Lessons Day 1–9)</h2>
+            <h2 style="font-size: 1.7rem; color: var(--plum); font-family: 'Noto Serif SC', serif; margin-top: 5px;">📖 เข้าห้องเรียนรายวัน (Daily Lessons Day 1–10)</h2>
             <p style="color: var(--muted); font-size: 0.92rem; margin-top: 4px;">คลิกเลือกบทเพื่อเข้าเรียนบทเรียนเต็ม: คำศัพท์ละเอียด, ไวยากรณ์ 5 จุด, เรื่องสั้น 3 ระดับ และแบบทดสอบประจำบท</p>
         </div>
 
@@ -1290,7 +1291,41 @@
                 </div>
             </div>
 
-            <!-- Exam Card -->
+            
+            <!-- Day 10 Card -->
+            <div class="day-card">
+                <span class="day-badge">Day 10</span>
+                <h3 class="day-title">职场与成长</h3>
+                <p class="day-th">ชีวิตการทำงาน รายได้ และการพัฒนาสู่ความเป็นมืออาชีพ</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (24 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง (เงินเดือน สัมภาษณ์ บริหาร)</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">工资</span>
+                    <span class="tag">能力强</span>
+                    <span class="tag">只要…就…</span>
+                    <span class="tag">房租</span>
+                    <span class="tag">培训</span>
+                    <span class="tag">专业</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d10ProgressLabel">0 / 24 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d10ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY10/HSK4_L10_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 10</a>
+                    <a href="DAY10/HSK4_L10_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
+            <!-- Exam Card 1-5 -->
             <div class="day-card exam-card">
                 <span class="day-badge exam-badge">EXAM DAY 1-5</span>
                 <h3 class="day-title">HSK4 Combined Test</h3>
@@ -1302,6 +1337,22 @@
                 </div>
                 <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
                     <a href="EXAM_DAY1_5/HSK4_Exam_Day1_5.html" class="view-details-btn" style="flex:1; background:var(--gold-dark); color:#fff; border-color:var(--gold-dark);">🔥 ทำข้อสอบรวม DAY 1-5 ↗</a>
+                </div>
+            </div>
+
+            <!-- Exam Card 1-10 -->
+            <div class="day-card exam-card" style="border: 2px solid var(--gold); background: linear-gradient(135deg, var(--card), rgba(212,175,55,0.08));">
+                <span class="day-badge exam-badge" style="background:var(--gold); color:#120c15;">EXAM DAY 1-10</span>
+                <h3 class="day-title">HSK4 Grand Combined Test</h3>
+                <p class="day-th">แบบทดสอบรวมชุดใหญ่ (Day 1 - 10)</p>
+                <div class="day-words">
+                    <span>📝 ข้อสอบ 46 ข้อ (คำศัพท์, ไวยากรณ์, เติมคำ Word Bank)</span>
+                    <span>📖 3 เรื่องอ่านจับใจความ HSK 4 พร้อมเฉลยละเอียด</span>
+                    <span>🤖 ระบบ Gemini AI ตรวจข้อเขียนภาษาจีน</span>
+                    <span>💡 เฉลยละเอียดภาษาไทย "ให้เข้าใจนะ" ครอบคลุม 233 คำ</span>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="EXAM_DAY1_10/HSK4_Exam_Day1_10.html" class="view-details-btn" style="flex:1; background:linear-gradient(135deg,var(--plum),var(--plum-light)); color:#fff; border-color:var(--plum); font-weight:700;">🌟 ลุยข้อสอบรวม DAY 1-10 (46 ข้อ) ↗</a>
                 </div>
             </div>
 
@@ -1523,7 +1574,32 @@
             {h:'短信',p:'duǎnxìn',m:'ข้อความสั้น / SMS',coll:'发短信、收短信',day:'9',cat:'tech'},
             {h:'丢',p:'diū',m:'หาย / ทำหาย / โยนทิ้ง',coll:'钱包丢了、钥匙丢了',day:'9',cat:'life'},
             {h:'挂失',p:'guàshī',m:'แจ้งหาย / แจ้งอายัด (บัตร, เอกสาร)',coll:'办理挂失、电话挂失',day:'9',cat:'finance'},
-            {h:'麻烦',p:'máfan',m:'ยุ่งยาก / ลำบาก / รบกวน',coll:'真麻烦、麻烦你',day:'9',cat:'grammar'}
+            {h:'麻烦',p:'máfan',m:'ยุ่งยาก / ลำบาก / รบกวน',coll:'真麻烦、麻烦你',day:'9',cat:'life'},
+
+            {h:'工资',p:'gōngzī',m:'เงินเดือน',coll:'发工资、领工资',day:'10',cat:'finance'},
+            {h:'能力',p:'nénglì',m:'ความสามารถ / ศักยภาพ',coll:'工作能力、能力很强',day:'10',cat:'work'},
+            {h:'强',p:'qiáng',m:'แข็งแกร่ง / เก่ง',coll:'能力强、强大',day:'10',cat:'work'},
+            {h:'加班',p:'jiābān',m:'ทำงานล่วงเวลา / ทำโอที',coll:'经常加班、加班费',day:'10',cat:'work'},
+            {h:'剩',p:'shèng',m:'เหลือ / คงเหลือ',coll:'剩下、还剩',day:'10',cat:'finance'},
+            {h:'付',p:'fù',m:'จ่าย / ชำระ (เงิน)',coll:'付钱、付房租',day:'10',cat:'finance'},
+            {h:'房租',p:'fángzū',m:'ค่าเช่าห้อง / ค่าเช่าบ้าน',coll:'交房租、付房租',day:'10',cat:'finance'},
+            {h:'百分之',p:'bǎifēnzhī',m:'ร้อยละ / เปอร์เซ็นต์',coll:'百分之三十、百分之百',day:'10',cat:'grammar'},
+            {h:'只要……就……',p:'zhǐyào... jiù...',m:'ขอเพียงแค่...ก็...',coll:'只要坚持就、只要努力就',day:'10',cat:'grammar'},
+            {h:'用来',p:'yònglái',m:'ใช้สำหรับ / ใช้เพื่อ',coll:'用来做什么、用来付房租',day:'10',cat:'grammar'},
+            {h:'收入',p:'shōurù',m:'รายได้',coll:'收入稳定、高收入',day:'10',cat:'finance'},
+            {h:'别的',p:'biéde',m:'อื่นๆ / อย่างอื่น',coll:'别的人、别的事情',day:'10',cat:'grammar'},
+            {h:'培训',p:'péixùn',m:'ฝึกอบรม / การอบรม',coll:'参加培训、员工培训',day:'10',cat:'work'},
+            {h:'管理',p:'guǎnlǐ',m:'จัดการ / บริหาร',coll:'管理团队、时间管理',day:'10',cat:'work'},
+            {h:'专业',p:'zhuānyè',m:'สาขาวิชาเอก / เชี่ยวชาญ-มืออาชีพ',coll:'大学专业、非常专业',day:'10',cat:'work'},
+            {h:'知识',p:'zhīshi',m:'ความรู้',coll:'专业知识、丰富知识',day:'10',cat:'work'},
+            {h:'冷知识',p:'lěngzhīshi',m:'เกร็ดความรู้ / สาระรอบตัว',coll:'有趣的冷知识',day:'10',cat:'tech'},
+            {h:'存',p:'cún',m:'ฝาก (เงิน) / เก็บ / ออม',coll:'存钱、存入银行',day:'10',cat:'finance'},
+            {h:'律师',p:'lǜshī',m:'ทนายความ',coll:'著名律师、请律师',day:'10',cat:'work'},
+            {h:'电视台',p:'diànshìtái',m:'สถานีโทรทัศน์',coll:'电视台记者、在电视台工作',day:'10',cat:'tech'},
+            {h:'记者',p:'jìzhě',m:'นักข่าว / ผู้สื่อข่าว',coll:'新闻记者、记者采访',day:'10',cat:'work'},
+            {h:'采访',p:'cǎifǎng',m:'สัมภาษณ์ (ข่าว, บุคคล)',coll:'接受采访、进行采访',day:'10',cat:'work'},
+            {h:'文件',p:'wénjiàn',m:'เอกสาร / ไฟล์งาน',coll:'打印文件、复印文件',day:'10',cat:'work'},
+            {h:'复印',p:'fùyìn',m:'ถ่ายเอกสาร',coll:'复印文件、复印机',day:'10',cat:'work'}
         ];
 
         function updateMasteredCounts() {
@@ -1541,7 +1617,7 @@
             document.getElementById('masteredCount').textContent = mastered.size;
 
             let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33, d6_1Total = 12, d7Total = 18;
-            let totalVocab = 209;
+            let totalVocab = 233;
 
             let d1M = allVocab.filter(x => String(x.day) === '1' && mastered.has(x.h)).length;
             let d2M = allVocab.filter(x => String(x.day) === '2' && mastered.has(x.h)).length;
@@ -1562,6 +1638,12 @@
             if(document.getElementById('d9ProgressLabel')) {
                 document.getElementById('d9ProgressLabel').textContent = `${d9M} / 18 คำ`;
                 document.getElementById('d9ProgressFill').style.width = `${(d9M/18)*100}%`;
+            }
+
+            let d10M = allVocab.filter(x => String(x.day) === '10' && mastered.has(x.h)).length;
+            if(document.getElementById('d10ProgressLabel')) {
+                document.getElementById('d10ProgressLabel').textContent = `${d10M} / 24 คำ`;
+                document.getElementById('d10ProgressFill').style.width = `${(d10M/24)*100}%`;
             }
 
             if(document.getElementById('d6_1ProgressLabel')) {

@@ -30,7 +30,7 @@ async function syncToCloud() {
     // Collect all mastered words across days
     let allMastered = new Set();
     try {
-        for (let i = 1; i <= 9; i++) {
+        for (let i = 1; i <= 10; i++) {
             let m = JSON.parse(localStorage.getItem(`hsk4_day${i}_mastered`) || '[]');
             m.forEach(x => allMastered.add(x));
         }
@@ -80,7 +80,7 @@ async function syncFromCloud() {
                 // Group mastered words by day if possible or store globally
                 let masteredSet = new Set(data.mastered_words);
                 // Save to localStorage
-                for (let i = 1; i <= 9; i++) {
+                for (let i = 1; i <= 10; i++) {
                     let current = JSON.parse(localStorage.getItem(`hsk4_day${i}_mastered`) || '[]');
                     let combined = new Set([...current, ...data.mastered_words]);
                     localStorage.setItem(`hsk4_day${i}_mastered`, JSON.stringify(Array.from(combined)));
