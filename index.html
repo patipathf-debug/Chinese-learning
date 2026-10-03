@@ -88,11 +88,12 @@
         }
 
         .header-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            position: static;
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 20px;
         }
 
         .theme-btn {
@@ -120,9 +121,13 @@
 
         .stats-overview { order: 1; }
         .overall-progress-card { order: 2; }
-        .lesson-directory-heading { order: 3; }
-        .days-grid { order: 4; }
-        .vocab-bank-section { order: 5; margin-top: 46px; }
+        .memory-lab-callout { order: 3; margin: 0 0 30px; padding: 24px; border-radius: 18px; background: linear-gradient(120deg, var(--plum), var(--plum-light)); color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; box-shadow: var(--shadow); }
+        .memory-lab-callout h2 { margin: 0 0 5px; font-size: 1.35rem; }
+        .memory-lab-callout p { margin: 0; color: #f5eaf0; }
+        .memory-lab-callout a { display: inline-block; padding: 11px 17px; border-radius: 11px; background: var(--gold); color: #26172a; font-weight: 700; text-decoration: none; }
+        .lesson-directory-heading { order: 4; }
+        .days-grid { order: 5; }
+        .vocab-bank-section { order: 6; margin-top: 46px; }
 
         .stats-overview {
             display: grid;
@@ -849,7 +854,8 @@
         }
 
     </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2"></script>
+<script src="GAME/vocab_data.js"></script>
 <script src="supabase_sync.js"></script>
 </head>
 <body>
@@ -859,6 +865,7 @@
             <a href="#vocabBank" class="theme-btn" style="background:rgba(212,175,55,0.22); color:var(--gold-dark); border-color:var(--gold); font-weight:700; text-decoration:none;">📚 คลังคำศัพท์รวม</a>
             <a href="EXAM_DAY1_10/HSK4_Exam_Day1_10.html" class="theme-btn" style="background:linear-gradient(135deg,var(--plum),var(--plum-light)); color:#fff; font-weight:700; text-decoration:none; border-color:var(--gold);">🔥 ข้อสอบรวม Day 1-10</a>
             <a href="GAME/vocab_game.html" class="theme-btn" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold)); color:#120c15; font-weight:700; text-decoration:none;">🎮 เล่นเกมสปีด 10 วิ</a>
+            <a href="GAME/memory_lab.html" class="theme-btn" style="background:#fff; color:#4a1d2f; font-weight:700; text-decoration:none;">🧠 ห้องฝึกจำศัพท์</a>
             <button id="syncBadgeBtn" class="theme-btn" onclick="promptChangeUserKey()" title="กดเพื่อเปลี่ยนชื่อผู้ใช้ซิงก์ข้อมูลข้ามเครื่อง">☁️ ซิงก์ Cloud (patipat)</button>
 <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">🌙 ราตรี</button>
         </div>
@@ -871,12 +878,12 @@
         <!-- Stats Overview -->
         <div class="stats-overview">
             <div class="stat-card">
-                <strong>10 บท</strong>
+                <strong>11 บท</strong>
                 <span>บทเรียนสะสม</span>
             </div>
             <div class="stat-card">
-                <strong id="totalVocabCount">233</strong>
-                <span>233 คำศัพท์ผ่านการคัดสรร</span>
+                <strong id="totalVocabCount">261</strong>
+                <span>261 คำศัพท์ผ่านการคัดสรร</span>
             </div>
             <div class="stat-card">
                 <strong id="masteredCount">0</strong>
@@ -887,13 +894,18 @@
         <!-- Overall Progress Card -->
         <div class="overall-progress-card">
             <div class="progress-header">
-                <h3>🏆 ความคืบหน้าการเรียนรวม HSK4 (Day 1–10)</h3>
+                <h3>🏆 ความคืบหน้าการเรียนรวม HSK4 (Day 1–11)</h3>
                 <span id="overallProgressText" style="font-weight: 700; color: var(--plum);">0%</span>
             </div>
             <div class="progress-track">
                 <div id="overallProgressFill" class="progress-fill"></div>
             </div>
         </div>
+
+        <section class="memory-lab-callout" aria-label="เกมฝึกจำคำศัพท์">
+            <div><h2>🧠 ฝึกจำศัพท์แบบฟังและเรียกคืน</h2><p>เลือกบทหรือรวมทุกบท · จีน→ไทย · ฟัง→จีน · ไทย→จีน · ทวนคำที่พลาดตามรอบ</p></div>
+            <a href="GAME/memory_lab.html">เข้าห้องฝึกจำศัพท์ →</a>
+        </section>
 
         <!-- Vocabulary Bank Section (รวมศัพท์ทุกบท + หมวดหมู่ & ช่องรวม) -->
         <section class="vocab-bank-section" id="vocabBank">
@@ -1325,6 +1337,39 @@
                 </div>
             </div>
 
+            <!-- Day 11 Card -->
+            <div class="day-card">
+                <span class="day-badge">DAY 11</span>
+                <h3 class="day-title">气候、生活与健康</h3>
+                <p class="day-th">สภาพอากาศ การใช้ชีวิต และสุขภาพ (28 คำ)</p>
+                <div class="day-words">
+                    <span>📚 HSK4 Vocab (28 คำ)</span>
+                    <span>📖 เรื่องสั้น 3 เรื่อง (เมืองฤดูใบไม้ผลิ พบแพทย์ อยู่เคียงข้าง)</span>
+                    <span>📝 แบบทดสอบประจำบท</span>
+                </div>
+                <div class="tags-preview">
+                    <span class="tag">四季如春</span>
+                    <span class="tag">按时</span>
+                    <span class="tag">陪伴</span>
+                    <span class="tag">气候</span>
+                    <span class="tag">适应</span>
+                    <span class="tag">大夫</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">
+                        <span>ความคืบหน้าคำศัพท์</span>
+                        <span id="d11ProgressLabel">0 / 28 คำ</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="d11ProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                    <a href="DAY11/HSK4_L11_SuperChinese.html" class="view-details-btn" style="flex:1;">📚 เข้าเรียน Day 11</a>
+                    <a href="DAY11/HSK4_L11_SuperChinese.html#practice" class="view-details-btn" style="flex:1; background:var(--plum); color:#fff; border-color:var(--plum);">📝 ทำแบบทดสอบประจำบท ↗</a>
+                </div>
+            </div>
+
             <!-- Exam Card 1-5 -->
             <div class="day-card exam-card">
                 <span class="day-badge exam-badge">EXAM DAY 1-5</span>
@@ -1599,51 +1644,77 @@
             {h:'记者',p:'jìzhě',m:'นักข่าว / ผู้สื่อข่าว',coll:'新闻记者、记者采访',day:'10',cat:'work'},
             {h:'采访',p:'cǎifǎng',m:'สัมภาษณ์ (ข่าว, บุคคล)',coll:'接受采访、进行采访',day:'10',cat:'work'},
             {h:'文件',p:'wénjiàn',m:'เอกสาร / ไฟล์งาน',coll:'打印文件、复印文件',day:'10',cat:'work'},
-            {h:'复印',p:'fùyìn',m:'ถ่ายเอกสาร',coll:'复印文件、复印机',day:'10',cat:'work'}
+            {h:'复印',p:'fùyìn',m:'ถ่ายเอกสาร',coll:'复印文件、复印机',day:'10',cat:'work'},
+            {h:'亲人',p:'qīnrén',m:'ญาติ / คนในครอบครัว',coll:'身边亲人、挚爱亲人',day:'11',cat:'life'},
+            {h:'身边',p:'shēnbiān',m:'ข้างกาย / ข้างตัว',coll:'在身边、留在身边',day:'11',cat:'life'},
+            {h:'陪伴',p:'péibàn',m:'อยู่เป็นเพื่อน / เคียงข้าง',coll:'互相陪伴、默默陪伴',day:'11',cat:'life'},
+            {h:'稍',p:'shāo',m:'เล็กน้อย / สักครู่',coll:'稍等、稍后、稍微',day:'11',cat:'life'},
+            {h:'得',p:'děi',m:'ต้อง / จำเป็นต้อง',coll:'我得走了、得注意',day:'11',cat:'grammar'},
+            {h:'过程',p:'guòchéng',m:'กระบวนการ / ขั้นตอน',coll:'学习过程、发展过程',day:'11',cat:'life'},
+            {h:'空气',p:'kōngqì',m:'อากาศ',coll:'新鲜空气、呼吸空气',day:'11',cat:'life'},
+            {h:'发型',p:'fàxíng',m:'ทรงผม',coll:'新发型、做发型',day:'11',cat:'life'},
+            {h:'气候',p:'qìhòu',m:'สภาพภูมิอากาศ / ภูมิอากาศ',coll:'气候宜人、气候干燥',day:'11',cat:'life'},
+            {h:'四季如春',p:'sìjì rú chūn',m:'อากาศอบอุ่นสบายตลอดปี',coll:'城市四季如春、气候宜人',day:'11',cat:'life'},
+            {h:'温暖',p:'wēnnuǎn',m:'อบอุ่น',coll:'阳光温暖、感到温暖',day:'11',cat:'emotion'},
+            {h:'缺少',p:'quēshǎo',m:'ขาด / ขาดแคลน',coll:'缺少经验、缺少阳光',day:'11',cat:'life'},
+            {h:'植物',p:'zhíwù',m:'พืช',coll:'绿色植物、养植物',day:'11',cat:'life'},
+            {h:'生长',p:'shēngzhǎng',m:'เจริญเติบโต',coll:'健康生长、生长环境',day:'11',cat:'life'},
+            {h:'阳光',p:'yángguāng',m:'แสงแดด',coll:'充足阳光、温暖阳光',day:'11',cat:'life'},
+            {h:'适应',p:'shìyìng',m:'ปรับตัว / ปรับตัวให้เข้ากับ',coll:'适应环境、适应气候',day:'11',cat:'life'},
+            {h:'打针',p:'dǎzhēn',m:'ฉีดยา',coll:'害怕打针、给病人打针',day:'11',cat:'life'},
+            {h:'护士',p:'hùshi',m:'พยาบาล',coll:'护士长、耐心的护士',day:'11',cat:'work'},
+            {h:'咳嗽',p:'késou',m:'ไอ',coll:'咳嗽厉害、感冒咳嗽',day:'11',cat:'life'},
+            {h:'力气',p:'lìqi',m:'แรง / พละกำลัง',coll:'没力气、有力气',day:'11',cat:'life'},
+            {h:'流感',p:'liúgǎn',m:'ไข้หวัดใหญ่',coll:'得流感、流感病毒',day:'11',cat:'life'},
+            {h:'体温',p:'tǐwēn',m:'อุณหภูมิร่างกาย',coll:'量体温、体温正常',day:'11',cat:'life'},
+            {h:'量',p:'liáng',m:'วัด (อุณหภูมิ/ขนาด)',coll:'量体温、量身高',day:'11',cat:'life'},
+            {h:'度',p:'dù',m:'องศา',coll:'三十八度、三十度',day:'11',cat:'life'},
+            {h:'大夫',p:'dàifu',m:'คุณหมอ / แพทย์',coll:'看大夫、大夫建议',day:'11',cat:'work'},
+            {h:'窗户',p:'chuānghu',m:'หน้าต่าง',coll:'开窗户、关窗户',day:'11',cat:'life'},
+            {h:'空气',p:'kōngqì',m:'อากาศ (ระบายอากาศ)',coll:'打开窗户、流进新鲜空气',day:'11',cat:'life'},
+            {h:'按时',p:'ànshí',m:'ตรงเวลา / ตามเวลา',coll:'按时吃药、按时完成',day:'11',cat:'life'}
         ];
 
         function updateMasteredCounts() {
-            let mastered = new Set();
-            try {
-                let keys = [];
-            for (let i = 1; i <= 20; i++) keys.push(`hsk4_day${i}_mastered`);
-            keys.push('hsk4_day6_1_mastered');
-            keys.forEach(k => {
-                    let m = JSON.parse(localStorage.getItem(k) || '[]');
-                    m.forEach(x => mastered.add(x));
-                });
-            } catch(e){}
-
-            document.getElementById('masteredCount').textContent = mastered.size;
+            const mastered = getMasteredByDay();
+            const learnedCount = allVocab.filter(item => isBankWordMastered(item, mastered)).length;
+            document.getElementById('masteredCount').textContent = learnedCount;
 
             let d1Total = 30, d2Total = 21, d3Total = 27, d4Total = 15, d5Total = 23, d6Total = 33, d6_1Total = 12, d7Total = 18;
-            let totalVocab = 233;
+            let totalVocab = allVocab.length;
 
-            let d1M = allVocab.filter(x => String(x.day) === '1' && mastered.has(x.h)).length;
-            let d2M = allVocab.filter(x => String(x.day) === '2' && mastered.has(x.h)).length;
-            let d3M = allVocab.filter(x => String(x.day) === '3' && mastered.has(x.h)).length;
-            let d4M = allVocab.filter(x => String(x.day) === '4' && mastered.has(x.h)).length;
-            let d5M = allVocab.filter(x => String(x.day) === '5' && mastered.has(x.h)).length;
-            let d6M = allVocab.filter(x => String(x.day) === '6' && mastered.has(x.h)).length;
-            let d6_1M = allVocab.filter(x => String(x.day) === '6.1' && mastered.has(x.h)).length;
-            let d7M = allVocab.filter(x => String(x.day) === '7' && mastered.has(x.h)).length;
-            let d8M = allVocab.filter(x => String(x.day) === '8' && mastered.has(x.h)).length;
+            let d1M = allVocab.filter(x => String(x.day) === '1' && isBankWordMastered(x, mastered)).length;
+            let d2M = allVocab.filter(x => String(x.day) === '2' && isBankWordMastered(x, mastered)).length;
+            let d3M = allVocab.filter(x => String(x.day) === '3' && isBankWordMastered(x, mastered)).length;
+            let d4M = allVocab.filter(x => String(x.day) === '4' && isBankWordMastered(x, mastered)).length;
+            let d5M = allVocab.filter(x => String(x.day) === '5' && isBankWordMastered(x, mastered)).length;
+            let d6M = allVocab.filter(x => String(x.day) === '6' && isBankWordMastered(x, mastered)).length;
+            let d6_1M = allVocab.filter(x => String(x.day) === '6.1' && isBankWordMastered(x, mastered)).length;
+            let d7M = allVocab.filter(x => String(x.day) === '7' && isBankWordMastered(x, mastered)).length;
+            let d8M = allVocab.filter(x => String(x.day) === '8' && isBankWordMastered(x, mastered)).length;
 
             if(document.getElementById('d8ProgressLabel')) {
                 document.getElementById('d8ProgressLabel').textContent = `${d8M} / 12 คำ`;
                 document.getElementById('d8ProgressFill').style.width = `${(d8M/12)*100}%`;
             }
 
-            let d9M = allVocab.filter(x => String(x.day) === '9' && mastered.has(x.h)).length;
+            let d9M = allVocab.filter(x => String(x.day) === '9' && isBankWordMastered(x, mastered)).length;
             if(document.getElementById('d9ProgressLabel')) {
                 document.getElementById('d9ProgressLabel').textContent = `${d9M} / 18 คำ`;
                 document.getElementById('d9ProgressFill').style.width = `${(d9M/18)*100}%`;
             }
 
-            let d10M = allVocab.filter(x => String(x.day) === '10' && mastered.has(x.h)).length;
+            let d10M = allVocab.filter(x => String(x.day) === '10' && isBankWordMastered(x, mastered)).length;
             if(document.getElementById('d10ProgressLabel')) {
                 document.getElementById('d10ProgressLabel').textContent = `${d10M} / 24 คำ`;
                 document.getElementById('d10ProgressFill').style.width = `${(d10M/24)*100}%`;
+            }
+
+            const d11M = allVocab.filter(x => String(x.day) === '11' && isBankWordMastered(x, mastered)).length;
+            if(document.getElementById('d11ProgressLabel')) {
+                const d11Total = allVocab.filter(x => String(x.day) === '11').length;
+                document.getElementById('d11ProgressLabel').textContent = `${d11M} / ${d11Total} คำ`;
+                document.getElementById('d11ProgressFill').style.width = `${d11M / d11Total * 100}%`;
             }
 
             if(document.getElementById('d6_1ProgressLabel')) {
@@ -1672,7 +1743,7 @@
             document.getElementById('d6ProgressLabel').textContent = `${d6M} / ${d6Total} คำ`;
             document.getElementById('d6ProgressFill').style.width = `${(d6M/d6Total)*100}%`;
 
-            let overallPct = Math.round((mastered.size / totalVocab) * 100);
+            let overallPct = Math.round((learnedCount / totalVocab) * 100);
             document.getElementById('overallProgressText').textContent = `${overallPct}%`;
             document.getElementById('overallProgressFill').style.width = `${overallPct}%`;
         }
@@ -1712,17 +1783,18 @@
             window.speechSynthesis.speak(u);
         }
 
-        function getAllMasteredWordsSet() {
-            let mastered = new Set();
-            try {
-                for (let i = 1; i <= 20; i++) {
-                    let m = JSON.parse(localStorage.getItem(`hsk4_day${i}_mastered`) || '[]');
-                    m.forEach(x => mastered.add(x));
-                }
-                let m61 = JSON.parse(localStorage.getItem('hsk4_day6_1_mastered') || '[]');
-                m61.forEach(x => mastered.add(x));
-            } catch(e) {}
+        function getMasteredByDay() {
+            const days = [...new Set(allVocab.map(item => String(item.day)))];
+            const mastered = new Map();
+            for (const day of days) {
+                const key = `hsk4_day${day.replace('.', '_')}_mastered`;
+                try { mastered.set(day, new Set(JSON.parse(localStorage.getItem(key) || '[]'))); }
+                catch (_) { mastered.set(day, new Set()); }
+            }
             return mastered;
+        }
+        function isBankWordMastered(item, byDay = getMasteredByDay()) {
+            return byDay.get(String(item.day))?.has(item.h) || false;
         }
 
         function toggleBankMaster(hanzi, day) {
@@ -1741,7 +1813,6 @@
             updateMasteredCounts();
             renderBankCategories();
             populateBankDaySelect();
-            filterVocabBank();
             filterVocabBank();
         }
 
@@ -1813,7 +1884,7 @@
             const query = (document.getElementById('bankSearchInput')?.value || '').trim().toLowerCase();
             const selectedDay = document.getElementById('bankDaySelect')?.value || 'all';
             const selectedStatus = document.getElementById('bankStatusSelect')?.value || 'all';
-            const masteredSet = getAllMasteredWordsSet();
+            const masteredByDay = getMasteredByDay();
             
             const filtered = allVocab.filter(item => {
                 // Category filter
@@ -1828,7 +1899,7 @@
                 }
                 
                 // Status filter
-                const isMastered = masteredSet.has(item.h);
+                const isMastered = isBankWordMastered(item, masteredByDay);
                 if (selectedStatus === 'mastered' && !isMastered) return false;
                 if (selectedStatus === 'unmastered' && isMastered) return false;
                 
@@ -1850,7 +1921,7 @@
             
             const masteredCountElem = document.getElementById('bankMasteredCount');
             if (masteredCountElem) {
-                const masteredInFiltered = filtered.filter(x => masteredSet.has(x.h)).length;
+                const masteredInFiltered = filtered.filter(x => isBankWordMastered(x, masteredByDay)).length;
                 masteredCountElem.textContent = masteredInFiltered;
             }
 
@@ -1867,7 +1938,7 @@
             if (empty) empty.style.display = 'none';
 
             const renderBankCard = item => {
-                const isMastered = masteredSet.has(item.h);
+                const isMastered = isBankWordMastered(item, masteredByDay);
                 const itemCat = item.cat || 'grammar';
                 const catObj = VOCAB_CATEGORIES[itemCat] || VOCAB_CATEGORIES['grammar'];
                 const shortCatName = catObj.name.split(' ')[1] || catObj.name;
@@ -1976,6 +2047,7 @@
             }
             updateMasteredCounts();
             initVocabBank();
+            window.addEventListener('hsk4:cloud-updated', () => { updateMasteredCounts(); filterVocabBank(); });
         }
 
         if (document.readyState === 'loading') {
