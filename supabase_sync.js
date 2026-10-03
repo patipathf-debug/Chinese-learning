@@ -133,7 +133,9 @@ async function syncFromCloud() {
     syncPullPromise = (async () => {
         const { data: userData, error: userError } = await supabaseClient.auth.getUser();
         if (userError || !userData?.user) {
-            syncUser = null; cloudReady = false; syncStatus = userError ? 'offline' : 'local'; updateSyncBadgeUI(); return;
+            syncUser = null; cloudReady = false;
+            syncStatus = userError && userError.name !== 'AuthSessionMissingError' ? 'offline' : 'local';
+            updateSyncBadgeUI(); return;
         }
         syncUser = userData.user;
         syncStatus = 'syncing'; updateSyncBadgeUI();
