@@ -1,0 +1,14 @@
+.reading-token{border:0;border-bottom:1px dotted #a68f7b;background:transparent;color:inherit;padding:0 1px;margin:0 1px;font:inherit;line-height:inherit;cursor:pointer;vertical-align:baseline}
+.reading-token:hover,.reading-token:focus-visible{background:#f8e8d4;color:#7b3f2e;border-radius:3px}
+.reading-token.is-new{color:#8a532e;font-weight:700;border-bottom:2px dotted #b4743b}
+.reading-lookup{border:1px solid #e0cbb7;border-radius:18px;background:#fffdfa;color:#302421;box-shadow:0 24px 80px #271d1d55;padding:22px;width:min(430px,calc(100vw - 24px));max-height:85vh;overflow:auto}
+.reading-lookup::backdrop{background:#21191c99}
+.reading-lookup-head{display:flex;justify-content:space-between;gap:14px;align-items:start}
+#readingLookupWord{font:700 2.2rem 'Noto Serif SC',serif;color:#80513d}
+#readingLookupPinyin{color:#8e564e;font-size:1.04rem}
+.reading-lookup-head button{border:1px solid #e0cbb7;border-radius:9px;background:#fff7ef;padding:5px 11px;color:#49342d}
+#readingLookupMeaning{font-weight:700;margin:18px 0 10px}
+#readingLookupUse{background:#f7eee6;padding:11px 13px;border-radius:9px;margin:10px 0}
+#readingLookupExample{border-left:3px solid #b4743b;padding-left:12px;margin:14px 0}
+#readingLookupSpeak{border:1px solid #c7a785;background:#f7eee6;color:#49342d;border-radius:10px;padding:9px 14px}
+@media(max-width:760px){.reading-token{padding:1px 2px;min-height:1.3em}.reading-lookup{padding:17px}}

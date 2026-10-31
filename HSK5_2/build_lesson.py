@@ -50,6 +50,7 @@ swap("เรียนศัพท์ HSK5 ผ่านเรื่องต่�
 swap("SUPERCHINESE · HSK5/01", "SUPERCHINESE · HSK5/02")
 html = html.replace('<a href="../HSK5_2/HSK5_2.html">บทที่ 2 →</a>', '')
 swap('<a href="#story">เรื่องเล่า</a>', '<a href="../HSK5_1/HSK5_1.html">← บทที่ 1</a><a href="#story">เรื่องเล่า</a>')
+swap('<a href="#story">เรื่องเล่า</a>', '<a href="../HSK5_3/HSK5_3.html">บทที่ 3 →</a><a href="#story">เรื่องเล่า</a>')
 
 hero = '''  <header class="hero" id="top"><div class="wrap"><div class="eyebrow">HSK 5 · Chapter 02 · เรื่องต่อเนื่อง</div><h1 lang="zh-CN">两种名单</h1><p class="subtitle">รายชื่อสองชุด</p><p>หลินเสวี่ยยอมรับว่าเธอสร้างบัญชีบางส่วน แต่รายชื่อที่เธอให้หลินอวี่ดูบอกความจริงอีกด้าน ก่อนงานแถลงข่าวจบ สองพี่น้องต้องตัดสินใจว่าจะเปิดเผยข้อมูลที่เปลี่ยนอนาคตของทั้งคู่หรือไม่</p><div class="hero-actions"><a class="btn primary" href="#story">เริ่มอ่านตอนที่ 1 →</a><a class="btn" href="#vocab">ดูศัพท์ใหม่ 23 คำ</a></div><div class="statline"><span><b>23</b> คำใหม่จาก Excel</span><span><b>3</b> ตอนต่อเนื่อง</span><span><b>10</b> ข้อทดสอบ</span></div></div></header>'''
 html, count = re.subn(r'  <header class="hero".*?</header>', lambda _: hero, html, count=1, flags=re.S)

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f0e9">
+  <title>วงคำศัพท์ · HSK5 ทั้งสามบท</title>
+  <meta name="description" content="เล่นกับคำศัพท์ภาษาจีน HSK5 รวมทุกบท กรองหมวด แล้วแตะคำเพื่อดูคำอ่าน ความหมาย และตัวอย่าง">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#302c35;--muted:#6b6470;--line:#ded5d5;--paper:#f6f1eb;--plum:#705979;--mint:#729f95;--gold:#b98c4c;--pink:#cf8e95}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Sarabun,'Noto Sans SC',sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9a6dab;outline-offset:3px}
+    .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px;z-index:100}
+    header{background:#fffaf6;border-bottom:1px solid var(--line)}.top{max-width:1220px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.brand{text-decoration:none;font-weight:700;color:#674765;letter-spacing:.07em}.backlinks{display:flex;gap:14px;flex-wrap:wrap}.backlinks a{text-decoration:none;color:#775f76;font-size:.93rem}.backlinks a:hover{text-decoration:underline}
+    main{max-width:1220px;margin:auto;padding:32px 24px 50px}.intro{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}.eyebrow{color:#967d9a;text-transform:uppercase;letter-spacing:.17em;font-size:.76rem;font-weight:700}.intro h1{font-size:clamp(2rem,5vw,3.9rem);margin:6px 0 5px;line-height:1.2;font-weight:700}.intro p{color:var(--muted);margin:0;max-width:690px;line-height:1.6}.count{background:#fff;border:1px solid var(--line);padding:10px 16px;border-radius:999px;color:#6c5970;white-space:nowrap;font-weight:700}
+    .filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:24px 0 14px}.filters label{display:grid;gap:5px;font-size:.82rem;font-weight:700;color:#736775}.filters select,.filters input{border:1px solid #d9cdd4;border-radius:12px;background:#fffdfa;color:var(--ink);min-height:44px;padding:8px 12px}.filters select{min-width:160px}.filters input{min-width:200px}.filters button,.view-tools button{border:1px solid #d9cdd4;background:#fffdfa;border-radius:12px;min-height:44px;padding:8px 13px;color:#69536d}.filters button:hover,.view-tools button:hover{background:#f4e8ef}.filters .spacer{flex:1}
+    .stage{position:relative;border:1px solid #dfd3df;border-radius:28px;background:radial-gradient(circle at 50% 45%,#fffdf9 0,#f6eef4 45%,#eadfe9 100%);height:min(690px,65vh);min-height:420px;overflow:hidden;box-shadow:0 16px 40px #66566b16;touch-action:none;cursor:grab}.stage.dragging{cursor:grabbing}.stage:before{content:'';position:absolute;inset:0;background-image:radial-gradient(#bdaec155 1px,transparent 1px);background-size:25px 25px;opacity:.46;pointer-events:none}.stage:after{content:'';position:absolute;inset:16px;border:1px solid #ffffffa6;border-radius:19px;pointer-events:none}
+    .word-field{position:absolute;left:50%;top:50%;width:1px;height:1px;transform-origin:0 0;will-change:transform}.word-orb{position:absolute;left:0;top:0;transform:translate(-50%,-50%);border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font-family:'Noto Serif SC',serif;font-weight:700;line-height:1.1;box-shadow:0 8px 20px #71597539,inset 0 1px 3px #ffffff90;transition:box-shadow .2s,filter .2s,opacity .2s;animation:bob var(--duration,5s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);white-space:nowrap;z-index:1}.word-orb:hover,.word-orb:focus-visible{filter:brightness(1.09);box-shadow:0 10px 28px #5a496b70,inset 0 1px 3px #fff;z-index:3}.word-orb[data-chapter="HSK5_1"]{background:linear-gradient(145deg,#8e6f96,#604a73)}.word-orb[data-chapter="HSK5_2"]{background:linear-gradient(145deg,#71ac9f,#467c82)}.word-orb[data-chapter="HSK5_3"]{background:linear-gradient(145deg,#d7988b,#af6d77)}@keyframes bob{from{margin-top:-3px}to{margin-top:4px}}
+    .stage-hint{position:absolute;z-index:5;bottom:18px;left:20px;background:#fffdfad9;border:1px solid #dfd2dc;border-radius:999px;padding:7px 12px;color:#6a5c6d;font-size:.83rem;pointer-events:none}.view-tools{position:absolute;z-index:5;right:17px;bottom:17px;display:flex;gap:7px}.view-tools button{min-width:40px;background:#fffdfae8}
+    .legend{display:flex;gap:17px;flex-wrap:wrap;margin:15px 3px;color:#6f6672;font-size:.9rem}.legend span:before{content:'';display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;background:var(--plum)}.legend span:nth-child(2):before{background:var(--mint)}.legend span:nth-child(3):before{background:var(--pink)}
+    .empty{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fffdfae8;border-radius:12px;padding:12px 18px;color:#655a69;display:none}
+    dialog{border:1px solid #e1d4d8;border-radius:22px;background:#fffdf9;color:var(--ink);padding:23px;width:min(450px,calc(100% - 22px));max-height:90vh;overflow:auto;box-shadow:0 20px 80px #30223b55}dialog::backdrop{background:#26202e99}.detail-head{display:flex;justify-content:space-between;gap:10px}.detail-head h2{font:700 3rem/1.2 'Noto Serif SC',serif;margin:0;color:#6e506f}.detail-head button{border:1px solid #e0d4de;background:#faf2f7;border-radius:9px;padding:3px 10px;height:34px}.pinyin{font-size:1.2rem;color:#b06b73;margin:3px 0}.meaning{font-size:1.12rem;font-weight:700;margin:14px 0}.tagrow{display:flex;gap:7px;flex-wrap:wrap}.tagrow span{font-size:.8rem;border:1px solid #e3d5d9;background:#faf3f3;border-radius:999px;padding:3px 9px;color:#75616d}.example{border-left:3px solid #ab8196;padding:7px 0 7px 13px;margin:16px 0;line-height:1.8}.example .zh{font-family:'Noto Sans SC',sans-serif}.example .thai{color:#706671}.use{background:#f6eee8;border-radius:10px;padding:10px 12px;line-height:1.6}.listen{border:1px solid #a98ca6;background:#6f5877;color:white;border-radius:10px;padding:9px 15px;margin-top:16px}
+    @media(max-width:760px){main{padding:22px 12px 32px}.top{padding:13px}.intro{display:block}.count{display:inline-block;margin-top:16px}.filters{gap:8px}.filters label{flex:1 1 140px}.filters select,.filters input{width:100%;min-width:0}.filters .spacer{display:none}.filters button{flex:1}.stage{height:62vh;min-height:390px;border-radius:20px}.stage-hint{font-size:.72rem;bottom:13px;left:11px;padding:6px 9px}.view-tools{right:10px;bottom:10px}.view-tools button{min-width:35px;padding:7px}.legend{font-size:.78rem;gap:10px}dialog{padding:18px}}
+    @media(prefers-reduced-motion:reduce){.word-orb{animation:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">ข้ามไปคำศัพท์</a>
+  <header><div class="top"><a class="brand" href="HSK5_3/HSK5_3.html">SUPERCHINESE · WORD ORBIT</a><nav class="backlinks" aria-label="บทเรียน"><a href="HSK5_1/HSK5_1.html">บท 1</a><a href="HSK5_2/HSK5_2.html">บท 2</a><a href="HSK5_3/HSK5_3.html">บท 3</a></nav></div></header>
+  <main id="main">
+    <div class="intro"><div><div class="eyebrow">Play with words · HSK5</div><h1>วงคำศัพท์ลอย</h1><p>คำศัพท์จากทั้งสามบทอยู่ในวงเดียวกัน เลื่อนวงคำด้วยนิ้วหรือเมาส์ แล้วแตะคำจีนเพื่อดูพินอิน ความหมาย ตัวอย่าง และฟังเสียง</p></div><div class="count" id="count" aria-live="polite">57 คำ</div></div>
+    <div class="filters"><label>เลือกบท<select id="chapterFilter"><option value="">ทุกบท</option><option value="HSK5_1">บท 1 · 数字背后的名字</option><option value="HSK5_2">บท 2 · 两种名单</option><option value="HSK5_3">บท 3 · 屏幕上的名字</option></select></label><label>เลือกหมวด<select id="categoryFilter"><option value="">ทุกหมวด</option></select></label><label>ค้นหาคำ<input id="search" type="search" placeholder="จีน / พินอิน / ไทย" aria-label="ค้นหาคำศัพท์"></label><span class="spacer"></span><button id="shuffle" type="button">↻ สลับวงคำ</button></div>
+    <section class="stage" id="stage" aria-label="วงคำศัพท์แบบโต้ตอบ"><div class="word-field" id="field"></div><div class="empty" id="empty">ไม่พบคำในหมวดที่เลือก</div><div class="stage-hint">ลากเพื่อเลื่อน · เลื่อนล้อเพื่อซูม · แตะคำเพื่อดูความหมาย</div><div class="view-tools"><button id="zoomOut" type="button" aria-label="ย่อวงคำ">−</button><button id="resetView" type="button" aria-label="จัดวงคำให้อยู่กลาง">◎</button><button id="zoomIn" type="button" aria-label="ขยายวงคำ">+</button></div></section>
+    <div class="legend"><span>บท 1</span><span>บท 2</span><span>บท 3</span></div>
+  </main>
+  <dialog id="detail" aria-labelledby="detailWord"><div class="detail-head"><div><h2 id="detailWord" lang="zh-CN"></h2><p class="pinyin" id="detailPinyin"></p></div><button type="button" id="closeDetail" aria-label="ปิดรายละเอียด">✕</button></div><div class="tagrow"><span id="detailChapter"></span><span id="detailCategory"></span></div><p class="meaning" id="detailMeaning"></p><div class="example"><div class="zh" lang="zh-CN" id="detailExample"></div><div class="thai" id="detailThai"></div></div><div class="use" id="detailUse"></div><button class="listen" id="listen" type="button">🔊 ฟังคำนี้</button></dialog>
+  <script src="vocabulary-data.js"></script>
+  <script>
+    const vocabulary=window.VOCABULARY_DATA||[];
+    const $=id=>document.getElementById(id);
+    const palette=['คนและความรู้สึก','เวลาและจำนวน','งานและข้อมูล','การสื่อสาร','คำเชื่อม','การกระทำ','สิ่งของและสถานที่'];
+    const filter=$('categoryFilter');palette.forEach(name=>{const option=document.createElement('option');option.value=name;option.textContent=name;filter.append(option)});
+    let visible=[],offsetX=0,offsetY=0,scale=1,seed=0,down=null,suppressClickUntil=0,active=null;
+    const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
+    const paint=()=>{$('field').style.transform=`translate(${offsetX}px,${offsetY}px) scale(${scale})`};
+    function layout(){
+      const term=$('search').value.trim().toLowerCase();
+      visible=vocabulary.filter(w=>(!$('chapterFilter').value||w.lesson===$('chapterFilter').value)&&(!filter.value||w.category===filter.value)&&(!term||(w.h+w.p+w.m).toLowerCase().includes(term)));
+      $('count').textContent=visible.length+' / '+vocabulary.length+' คำ';
+      $('empty').style.display=visible.length?'none':'block';
+      const fragment=document.createDocumentFragment();
+      const columns=Math.ceil(Math.sqrt(visible.length*1.35));
+      const rows=Math.ceil(visible.length/columns);
+      const rotated=visible.length?visible.map((_,i)=>visible[(i+seed)%visible.length]):[];
+      rotated.forEach((word,i)=>{
+        const row=Math.floor(i/columns),col=i%columns;
+        const x=(col-(columns-1)/2)*91+(row%2?44:0);
+        const y=(row-(rows-1)/2)*82;
+        const distance=Math.hypot(x/600,y/550);
+        const size=clamp(69-distance*13+(word.h.length===1?0:word.h.length>2?8:4),55,81);
+        const node=document.createElement('button');
+        node.type='button';node.className='word-orb';node.textContent=word.h;node.dataset.chapter=word.lesson;
+        node.style.left=x+'px';node.style.top=y+'px';node.style.width=size+'px';node.style.height=size+'px';node.style.fontSize=(word.h.length>3?'.88rem':word.h.length>2?'1.02rem':word.h.length===1?'1.55rem':'1.28rem');
+        node.style.setProperty('--duration',(4+(i%6)*.65)+'s');node.style.setProperty('--delay',(-i%11*.37)+'s');
+        node.setAttribute('aria-label',word.h+' เปิดความหมาย');node.title=word.h;
+        node.addEventListener('click',()=>{if(Date.now()<suppressClickUntil)return;openDetail(word)});
+        fragment.append(node);
+      });
+      $('field').replaceChildren(fragment);offsetX=0;offsetY=0;scale=clamp(1.2-visible.length/80,.78,1.1);paint();
+    }
+    function openDetail(word){active=word;$('detailWord').textContent=word.h;$('detailPinyin').textContent=word.p;$('detailMeaning').textContent=word.m;$('detailExample').textContent=word.ex;$('detailThai').textContent=word.th;$('detailUse').textContent=word.use?'ใช้เมื่อไร: '+word.use:'ใช้ในประโยคตัวอย่างด้านบน';$('detailChapter').textContent=word.lesson.replace('HSK5_','บท ');$('detailCategory').textContent=word.category;$('detail').showModal()}
+    function speakWord(){if(!active||!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(active.h);u.rate=.82;const pref=localStorage.getItem('hsk5_1_voice_v1')||'auto';const voices=speechSynthesis.getVoices();if(pref.startsWith('voice:')){u.voice=voices.find(v=>v.voiceURI===pref.slice(6))||null;u.lang=u.voice?.lang||'zh-CN'}else{u.lang=pref.startsWith('locale:')?pref.slice(7):'zh-CN';u.voice=voices.find(v=>v.lang.toLowerCase()===u.lang.toLowerCase())||null}speechSynthesis.speak(u)}
+    $('chapterFilter').addEventListener('change',layout);filter.addEventListener('change',layout);$('search').addEventListener('input',layout);$('shuffle').addEventListener('click',()=>{seed=(seed+7)%Math.max(visible.length,1);layout()});
+    $('resetView').addEventListener('click',()=>{offsetX=offsetY=0;scale=1;paint()});$('zoomIn').addEventListener('click',()=>{scale=clamp(scale*1.18,.55,1.8);paint()});$('zoomOut').addEventListener('click',()=>{scale=clamp(scale/1.18,.55,1.8);paint()});
+    $('stage').addEventListener('pointerdown',e=>{if(e.target.closest('.view-tools'))return;down={x:e.clientX,y:e.clientY,ox:offsetX,oy:offsetY,id:e.pointerId,moved:false}});
+    $('stage').addEventListener('pointermove',e=>{if(!down||e.pointerId!==down.id)return;const distance=Math.hypot(e.clientX-down.x,e.clientY-down.y);if(distance>6&&!down.moved){down.moved=true;$('stage').setPointerCapture(e.pointerId);$('stage').classList.add('dragging')}if(!down.moved)return;offsetX=down.ox+e.clientX-down.x;offsetY=down.oy+e.clientY-down.y;paint()});
+    $('stage').addEventListener('pointerup',e=>{if(!down||e.pointerId!==down.id)return;if(down.moved)suppressClickUntil=Date.now()+180;down=null;$('stage').classList.remove('dragging')});
+    $('stage').addEventListener('wheel',e=>{e.preventDefault();scale=clamp(scale*(e.deltaY>0?.91:1.09),.55,1.8);paint()},{passive:false});
+    $('closeDetail').addEventListener('click',()=>$('detail').close());$('listen').addEventListener('click',speakWord);$('detail').addEventListener('click',e=>{if(e.target===$('detail'))$('detail').close()});
+    layout();
+  </script>
+</body>
+</html>
