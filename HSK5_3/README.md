@@ -14,7 +14,7 @@
 - `build_lesson.py`: สร้าง HTML และ TXT จาก JSON โดยใช้บท 5_2 เป็นแม่แบบ รันจากโฟลเดอร์หลักด้วย `python3 HSK5_3/build_lesson.py`
 - `images/`: ภาพสามฉากที่สร้างด้วย built-in imagegen สไตล์ภาพสีน้ำต่อจากบท 5_2 และแสดงเต็มสัดส่วนบนมือถือ
 
-ไฟล์ร่วมในโฟลเดอร์หลัก `reading-glossary.json`, `build_shared_data.mjs`, `reading-lexicon.js` และ `reading-interaction.js` ทำให้คำทั่วไปในเรื่องของทั้งสามบทกดได้ทุกคำ ส่วน `vocabulary-data.js` ป้อนข้อมูล 57 คำให้หน้า `vocabulary-orbit.html` ซึ่งกรองตามบท/หมวด ค้นหา ลาก ซูม และแตะดูรายละเอียดได้
+ไฟล์ร่วมในโฟลเดอร์หลัก `reading-glossary.json`, `build_shared_data.mjs`, `reading-lexicon.js` และ `reading-interaction.js` ทำให้คำทั่วไปในเรื่องของทั้งสี่บทกดได้ทุกคำ ส่วน `vocabulary-data.js` ป้อนข้อมูล 76 คำให้หน้า `vocabulary-orbit.html` ซึ่งกรองตามบท/หมวด ค้นหา ลาก ซูม และแตะดูรายละเอียดได้
 
 ## โครงเรื่อง
 

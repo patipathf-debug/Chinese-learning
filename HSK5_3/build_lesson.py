@@ -37,6 +37,7 @@ swap("เรียนศัพท์ใหม่ HSK5 บทที่ 2 ผ่�
 swap("SUPERCHINESE · HSK5/02", "SUPERCHINESE · HSK5/03")
 swap('<a href="../HSK5_1/HSK5_1.html">← บทที่ 1</a>', '<a href="../HSK5_2/HSK5_2.html">← บทที่ 2</a>')
 html = html.replace('<a href="../HSK5_3/HSK5_3.html">บทที่ 3 →</a>', '')
+swap('<a href="#story">เรื่องเล่า</a>', '<a href="../HSK5_4/HSK5_4.html">บทที่ 4 →</a><a href="#story">เรื่องเล่า</a>')
 
 hero = '''  <header class="hero" id="top"><div class="wrap"><div class="eyebrow">HSK 5 · Chapter 03 · เรื่องต่อเนื่อง</div><h1 lang="zh-CN">屏幕上的名字</h1><p class="subtitle">ชื่อบนหน้าจอ</p><p>ชื่อของหลินอวี่ปรากฏในฐานะผู้สร้างบัญชีปลอม เธอกับพี่สาวต้องตามรอยเว็บไซต์รับสมัครงานและกล่องเอกสารเก่า ก่อนพยานคนหนึ่งจะบอกว่าคนที่ถูกลบจากรายชื่อคือใคร</p><div class="hero-actions"><a class="btn primary" href="#story">เริ่มอ่านตอนที่ 1 →</a><a class="btn" href="../vocabulary-orbit.html">เล่นวงคำศัพท์รวม ↗</a></div><div class="statline"><span><b>21</b> คำใหม่จาก Excel</span><span><b>3</b> ตอนต่อเนื่อง</span><span><b>10</b> ข้อทดสอบ</span></div></div></header>'''
 html, count = re.subn(r'  <header class="hero".*?</header>', lambda _: hero, html, count=1, flags=re.S)

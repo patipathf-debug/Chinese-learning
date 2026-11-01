@@ -20,8 +20,8 @@
     voice.rate = 0.82;
     speechSynthesis.speak(voice);
   }
-  function openWord(word) {
-    const entry = lexicon[word];
+  function openWord(word, contextualEntry) {
+    const entry = contextualEntry || lexicon[word];
     if (!entry) return;
     currentWord = word;
     byId('readingLookupWord').textContent = word;
@@ -33,14 +33,14 @@
     byId('readingLookupExample').hidden = !entry.ex;
     dialog.showModal();
   }
-  function makeToken(word, highlighted) {
+  function makeToken(word, highlighted, contextualEntry) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'reading-token' + (highlighted ? ' is-new' : '');
     button.textContent = word;
     button.lang = 'zh-CN';
     button.setAttribute('aria-label', 'ดูคำอ่านและความหมายของ ' + word);
-    button.addEventListener('click', () => openWord(word));
+    button.addEventListener('click', () => openWord(word, contextualEntry));
     return button;
   }
   function enrichReading(element) {
@@ -54,7 +54,10 @@
       const word = entries.find(entry => source.startsWith(entry, i));
       if (!word) { buffer += source[i++]; continue; }
       flush();
-      fragment.append(makeToken(word, highlighted.has(word)));
+      const contextualEntry = word === '得' && source.slice(i + 1).startsWith('很')
+        ? {p:'de',m:'คำช่วยเชื่อมกริยากับส่วนขยาย เช่น 表现得很好',use:'ในที่นี้อ่าน de; ถ้าแปลว่า “ต้อง” เช่น 咱们得走 อ่าน děi'}
+        : null;
+      fragment.append(makeToken(word, highlighted.has(word), contextualEntry));
       i += word.length;
     }
     flush();
