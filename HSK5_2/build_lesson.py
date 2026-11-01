@@ -69,6 +69,7 @@ if count != 1:
 
 swap("แบบทดสอบ 8 ข้อ", "แบบทดสอบ 10 ข้อ")
 html = html.replace("anki_hsk5_1.txt", "anki_hsk5_2.txt")
+html = html.replace("HSK5_1_workbook.pdf", "HSK5_2_workbook.pdf")
 swap("HSK5 / บทที่ 1", "HSK5 / บทที่ 2")
 swap("hsk5_1_mastered_v1", "hsk5_2_mastered_v1")
 

@@ -53,6 +53,7 @@ if count != 1:
     raise ValueError("Could not replace language notes")
 
 html = html.replace("anki_hsk5_3.txt", "anki_hsk5_4.txt")
+html = html.replace("HSK5_3_workbook.pdf", "HSK5_4_workbook.pdf")
 swap("HSK5 / บทที่ 3", "HSK5 / บทที่ 4")
 swap("hsk5_3_mastered_v1", "hsk5_4_mastered_v1")
 (root / "HSK5_4.html").write_text(html, encoding="utf-8")
