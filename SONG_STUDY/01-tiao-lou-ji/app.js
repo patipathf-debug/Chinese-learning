@@ -30,8 +30,6 @@ function speak(text) {
   if (voice) utterance.voice = voice;
   utterance.lang = voice?.lang || 'zh-TW';
   utterance.rate = 0.82;
-  const voice = speechSynthesis.getVoices().find(v => /^zh(-CN)?$/i.test(v.lang) || /^zh-CN/i.test(v.lang));
-  if (voice) utterance.voice = voice;
   speechSynthesis.speak(utterance);
 }
 
