@@ -15,8 +15,9 @@ const lesson1 = {words: extract('words'), chapters: extract('chapters')};
 const lesson2 = JSON.parse(read('HSK5_2/lesson_data.json'));
 const lesson3 = JSON.parse(read('HSK5_3/lesson_data.json'));
 const lesson4 = JSON.parse(read('HSK5_4/lesson_data.json'));
-const byLesson = [lesson1, lesson2, lesson3, lesson4];
-const labels = ['HSK5_1', 'HSK5_2', 'HSK5_3', 'HSK5_4'];
+const lesson5 = JSON.parse(read('HSK5_5/lesson_data.json'));
+const byLesson = [lesson1, lesson2, lesson3, lesson4, lesson5];
+const labels = ['HSK5_1', 'HSK5_2', 'HSK5_3', 'HSK5_4', 'HSK5_5'];
 const categoryRules = {
   'คนและความรู้สึก': '白领 心情 压力 分手 熟悉 惊喜 优秀',
   'เวลาและจำนวน': '按时 超过 亿 世纪 之前 将来 种',
@@ -37,7 +38,7 @@ for (const word of words) {
   if (!word.category) throw new Error('Missing category: ' + word.h);
   seen.add(word.h);
 }
-if (words.length !== 76) throw new Error('Expected 76 cumulative words, found ' + words.length);
+if (words.length !== 103) throw new Error('Expected 103 cumulative words, found ' + words.length);
 write('vocabulary-data.js', 'window.VOCABULARY_DATA=' + JSON.stringify(words) + ';\n');
 
 const extra = JSON.parse(read('reading-glossary.json'));

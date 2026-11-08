@@ -63,7 +63,9 @@ console.log(JSON.stringify(out));
     chapters = raw['chapters']
     for word in raw['words']:
         word['use'] = raw['usageNotes'].get(word['h'], '')
-    for chapter, pinyin in zip(chapters, raw['chapterPinyin'], strict=True):
+    if len(chapters) != len(raw['chapterPinyin']):
+        raise ValueError('Chapter and pinyin counts differ')
+    for chapter, pinyin in zip(chapters, raw['chapterPinyin']):
         chapter['py'] = pinyin
     return {
         'words': raw['words'], 'chapters': chapters,
@@ -349,7 +351,9 @@ class Workbook:
 
 
 def main() -> None:
-    for n in (1, 2, 3, 4):
+    import sys
+    chapters = [int(sys.argv[1])] if len(sys.argv) == 2 else (1, 2, 3, 4, 5)
+    for n in chapters:
         path = Workbook(n, source_data(n)).build()
         print(path)
 

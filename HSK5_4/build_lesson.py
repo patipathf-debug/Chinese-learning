@@ -37,6 +37,8 @@ swap("เรียนศัพท์ใหม่ HSK5 บทที่ 3 ผ่�
 swap("SUPERCHINESE · HSK5/03", "SUPERCHINESE · HSK5/04")
 swap('<a href="../HSK5_2/HSK5_2.html">← บทที่ 2</a>', '<a href="../HSK5_3/HSK5_3.html">← บทที่ 3</a>')
 html = html.replace('<a href="../HSK5_4/HSK5_4.html">บทที่ 4 →</a>', '')
+html = html.replace('<a href="../HSK5_5/HSK5_5.html">บทที่ 5 →</a>', '')
+html = html.replace('<a href="../HSK5_3/HSK5_3.html">← บทที่ 3</a>', '<a href="../HSK5_3/HSK5_3.html">← บทที่ 3</a><a href="../HSK5_5/HSK5_5.html">บทที่ 5 →</a>')
 
 hero = '''  <header class="hero" id="top"><div class="wrap"><div class="eyebrow">HSK 5 · Chapter 04 · เรื่องต่อเนื่อง</div><h1 lang="zh-CN">被删掉的名字</h1><p class="subtitle">ชื่อที่ถูกลบออก</p><p>ชื่อหลินเสวี่ยอยู่ในรายชื่อผู้ใช้ที่ถูกลบ หลินอวี่ต้องถามพี่สาวให้ชัด ข้อความนัดพบที่โกดังเก่านำทั้งสามไปเจอรถชน ตำรวจ และบันทึกที่เปลี่ยนความหมายของชื่อในรายชื่อนั้น</p><div class="hero-actions"><a class="btn primary" href="#story">เริ่มอ่านตอนที่ 1 →</a><a class="btn" href="../vocabulary-orbit.html">เล่นวงคำศัพท์รวม ↗</a></div><div class="statline"><span><b>19</b> คำใหม่จาก Excel</span><span><b>3</b> ตอนต่อเนื่อง</span><span><b>10</b> ข้อทดสอบ</span></div></div></header>'''
 html, count = re.subn(r'  <header class="hero".*?</header>', lambda _: hero, html, count=1, flags=re.S)
