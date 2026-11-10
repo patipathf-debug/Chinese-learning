@@ -352,7 +352,7 @@ class Workbook:
 
 def main() -> None:
     import sys
-    chapters = [int(sys.argv[1])] if len(sys.argv) == 2 else (1, 2, 3, 4, 5)
+    chapters = [int(sys.argv[1])] if len(sys.argv) == 2 else (1, 2, 3, 4, 5, 6)
     for n in chapters:
         path = Workbook(n, source_data(n)).build()
         print(path)

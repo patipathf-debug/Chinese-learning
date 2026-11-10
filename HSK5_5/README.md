@@ -18,7 +18,7 @@
 1. แก้ `lesson_data.json` แล้วรัน `python3 HSK5_5/build_lesson.py` ตรวจพินอินและคำแปลที่แสดงในหน้าเว็บ
 2. หากเพิ่มคำจีนทั่วไปในเรื่อง ให้เพิ่มคำอ่าน/ความหมายใน `../reading-glossary.json` แล้วรัน `node build_shared_data.mjs` ที่โฟลเดอร์หลักจนตัวตรวจยืนยันครบทุกอักษร ระบบจะสร้าง `reading-lexicon.js` กับ `vocabulary-data.js`
 3. แกรมม่าและโจทย์เขียนอยู่ใน `../pdf_workbook_content.py`; หลังแก้ รัน `python3 build_pdf_workbooks.py 5` ที่โฟลเดอร์หลัก แล้วเปิดดูหน้า PDF ด้วย `pdftoppm` ก่อนเผยแพร่
-4. เมื่อผู้เรียนขอบท 6 ให้เปิด [Google Sheet สมุดคำศัพท์จีน](https://docs.google.com/spreadsheets/d/13JLymuUdgZ6lxaDMbHJKK3eEwBGCIS7Kn2QSvkWyeGQ/edit?usp=sharing) ใหม่ ส่งออกเป็น Excel ในโฟลเดอร์บท 6 และเริ่มตรวจคำถัดจากแถว 107 (ณ 10 พฤศจิกายน 2026 แถว 108–125 มีคำเพิ่มแล้ว) จากนั้นเพิ่มบทใน `../build_shared_data.mjs`, `../vocabulary-orbit.html`, ลิงก์บนบทนี้, `../index.html` บน GitHub และ README ทั้งสองแห่ง ตรวจมือถือ ภาพ เสียง การกดคำ ปุ่มซ่อนคำแปล/พินอิน และข้อสอบ ก่อนอัปเดต GitHub Pages
+4. บท 6 ใช้แถว 108–125 แล้ว อ่าน `../HSK5_6/README.md` ก่อนทำบท 7 และเปิด Google Sheet ใหม่ทุกครั้งเพื่อหาคำหลังแถว 125
 
 ## ปมสำหรับบท 6
 
