@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b29">
+  <meta name="description" content="เรียนจีนจากเพลง 爱你但说不出口: เนื้อเพลง พินอิน คำแปลไทย คำศัพท์กดดูได้ ระดับ HSK และไวยากรณ์">
+  <title>爱你但说不出口 · เรียนจีนผ่านเพลง</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js?v=3" defer></script>
+  <script src="app.js?v=3" defer></script>
+</head>
+<body class="song-two">
+  <a class="skip" href="#lyrics">ข้ามไปเนื้อเพลง</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../"><span class="brand-icon">歌</span><span>เพลงจีน<span class="brand-sub">SONG STUDY</span></span></a>
+      <nav aria-label="เมนูหลัก"><a href="#story">เรื่องในเพลง</a><a href="#lyrics">เนื้อเพลง</a><a href="#vocab">คำศัพท์</a><a href="#grammar">ไวยากรณ์</a></nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-art" role="img" aria-label="ชายหนุ่มกำลังเขียนข้อความขอโทษถึงคนรักยามค่ำ"></div>
+      <div class="hero-shade"></div>
+      <div class="container hero-content">
+        <p class="eyebrow">เพลงที่ 02 <span class="eyebrow-line"></span> เรียนจีนผ่านเรื่องราว</p>
+        <h1 id="hero-title" lang="zh-CN">爱你<br>但说不出口</h1>
+        <p class="hero-roman">Ài nǐ dàn shuō bù chū kǒu <span>·</span> เพลงรักที่พูดไม่ออก</p>
+        <p class="hero-desc">เขารักเธอ แต่กลับพูดคำสำคัญไม่ออก<br>อ่านทีละบรรทัด แล้วกดดูทุกคำได้</p>
+        <div class="hero-actions"><a class="primary-btn" href="#lyrics">เริ่มอ่านเนื้อเพลง <span aria-hidden="true">↗</span></a><a class="text-link" href="#story">ดูภาพเล่าเรื่อง <span aria-hidden="true">↓</span></a><a class="text-link" href="../">← เพลงที่ 01 跳楼机</a></div>
+      </div>
+      <div class="hero-index" aria-hidden="true">02 / 04 SCENES</div>
+    </section>
+
+    <section class="intro section-pad" id="story">
+      <div class="container">
+        <div class="section-heading"><div><p class="kicker">STORY IN FOUR FRAMES</p><h2>จากคำรักที่ค้างอยู่<br>ถึงเพลงแทนคำสารภาพ</h2></div><p class="section-note">ภาพประกอบ 4 ฉากตามเรื่องราวของคนที่อยากขอโทษ แต่พูดความรู้สึกออกมาไม่เป็น</p></div>
+        <div class="story-grid" id="storyGrid"></div>
+      </div>
+    </section>
+
+    <section class="reader section-pad" id="lyrics">
+      <div class="container">
+        <div class="section-heading reader-heading"><div><p class="kicker">READ · TAP · UNDERSTAND</p><h2>เนื้อเพลงพร้อมเรียนรู้</h2></div><p class="section-note">แตะคำจีนเพื่อดูคำอ่าน ความหมาย และระดับ HSK · เส้นใต้สีแสดงจุดไวยากรณ์</p></div>
+        <div class="reader-toolbar" aria-label="ตัวเลือกการอ่าน"><div class="toolbar-title">แสดงผล</div><button id="togglePinyin" type="button" class="toggle active" aria-pressed="true">พินอิน</button><button id="toggleThai" type="button" class="toggle active" aria-pressed="true">คำแปลไทย</button><button id="toggleGrammar" type="button" class="toggle active" aria-pressed="true">สีไวยากรณ์</button><label class="voice-picker"><span>เสียงอ่าน</span><select id="voiceSelect" aria-label="เลือกเสียงอ่าน"><option value="">กำลังหาเสียง…</option></select></label><span id="voiceHint" class="toolbar-hint">กดคำใดก็ได้ในเนื้อเพลง</span></div>
+        <div id="verseList" class="verse-list"></div>
+      </div>
+    </section>
+
+    <section class="vocab-section section-pad" id="vocab">
+      <div class="container">
+        <div class="section-heading"><div><p class="kicker">WORD LIBRARY</p><h2>คำศัพท์ทั้งเพลง</h2></div><p class="section-note">ระดับ HSK อ้างอิงกรอบคำศัพท์แบบ 6 ระดับ คำประสมและสำนวนที่ไม่ลงเป็นรายการเดี่ยวแสดง “นอกบัญชี”</p></div>
+        <div class="vocab-tools"><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">ค้นหาคำศัพท์</span><input id="vocabSearch" type="search" placeholder="ค้นหาคำจีน พินอิน หรือความหมายไทย" autocomplete="off"></label><select id="levelFilter" aria-label="กรองระดับ HSK"><option value="all">ทุกระดับ</option><option value="HSK 1">HSK 1</option><option value="HSK 2">HSK 2</option><option value="HSK 3">HSK 3</option><option value="HSK 4">HSK 4</option><option value="HSK 5">HSK 5</option><option value="HSK 6">HSK 6</option><option value="นอกบัญชี">นอกบัญชี</option></select></div>
+        <p id="vocabCount" class="result-count" aria-live="polite"></p>
+        <div id="vocabGrid" class="vocab-grid"></div>
+      </div>
+    </section>
+
+    <section class="grammar-section section-pad" id="grammar">
+      <div class="container"><div class="section-heading"><div><p class="kicker">GRAMMAR MAP</p><h2>จุดไวยากรณ์ในเพลง</h2></div><p class="section-note">สีเดียวกับขีดใต้ในเนื้อเพลง กดป้ายใต้บรรทัดเพื่ออ่านคำอธิบายในบริบทนั้น</p></div><div id="grammarGrid" class="grammar-grid"></div></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><div><strong>爱你但说不出口</strong><p>ชุดทดลองเรียนภาษาจีนจากเพลง · แปลไทยเพื่อการศึกษา</p><p><a href="../">เพลงที่ 01 跳楼机</a> · เพลงที่ 02 爱你但说不出口</p><p>ระดับ HSK อ้างอิง <a href="https://www.chinesetest.cn/userfiles/file/cihui.pdf" target="_blank" rel="noopener noreferrer">รายการ HSK 1–4</a> และ <a href="https://github.com/drkameleon/complete-hsk-vocabulary" target="_blank" rel="noopener noreferrer">ชุดข้อมูล HSK 5–6</a></p></div><a href="#top">กลับขึ้นด้านบน ↑</a></div></footer>
+
+  <dialog id="detailDialog" class="detail-dialog" aria-labelledby="dialogTitle"><button class="dialog-close" id="dialogClose" type="button" aria-label="ปิด">×</button><div id="dialogContent"></div></dialog>
+</body>
+</html>
